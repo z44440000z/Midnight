@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+
 
 public class SimpleCharacterControl : MonoBehaviour
 {
@@ -28,6 +30,16 @@ public class SimpleCharacterControl : MonoBehaviour
     private float m_minJumpInterval = 0.25f;
     private bool m_isGrounded;
     private List<Collider> m_collisions = new List<Collider>();
+
+
+    public Transform RightHand;  //右手著力點
+    public Transform RightFoot;  //右腳著力點 
+    [SerializeField] private bool isClimbPoint;
+    private float ClimbUpMatchStart = 0.24f;
+    private float ClimbUpMatchEnd = 0.61f;
+    private float ClimbDownMatchStart = 0f;
+    private float ClimbDownMatchEnd = 0.34f;
+    private AnimatorStateInfo m_State;
 
     private void Start()
     {
@@ -91,8 +103,23 @@ public class SimpleCharacterControl : MonoBehaviour
         if (m_collisions.Count == 0)
         { m_isGrounded = false; }
     }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "ClimbPoint")
+        {
+            isClimbPoint = true;
+        }
+    }
 
-    void FixedUpdate()
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "ClimbPoint")
+        {
+            isClimbPoint = false;
+        }
+    }
+
+    private void FixedUpdate()
     {
         m_animator.SetBool("Grounded", m_isGrounded);
 
@@ -131,7 +158,7 @@ public class SimpleCharacterControl : MonoBehaviour
             transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
         }
-        
+
         //上下左右鍵方向
         if (v > 0)
         { SmoothRotation(Camera.main.transform.eulerAngles.y); }
@@ -144,17 +171,13 @@ public class SimpleCharacterControl : MonoBehaviour
         { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
 
         //飛行
-        Flying();
-      
+        Flying(direction);
+
         //跳躍
         JumpingAndLanding();
-    }
 
-    public void SmoothRotation(float a)
-    {
-        float y = 3.0f;
-        float rotateSpeed = 0.05f;
-        transform.eulerAngles = new Vector3(0, Mathf.SmoothDampAngle(transform.eulerAngles.y, a, ref y, rotateSpeed), 0);
+        //攀爬
+        Climbing();
     }
 
     private void JumpingAndLanding()
@@ -164,6 +187,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (jumpCooldownOver && m_animator.GetInteger("JumpCount") < 2 && Input.GetKey(KeyCode.Space))
         {
             m_jumpTimeStamp = Time.time;
+            ResetVelocity();
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_animator.SetTrigger("Jump");
 
@@ -172,14 +196,58 @@ public class SimpleCharacterControl : MonoBehaviour
         }
     }
 
-    private void Flying()
+    private void Flying(Vector3 direct)
     {
-        if (!m_isGrounded && Input.GetMouseButton(1))
+        if (!isClimbPoint && !m_isGrounded && Input.GetMouseButton(1))
         { m_animator.SetBool("Fly", true); }
         else
         { m_animator.SetBool("Fly", false); }
 
-        if (m_animator.GetBool("Fly"))
-        { m_rigidBody.AddForce(transform.forward * m_moveSpeed, ForceMode.Impulse); }
+        if (m_State.IsName("Base Layer.Fly"))
+        {
+            m_rigidBody.AddForce(direct * m_moveSpeed, ForceMode.Impulse);
+            m_rigidBody.AddForce(-Physics.gravity * 0.8f);
+        }
     }
+
+    private void Climbing()
+    {
+        if (m_animator)
+        {
+            //獲取動畫狀態
+            m_State = m_animator.GetCurrentAnimatorStateInfo(0);
+
+            if (isClimbPoint && Input.GetMouseButtonDown(1))
+            {
+                if (m_animator.GetBool("Climb"))
+                { m_animator.SetBool("Climb", false); }
+                else
+                {
+                    m_animator.SetBool("Climb", true);
+                }
+            }
+
+            if (m_State.IsName("Base Layer.ClimbUp"))
+            {
+                //調用MatchTarget方法				
+                m_animator.MatchTarget(RightHand.position, RightHand.rotation, AvatarTarget.RightHand, new MatchTargetWeightMask(Vector3.one, 0), ClimbUpMatchStart, ClimbUpMatchEnd);
+            }
+            if (m_State.IsName("Base Layer.ClimbDown"))
+            {
+                m_animator.MatchTarget(RightFoot.position, RightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), ClimbDownMatchStart, ClimbDownMatchEnd);
+            }
+        }
+
+    }
+    public void SmoothRotation(float a)
+    {
+        float y = 3.0f;
+        float rotateSpeed = 0.05f;
+        transform.eulerAngles = new Vector3(0, Mathf.SmoothDampAngle(transform.eulerAngles.y, a, ref y, rotateSpeed), 0);
+    }
+
+    public void ResetVelocity()
+    { m_rigidBody.velocity = Vector3.zero; }
+    public void UseGravity(bool isuseGravity)
+    { m_rigidBody.useGravity = isuseGravity; }
 }

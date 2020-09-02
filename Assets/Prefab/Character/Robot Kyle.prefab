@@ -1597,8 +1597,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4677465665828536}
   - component: {fileID: 95015199221325740}
-  - component: {fileID: 54207390365450698}
   - component: {fileID: 234747721}
+  - component: {fileID: 54207390365450698}
   - component: {fileID: 234747714}
   m_Layer: 0
   m_Name: Robot Kyle
@@ -1643,22 +1643,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &54207390365450698
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988188231465034}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 2
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &234747721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,6 +1660,25 @@ MonoBehaviour:
   m_animator: {fileID: 0}
   m_rigidBody: {fileID: 0}
   m_controlMode: 0
+  RightHand: {fileID: 0}
+  RightFoot: {fileID: 0}
+  isClimbPoint: 0
+--- !u!54 &54207390365450698
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988188231465034}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!136 &234747714
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1687,7 +1690,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 1.8
+  m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &1989929076880050

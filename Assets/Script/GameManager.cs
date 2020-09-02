@@ -1,7 +1,5 @@
 ﻿//游戏管理
 using UnityEngine;
-using UnityEngine.UIElements;
-using System.Collections;
 
 public enum GameState
 {
@@ -17,6 +15,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        CursorControl(false);
+
     }
     //测试添加删除物品
     private void Update()
@@ -34,11 +34,26 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             gamestate = GameState.Pause;
+            CursorControl(true);
         }
         else if (gamestate == GameState.Pause)
         {
             Time.timeScale = 1;
             gamestate = GameState.Running;
+            CursorControl(false);
+        }
+    }
+    public void CursorControl(bool isCursorVisible)
+    {
+        if (isCursorVisible)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

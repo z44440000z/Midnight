@@ -45,6 +45,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\ClimbDown.cs" />
+     <Compile Include="Assets\ClimbUp.cs" />
+     <Compile Include="Assets\Fly.cs" />
      <Compile Include="Assets\Land.cs" />
      <Compile Include="Assets\Script\AlwaysLookTarget.cs" />
      <Compile Include="Assets\Script\BezierCurve.cs" />
@@ -598,6 +601,10 @@
       <Project>{637af976-c9c4-553d-c2f9-5b9569d0bad5}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{1503af93-b020-552c-6596-dc6825e1333d}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{522b9e29-0846-845b-12e4-75480f97ebe8}</Project>
       <Name>Unity.VSCode.Editor</Name>
@@ -622,6 +629,10 @@
       <Project>{ba786507-def4-2031-8411-85b1a67fed13}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{1d3ca861-8ec1-579d-ce67-9c2e0c6fd00f}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{261634b0-bae0-de02-7cd5-2006323f5f00}</Project>
       <Name>Unity.TextMeshPro</Name>
@@ -629,14 +640,6 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{a8ca396e-e2a4-77ce-1a9d-d122083f6a8c}</Project>
       <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{1503af93-b020-552c-6596-dc6825e1333d}</Project>
-      <Name>Cinemachine</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{1d3ca861-8ec1-579d-ce67-9c2e0c6fd00f}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
