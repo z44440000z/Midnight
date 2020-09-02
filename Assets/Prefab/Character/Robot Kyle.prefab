@@ -1659,7 +1659,6 @@ MonoBehaviour:
   m_jumpForce: 10
   m_animator: {fileID: 0}
   m_rigidBody: {fileID: 0}
-  m_controlMode: 0
   RightHand: {fileID: 0}
   RightFoot: {fileID: 0}
   isClimbPoint: 0
@@ -1689,7 +1688,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
+  m_Radius: 0.18
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}

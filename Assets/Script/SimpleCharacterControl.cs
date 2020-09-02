@@ -5,15 +5,10 @@ using System.Collections.Generic;
 
 public class SimpleCharacterControl : MonoBehaviour
 {
-
-    private enum ControlMode
-    { Direct }
-
     [SerializeField] private float m_moveSpeed = 5;
     [SerializeField] private float m_jumpForce = 10;
     [SerializeField] private Animator m_animator;
     [SerializeField] private Rigidbody m_rigidBody;
-    [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
@@ -37,7 +32,7 @@ public class SimpleCharacterControl : MonoBehaviour
     [SerializeField] private bool isClimbPoint;
     private float ClimbUpMatchStart = 0.24f;
     private float ClimbUpMatchEnd = 0.61f;
-    private float ClimbDownMatchStart = 0f;
+    private float ClimbDownMatchStart = 0.01f;
     private float ClimbDownMatchEnd = 0.34f;
     private AnimatorStateInfo m_State;
 
@@ -107,6 +102,8 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         if (collision.tag == "ClimbPoint")
         {
+            RightHand = collision.transform.Find("RightHand");
+            RightFoot = collision.transform.Find("RightFoot");
             isClimbPoint = true;
         }
     }
@@ -115,6 +112,8 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         if (collision.tag == "ClimbPoint")
         {
+            RightHand = null;
+            RightFoot = null;
             isClimbPoint = false;
         }
     }
@@ -122,62 +121,48 @@ public class SimpleCharacterControl : MonoBehaviour
     private void FixedUpdate()
     {
         m_animator.SetBool("Grounded", m_isGrounded);
-
-        switch (m_controlMode)
+        if (!m_State.IsName("Base Layer.Climb.ClimbUp") && !m_State.IsName("Base Layer.Climb.ClimbUp"))
         {
-            case ControlMode.Direct:
-                DirectUpdate();
-                break;
+            float v = Input.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
 
-            default:
-                Debug.LogError("Unsupported state");
-                break;
+
+            m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
+            m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
+
+            Vector3 direction = Camera.main.transform.forward * m_currentV + Camera.main.transform.right * m_currentH;
+
+            float directionLength = direction.magnitude;
+            direction.y = 0;
+            direction = direction.normalized * directionLength;
+
+            if (direction != Vector3.zero)
+            {
+                m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
+                transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+                m_animator.SetFloat("MoveSpeed", direction.magnitude);
+            }
+
+            //上下左右鍵方向
+            if (v > 0)
+            { SmoothRotation(Camera.main.transform.eulerAngles.y); }
+            else if (v < 0)
+            { SmoothRotation(Camera.main.transform.eulerAngles.y - 180); }
+
+            if (h > 0)
+            { SmoothRotation(Camera.main.transform.eulerAngles.y + 90); }
+            else if (h < 0)
+            { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
         }
-
-        m_wasGrounded = m_isGrounded;
-    }
-
-    private void DirectUpdate()
-    {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-
-
-        m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
-        m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
-
-        Vector3 direction = Camera.main.transform.forward * m_currentV + Camera.main.transform.right * m_currentH;
-
-        float directionLength = direction.magnitude;
-        direction.y = 0;
-        direction = direction.normalized * directionLength;
-
-        if (direction != Vector3.zero)
-        {
-            m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
-            transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
-            m_animator.SetFloat("MoveSpeed", direction.magnitude);
-        }
-
-        //上下左右鍵方向
-        if (v > 0)
-        { SmoothRotation(Camera.main.transform.eulerAngles.y); }
-        else if (v < 0)
-        { SmoothRotation(Camera.main.transform.eulerAngles.y - 180); }
-
-        if (h > 0)
-        { SmoothRotation(Camera.main.transform.eulerAngles.y + 90); }
-        else if (h < 0)
-        { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
 
         //飛行
-        Flying(direction);
-
+        Flying();
         //跳躍
         JumpingAndLanding();
-
         //攀爬
         Climbing();
+
+        m_wasGrounded = m_isGrounded;
     }
 
     private void JumpingAndLanding()
@@ -196,7 +181,7 @@ public class SimpleCharacterControl : MonoBehaviour
         }
     }
 
-    private void Flying(Vector3 direct)
+    private void Flying()
     {
         if (!isClimbPoint && !m_isGrounded && Input.GetMouseButton(1))
         { m_animator.SetBool("Fly", true); }
@@ -205,8 +190,13 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            m_rigidBody.AddForce(direct * m_moveSpeed, ForceMode.Impulse);
-            m_rigidBody.AddForce(-Physics.gravity * 0.8f);
+            SmoothRotation(Camera.main.transform.eulerAngles.y);
+            Vector3 direct = Camera.main.transform.forward;
+            float directionLength = direct.magnitude;
+            direct.y = 0;
+            direct = direct.normalized * directionLength;
+
+            m_rigidBody.velocity = Physics.gravity * 0.2f + direct * m_moveSpeed;
         }
     }
 
@@ -224,16 +214,19 @@ public class SimpleCharacterControl : MonoBehaviour
                 else
                 {
                     m_animator.SetBool("Climb", true);
+                    Vector3.Lerp(transform.position, RightFoot.position, Time.deltaTime * m_interpolation);
                 }
             }
 
-            if (m_State.IsName("Base Layer.ClimbUp"))
+            if (m_State.IsName("Base Layer.Climb.ClimbUp"))
             {
+                transform.rotation = RightHand.rotation;
                 //調用MatchTarget方法				
                 m_animator.MatchTarget(RightHand.position, RightHand.rotation, AvatarTarget.RightHand, new MatchTargetWeightMask(Vector3.one, 0), ClimbUpMatchStart, ClimbUpMatchEnd);
             }
-            if (m_State.IsName("Base Layer.ClimbDown"))
+            if (m_State.IsName("Base Layer.Climb.ClimbDown"))
             {
+                transform.rotation = RightHand.rotation;
                 m_animator.MatchTarget(RightFoot.position, RightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), ClimbDownMatchStart, ClimbDownMatchEnd);
             }
         }
