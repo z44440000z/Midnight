@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance;
     public GameState gamestate = GameState.Running;//游戏状态，包括运行暂停
 
+    public Transform SavePoint;
+
 
     void Awake()
     {

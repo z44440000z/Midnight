@@ -87,6 +87,10 @@ public class SimpleCharacterControl : MonoBehaviour
             if (m_collisions.Count == 0)
             { m_isGrounded = false; }
         }
+        if (collision.collider.tag == "SavePoint")
+        { transform.parent = collision.transform; }
+        // if (collision.collider.tag == "Block")
+        // { transform.parent = collision.transform; }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -97,6 +101,8 @@ public class SimpleCharacterControl : MonoBehaviour
         }
         if (m_collisions.Count == 0)
         { m_isGrounded = false; }
+        // if (collision.collider.tag == "Block")
+        // { transform.parent = null; }
     }
     private void OnTriggerEnter(Collider collision)
     {

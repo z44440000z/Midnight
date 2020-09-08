@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 //Loading場景的UI動畫
 public class loading : MonoBehaviour
@@ -22,6 +22,6 @@ public class loading : MonoBehaviour
     {
         mathf = Mathf.PingPong(Time.time, 180);
         _key.rotation = Quaternion.Euler(mathf * speed, 0, 0);
-        _word.tintColor = new Color(1, 1, 1, Mathf.PingPong(Time.time, 1));
+        _word.color = new Color(1, 1, 1, Mathf.PingPong(Time.time, 1));
     }
 }
