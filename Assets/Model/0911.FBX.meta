@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 7e1657504dd0a6743a30ca1efd092c64
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: bridge_body
+    100004: bridge_glass
+    100006: bridge_light
+    100008: building_bottom
+    100010: building_mid01
+    100012: building_mid02
+    100014: building_top
+    100016: kanbaan_pole
+    100018: kanban_B_board
+    100020: kanban_L
+    100022: kanban_R
+    100024: kanban_S_board
+    100026: kanban_word01
+    100028: kanban_word02
+    100030: kanban_word03
+    100032: kanban_word04
+    100034: kanban_word05
+    100036: kanban_word06
+    100038: kanban_word07
+    100040: kanban_word08
+    100042: kanban_word09
+    100044: robot_body
+    100046: robot_leg1
+    100048: robot_leg1_1
+    100050: robot_leg2
+    100052: robot_leg2_1
+    100054: robot_leg3
+    100056: robot_leg3_1
+    100058: robot_leg4
+    100060: robot_leg4_1
+    100062: robot_light
+    400000: //RootNode
+    400002: bridge_body
+    400004: bridge_glass
+    400006: bridge_light
+    400008: building_bottom
+    400010: building_mid01
+    400012: building_mid02
+    400014: building_top
+    400016: kanbaan_pole
+    400018: kanban_B_board
+    400020: kanban_L
+    400022: kanban_R
+    400024: kanban_S_board
+    400026: kanban_word01
+    400028: kanban_word02
+    400030: kanban_word03
+    400032: kanban_word04
+    400034: kanban_word05
+    400036: kanban_word06
+    400038: kanban_word07
+    400040: kanban_word08
+    400042: kanban_word09
+    400044: robot_body
+    400046: robot_leg1
+    400048: robot_leg1_1
+    400050: robot_leg2
+    400052: robot_leg2_1
+    400054: robot_leg3
+    400056: robot_leg3_1
+    400058: robot_leg4
+    400060: robot_leg4_1
+    400062: robot_light
+    2100000: 02 - Default
+    2100002: 03 - Default
+    2100004: 07 - Default
+    2100006: 08 - Default
+    2100008: _model0905-1palette
+    2100010: _model0905-2palette
+    2100012: _model0905-3palette
+    2100014: _model0905-4palette
+    2100016: _model0905-5palette
+    2100018: _model0905-6palette
+    2100020: _model0905-7palette
+    2100022: _model0905-8palette
+    2100024: _model0905-9palette
+    2100026: 09 - Default
+    2300000: bridge_body
+    2300002: bridge_glass
+    2300004: bridge_light
+    2300006: building_bottom
+    2300008: building_mid01
+    2300010: building_mid02
+    2300012: building_top
+    2300014: kanbaan_pole
+    2300016: kanban_B_board
+    2300018: kanban_L
+    2300020: kanban_R
+    2300022: kanban_S_board
+    2300024: kanban_word01
+    2300026: kanban_word02
+    2300028: kanban_word03
+    2300030: kanban_word04
+    2300032: kanban_word05
+    2300034: kanban_word06
+    2300036: kanban_word07
+    2300038: kanban_word08
+    2300040: kanban_word09
+    2300042: robot_body
+    2300044: robot_leg1
+    2300046: robot_leg1_1
+    2300048: robot_leg2
+    2300050: robot_leg2_1
+    2300052: robot_leg3
+    2300054: robot_leg3_1
+    2300056: robot_leg4
+    2300058: robot_leg4_1
+    2300060: robot_light
+    3300000: bridge_body
+    3300002: bridge_glass
+    3300004: bridge_light
+    3300006: building_bottom
+    3300008: building_mid01
+    3300010: building_mid02
+    3300012: building_top
+    3300014: kanbaan_pole
+    3300016: kanban_B_board
+    3300018: kanban_L
+    3300020: kanban_R
+    3300022: kanban_S_board
+    3300024: kanban_word01
+    3300026: kanban_word02
+    3300028: kanban_word03
+    3300030: kanban_word04
+    3300032: kanban_word05
+    3300034: kanban_word06
+    3300036: kanban_word07
+    3300038: kanban_word08
+    3300040: kanban_word09
+    3300042: robot_body
+    3300044: robot_leg1
+    3300046: robot_leg1_1
+    3300048: robot_leg2
+    3300050: robot_leg2_1
+    3300052: robot_leg3
+    3300054: robot_leg3_1
+    3300056: robot_leg4
+    3300058: robot_leg4_1
+    3300060: robot_light
+    4300000: robot_body
+    4300002: robot_leg1
+    4300004: robot_leg1_1
+    4300006: robot_leg3
+    4300008: robot_leg3_1
+    4300010: robot_leg2
+    4300012: robot_leg2_1
+    4300014: robot_leg4
+    4300016: robot_leg4_1
+    4300018: robot_light
+    4300020: bridge_body
+    4300022: bridge_glass
+    4300024: bridge_light
+    4300026: kanban_word01
+    4300028: kanban_word02
+    4300030: kanban_word03
+    4300032: kanban_word04
+    4300034: kanban_word05
+    4300036: kanban_word06
+    4300038: kanban_word07
+    4300040: kanban_word08
+    4300042: kanban_word09
+    4300044: kanban_L
+    4300046: kanban_R
+    4300048: kanbaan_pole
+    4300050: kanban_B_board
+    4300052: kanban_S_board
+    4300054: building_bottom
+    4300056: building_top
+    4300058: building_mid02
+    4300060: building_mid01
+    7400000: Idle
+    9500000: //RootNode
+    11100000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

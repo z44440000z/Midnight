@@ -58,4 +58,8 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
         }
     }
+    public void Save(Transform SP)
+    {
+        SavePoint = SP;
+    }
 }

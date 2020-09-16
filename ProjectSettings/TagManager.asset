@@ -8,6 +8,7 @@ TagManager:
   - GameManager
   - ClimbPoint
   - Block
+  - SavePoint
   layers:
   - Default
   - TransparentFX

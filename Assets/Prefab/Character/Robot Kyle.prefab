@@ -1657,8 +1657,8 @@ MonoBehaviour:
   m_jumpForce: 10
   m_animator: {fileID: 95015199221325740}
   m_rigidBody: {fileID: 0}
-  RightHand: {fileID: 0}
-  RightFoot: {fileID: 0}
+  rightHand: {fileID: 0}
+  rightFoot: {fileID: 0}
   isClimbPoint: 0
 --- !u!54 &54207390365450698
 Rigidbody:
@@ -1675,7 +1675,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &234747714
 CapsuleCollider:
   m_ObjectHideFlags: 0
