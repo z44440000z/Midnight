@@ -95,7 +95,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935517582503820992}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 7e1657504dd0a6743a30ca1efd092c64, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0cca32cfbcfd3e34f8bb1184723d7a57, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -116,8 +116,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6954033, y: 2.8539555, z: 0.47566578}
-  m_Center: {x: 1.3477014, y: -0.0000014901165, z: 0.23783289}
+  m_Size: {x: 2.6954033, y: 2.8539555, z: 1.1649547}
+  m_Center: {x: 1.3477014, y: -0.0000015497208, z: -0.10681152}
 --- !u!54 &5207857487248543889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,14 +126,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935517582503820992}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &9215016428549535826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destoryTime: 3
   upForce: 9.81
-  isAbove: 0
+  playerMass: 1
+  isFloat: 0
   isDestory: 0
+  t: 1
 --- !u!1 &935517582503820994
 GameObject:
   m_ObjectHideFlags: 0

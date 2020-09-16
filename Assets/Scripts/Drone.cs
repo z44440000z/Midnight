@@ -6,29 +6,42 @@ public class Drone : MonoBehaviour
 {
     [SerializeField] private float destoryTime = 1;
     [SerializeField] private float upForce = 1;
-    [SerializeField] private bool isAbove = false;
+    [SerializeField] private float playerMass = 1;
+    [SerializeField] private bool isFloat = false;
     [SerializeField] private bool isDestory = false;
-
 
     private Rigidbody mrigidBody;
     private Vector3 originPos;
+    private Vector3 startPos;
 
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Player")
         {
-            isAbove = true;
-            collision.transform.parent = this.transform;
+            t = 0;
+            isFloat = false;
+            // collision.transform.parent = this.transform;
             StartCoroutine("Countdown");
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Dead"))
+        { Destroy(this.gameObject); }
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.collider.tag == "Player")
         {
-            isAbove = false;
+            t = 0;
+            isFloat = true;
+            startPos = transform.position;
             collision.transform.parent = null;
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            mrigidBody.velocity = Vector3.zero;
         }
     }
     // Start is called before the first frame update
@@ -37,34 +50,45 @@ public class Drone : MonoBehaviour
         mrigidBody = GetComponent<Rigidbody>();
         originPos = transform.position;
     }
-
+    [SerializeField] float t = 0;
     // Update is called once per frame
     private void FixedUpdate()
     {
         if (!isDestory)
         {
-            if (isAbove)
+            if (isFloat)
             {
-                UpForce(upForce);
+
+                if (Vector3.Distance(startPos, originPos) < 0.5f)
+                { mrigidBody.velocity = Vector3.zero; }
+                else
+                {
+                    if (t < 1)
+                    {
+                        t += Time.deltaTime / 5;
+                        mrigidBody.MovePosition(Vector3.Lerp(startPos, originPos, t));
+                    }
+                }
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, originPos, 0.05f);
+                if (Vector3.Distance(transform.position, originPos) < 0.5f)
+                { }
+                else { UpForce(upForce); }
             }
         }
         else
-        { transform.Translate(Vector3.back); }
+        { transform.Translate(Vector3.down * upForce * Time.deltaTime, Space.World); }
     }
 
     IEnumerator Countdown()
     {
-        //transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time, 0.1F), transform.position.z);
         yield return new WaitForSeconds(destoryTime);
         isDestory = true;
     }
 
     void UpForce(float forcePower)
     {
-        mrigidBody.AddForce(Vector3.up * forcePower * mrigidBody.mass, ForceMode.Force);
+        mrigidBody.AddForce(Vector3.up * forcePower , ForceMode.Force);
     }
 }

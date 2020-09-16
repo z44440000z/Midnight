@@ -13,9 +13,6 @@ public class SimpleCharacterControl : MonoBehaviour
     private float m_currentV = 0;
     private float m_currentH = 0;
     private readonly float m_interpolation = 10;
-    private readonly float m_walkScale = 1f;
-    private readonly float m_backwardsWalkScale = 0.16f;
-    private readonly float m_backwardRunScale = 0.66f;
     private bool m_wasGrounded;
     private Vector3 m_currentDirection = Vector3.zero;
     #endregion
@@ -199,13 +196,7 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            SmoothRotation(Camera.main.transform.eulerAngles.y);
-            Vector3 direct = Camera.main.transform.forward;
-            float directionLength = direct.magnitude;
-            direct.y = 0;
-            direct = direct.normalized * directionLength;
-
-            m_rigidBody.AddForce(-Physics.gravity * 0.2f + direct * m_moveSpeed);
+            m_rigidBody.AddForce(-Physics.gravity * 0.2f);
         }
     }
     private void Climbing()
