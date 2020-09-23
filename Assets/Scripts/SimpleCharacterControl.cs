@@ -32,6 +32,9 @@ public class SimpleCharacterControl : MonoBehaviour
     private float climbDownMatchEnd = 0.34f;
     private AnimatorStateInfo m_State;
     #endregion
+    #region Shoot variable
+    
+    #endregion
 
     private void Start()
     {
@@ -168,10 +171,12 @@ public class SimpleCharacterControl : MonoBehaviour
         JumpingAndLanding();
         //攀爬
         Climbing();
+        //射擊
+
 
         m_wasGrounded = m_isGrounded;
     }
-
+    #region private function
     private void JumpingAndLanding()
     {
         bool jumpCooldownOver = (Time.time - m_jumpTimeStamp) >= m_minJumpInterval;
@@ -206,7 +211,7 @@ public class SimpleCharacterControl : MonoBehaviour
             //獲取動畫狀態
             m_State = m_animator.GetCurrentAnimatorStateInfo(0);
 
-            if (isClimbPoint && Input.GetMouseButtonDown(1))
+            if (isClimbPoint && Input.GetButtonDown("Fire2"))
             {
                 if (m_animator.GetBool("Climb"))
                 { m_animator.SetBool("Climb", false); }
@@ -234,6 +239,14 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         transform.position = GameManager._instance.SavePoint.position;
     }
+    private void Shoot()
+    {
+        if (Input.GetButton("Fire1"))
+        { }
+    }
+    #endregion
+
+    #region public function
     public void SmoothRotation(float a)
     {
         float y = 3.0f;
@@ -244,4 +257,5 @@ public class SimpleCharacterControl : MonoBehaviour
     { m_rigidBody.velocity = Vector3.zero; }
     public void UseGravity(bool isuseGravity)
     { m_rigidBody.useGravity = isuseGravity; }
+    #endregion
 }

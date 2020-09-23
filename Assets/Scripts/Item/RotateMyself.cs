@@ -4,13 +4,13 @@ using System.Collections;
 
 public class RotateMyself : MonoBehaviour
 {
-    public enum dynamic
+    public enum Dynamic
     {
         Rotate,
         Drift
     }
     [SerializeField]
-    private dynamic _dynamic;
+    private Dynamic dynamic;
 
     //X軸、Y軸、Z軸的旋轉速度 : 浮點數值
     public float X = 0;
@@ -24,9 +24,9 @@ public class RotateMyself : MonoBehaviour
 
     void Update()
     {
-        switch (_dynamic)
+        switch (dynamic)
         {
-            case dynamic.Rotate:
+            case Dynamic.Rotate:
                 {
                     float XRotate = X * Time.deltaTime;
                     //float YRotate = Y *Time.deltaTime;
@@ -34,7 +34,7 @@ public class RotateMyself : MonoBehaviour
                     transform.Rotate(XRotate, 0, 0);
                 }
                 break;
-            case dynamic.Drift:
+            case Dynamic.Drift:
                 {
                     transform.position = new Vector3(transform.position.x, originY + Mathf.PingPong(Time.time, Y), transform.position.z);
                 }

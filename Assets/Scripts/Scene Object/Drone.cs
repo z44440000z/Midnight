@@ -6,7 +6,6 @@ public class Drone : MonoBehaviour
 {
     [SerializeField] private float destoryTime = 1;
     [SerializeField] private float upForce = 1;
-    [SerializeField] private float playerMass = 1;
     [SerializeField] private bool isFloat = false;
     [SerializeField] private bool isDestory = false;
 
