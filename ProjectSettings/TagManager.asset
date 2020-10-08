@@ -9,6 +9,7 @@ TagManager:
   - ClimbPoint
   - Block
   - SavePoint
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - 
   - Ground
   - Dead
-  - 
-  - 
+  - Player
+  - SceneObject
   - 
   - 
   - 

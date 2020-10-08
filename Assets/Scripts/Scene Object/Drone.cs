@@ -49,7 +49,7 @@ public class Drone : MonoBehaviour
         mrigidBody = GetComponent<Rigidbody>();
         originPos = transform.position;
     }
-    [SerializeField] float t = 0;
+    float t = 0;
     // Update is called once per frame
     private void FixedUpdate()
     {

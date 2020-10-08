@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 
 public class SimpleCharacterControl : MonoBehaviour
 {
@@ -23,6 +23,7 @@ public class SimpleCharacterControl : MonoBehaviour
     private List<Collider> m_collisions = new List<Collider>();
     #endregion
     #region Climb variable
+    [Header("Climb Variable")]
     public Transform rightHand;  //右手著力點
     public Transform rightFoot;  //右腳著力點 
     [SerializeField] private bool isClimbPoint;
@@ -33,11 +34,19 @@ public class SimpleCharacterControl : MonoBehaviour
     private AnimatorStateInfo m_State;
     #endregion
     #region Shoot variable
-    
+    [Header("Shoot Variable")]
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform muzzle;
+    [SerializeField] private float throwerPower;
+    private float intervalTime = 0.2f;
+    private float t;
+    [SerializeField]private LayerMask layermask;
+    private int maxDistatnce = 1000;
     #endregion
 
     private void Start()
     {
+        t = intervalTime;
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody>();
     }
@@ -172,6 +181,7 @@ public class SimpleCharacterControl : MonoBehaviour
         //攀爬
         Climbing();
         //射擊
+        Shoot();
 
 
         m_wasGrounded = m_isGrounded;
@@ -239,10 +249,26 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         transform.position = GameManager._instance.SavePoint.position;
     }
+
     private void Shoot()
     {
+        RayAim();
         if (Input.GetButton("Fire1"))
-        { }
+        {
+            intervalTime -= Time.deltaTime;
+            if (intervalTime <= 0)
+            {
+                intervalTime = t;
+                m_animator.SetTrigger("Shoot");
+                GameObject bullet = Instantiate(projectile, muzzle.position, transform.rotation) as GameObject;
+                bullet.transform.LookAt(RayAim());
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                rb.velocity = bullet.transform.forward * throwerPower;
+                Physics.IgnoreCollision(rb.GetComponent<Collider>(), this.GetComponent<Collider>());
+            }
+        }
+        if (Input.GetButtonUp("Fire1"))
+        { intervalTime = t; }
     }
     #endregion
 
@@ -253,9 +279,27 @@ public class SimpleCharacterControl : MonoBehaviour
         float rotateSpeed = 0.05f;
         transform.eulerAngles = new Vector3(0, Mathf.SmoothDampAngle(transform.eulerAngles.y, a, ref y, rotateSpeed), 0);
     }
-    public void ResetVelocity()
+    public void ResetVelocity()//重設加速度
     { m_rigidBody.velocity = Vector3.zero; }
     public void UseGravity(bool isuseGravity)
     { m_rigidBody.useGravity = isuseGravity; }
+    public Vector3 RayAim()
+    {
+        Vector3 targetPoint;
+        RaycastHit hit;
+        Ray ray = new Ray(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward));
+
+        if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
+        {
+            targetPoint = hit.point;//記錄碰撞的目標點
+        }
+        else//射線沒有碰撞到目標點
+        {
+            //將目標點設置在攝像機自身前方1000米處
+            targetPoint = Camera.main.transform.forward * maxDistatnce;
+        }
+        Debug.DrawRay(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward) * 100, Color.red);
+        return targetPoint;
+    }
     #endregion
 }
