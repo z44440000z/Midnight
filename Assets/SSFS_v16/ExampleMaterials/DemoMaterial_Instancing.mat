@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: DemoMaterial_Instancing
   m_Shader: {fileID: 4800000, guid: bd955d9832dd6414f9659a6e1e41041c, type: 3}
   m_ShaderKeywords: ABERRATION BILLBOARD CLIPPING COMPLEX IDLE INSTANCING_ON RADIAL

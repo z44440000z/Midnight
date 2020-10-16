@@ -1,0 +1,89 @@
+﻿#ifdef SO_GD_PIPELINE_UNITY_FORWARD
+	#ifdef POINT
+	#ifndef SO_SHADOWS_OFF
+	#   define UNITY_LIGHT_ATTENUATION_SHADOW(destName, destShadow, input, worldPos) \
+			unityShadowCoord3 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1)).xyz; \
+			destShadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+			destName = tex2D(_LightTexture0, dot(lightCoord, lightCoord).rr).r;
+	#else
+	#   define UNITY_LIGHT_ATTENUATION_NOSHADOW(destName, input, worldPos) \
+			unityShadowCoord3 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1)).xyz; \
+			destName = tex2D(_LightTexture0, dot(lightCoord, lightCoord).rr).r;
+	#endif
+	#endif
+
+	#ifdef SPOT
+	inline fixed UnitySpotCookie2(unityShadowCoord4 LightCoord)
+	{
+		return tex2D(_LightTexture0, LightCoord.xy / LightCoord.w + 0.5).w;
+	}
+	inline fixed UnitySpotAttenuate2(unityShadowCoord3 LightCoord)
+	{
+		return tex2D(_LightTextureB0, dot(LightCoord, LightCoord).xx).r;
+	}
+	#if !defined(UNITY_HALF_PRECISION_FRAGMENT_SHADER_REGISTERS)
+	#define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord4 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1))
+	#else
+	#define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord4 lightCoord = input._LightCoord
+	#endif
+
+	#ifndef SO_SHADOWS_OFF
+
+	#   define UNITY_LIGHT_ATTENUATION_SHADOW(destName, destShadow, input, worldPos) \
+			DECLARE_LIGHT_COORD(input, worldPos); \
+			destShadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+			destName = (lightCoord.z > 0) * UnitySpotCookie2(lightCoord) * UnitySpotAttenuate2(lightCoord.xyz);
+	#else
+	#   define UNITY_LIGHT_ATTENUATION_NOSHADOW(destName, input, worldPos) \
+			DECLARE_LIGHT_COORD(input, worldPos); \
+			destName = (lightCoord.z > 0) * UnitySpotCookie2(lightCoord) * UnitySpotAttenuate2(lightCoord.xyz);
+	#endif
+	#endif
+
+	#ifdef DIRECTIONAL
+	#ifndef SO_SHADOWS_OFF
+	#   define UNITY_LIGHT_ATTENUATION_SHADOW(destName, destShadow, input, worldPos) destShadow = UNITY_SHADOW_ATTENUATION(input, worldPos); destName = 1;
+	#else
+	#   define UNITY_LIGHT_ATTENUATION_NOSHADOW(destName, input, worldPos);
+	#endif
+	#endif
+
+	#ifdef POINT_COOKIE
+	#   if !defined(UNITY_HALF_PRECISION_FRAGMENT_SHADER_REGISTERS)
+	#       define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord3 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1)).xyz
+	#   else
+	#       define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord3 lightCoord = input._LightCoord
+	#   endif
+
+	#ifndef SO_SHADOWS_OFF
+
+	#   define UNITY_LIGHT_ATTENUATION_SHADOW(destName, destShadow, input, worldPos) \
+			DECLARE_LIGHT_COORD(input, worldPos); \
+			destShadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+			destName = tex2D(_LightTextureB0, dot(lightCoord, lightCoord).rr).r * texCUBE(_LightTexture0, lightCoord).w ;
+	#else
+	#   define UNITY_LIGHT_ATTENUATION_NOSHADOW(destName, input, worldPos) \
+			DECLARE_LIGHT_COORD(input, worldPos); \
+			destName = tex2D(_LightTextureB0, dot(lightCoord, lightCoord).rr).r * texCUBE(_LightTexture0, lightCoord).w ;
+	#endif
+	#endif
+
+	#ifdef DIRECTIONAL_COOKIE
+	#   if !defined(UNITY_HALF_PRECISION_FRAGMENT_SHADER_REGISTERS)
+	#       define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord2 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1)).xy
+	#   else
+	#       define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord2 lightCoord = input._LightCoord
+	#   endif
+	#ifndef SO_SHADOWS_OFF
+	#   define UNITY_LIGHT_ATTENUATION_SHADOW(destName, destShadow, input, worldPos) \
+			DECLARE_LIGHT_COORD(input, worldPos); \
+			destShadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+			destName = tex2D(_LightTexture0, lightCoord).w;
+	#else
+	#   define UNITY_LIGHT_ATTENUATION_NOSHADOW(destName, input, worldPos) \
+			DECLARE_LIGHT_COORD(input, worldPos); \
+			destName = tex2D(_LightTexture0, lightCoord).w;
+	#endif
+	#endif
+
+#endif

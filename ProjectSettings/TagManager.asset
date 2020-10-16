@@ -10,6 +10,7 @@ TagManager:
   - Block
   - SavePoint
   - Bullet
+  - Ring
   layers:
   - Default
   - TransparentFX

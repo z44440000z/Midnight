@@ -1800,11 +1800,10 @@ MonoBehaviour:
   projectile: {fileID: 4265264922973202654, guid: a978e0d049abe214c940bf089d27918c,
     type: 3}
   muzzle: {fileID: 1980190669320241788}
-  throwerPower: 10
+  throwerPower: 100
   layermask:
     serializedVersion: 2
     m_Bits: 1028
-  targetPoint: {fileID: 0}
 --- !u!54 &54207390365450698
 Rigidbody:
   m_ObjectHideFlags: 0

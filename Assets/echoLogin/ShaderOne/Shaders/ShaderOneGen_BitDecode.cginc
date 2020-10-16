@@ -1,0 +1,248 @@
+#if !defined(SO_SF_LIGHTING_BIT2) && !defined(SO_SF_LIGHTING_BIT1)
+	#define SO_LIGHTING_UNLIT
+#endif
+
+#if !defined(SO_SF_LIGHTING_BIT2) && defined(SO_SF_LIGHTING_BIT1)
+	#define SO_LIGHTING_NORMAL
+#endif
+
+#if defined(SO_SF_LIGHTING_BIT2) && !defined(SO_SF_LIGHTING_BIT1)
+	#define SO_LIGHTING_DISTANCE
+#endif
+
+
+
+#if !defined(SO_SF_BLEND_BIT3) && !defined(SO_SF_BLEND_BIT2) && !defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_SOLID
+#endif
+
+#if !defined(SO_SF_BLEND_BIT3) && !defined(SO_SF_BLEND_BIT2) && defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_CUTOUT
+#endif
+
+#if !defined(SO_SF_BLEND_BIT3) && defined(SO_SF_BLEND_BIT2) && !defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_FADE
+#endif
+
+#if !defined(SO_SF_BLEND_BIT3) && defined(SO_SF_BLEND_BIT2) && defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_TRANSPARENT
+#endif
+
+#if defined(SO_SF_BLEND_BIT3) && !defined(SO_SF_BLEND_BIT2) && !defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_ADDITIVE
+#endif
+
+#if defined(SO_SF_BLEND_BIT3) && !defined(SO_SF_BLEND_BIT2) && defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_ADDITIVE_SOFT
+#endif
+
+#if defined(SO_SF_BLEND_BIT3) && defined(SO_SF_BLEND_BIT2) && !defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_ADDITIVE_BLEND
+#endif
+
+#if defined(SO_SF_BLEND_BIT3) && defined(SO_SF_BLEND_BIT2) && defined(SO_SF_BLEND_BIT1)
+	#define SO_BLEND_ADDITIVE_ALPHA
+#endif
+
+
+
+#if !defined(SO_SF_LAYER1_BLEND_BIT2) && !defined(SO_SF_LAYER1_BLEND_BIT1)
+	#define SO_LAYER1_BLEND_TRANSPARENT
+#endif
+
+#if !defined(SO_SF_LAYER1_BLEND_BIT2) && defined(SO_SF_LAYER1_BLEND_BIT1)
+	#define SO_LAYER1_BLEND_ADDITIVE
+#endif
+
+#if defined(SO_SF_LAYER1_BLEND_BIT2) && !defined(SO_SF_LAYER1_BLEND_BIT1)
+	#define SO_LAYER1_BLEND_SUBTRACTIVE
+#endif
+
+#if defined(SO_SF_LAYER1_BLEND_BIT2) && defined(SO_SF_LAYER1_BLEND_BIT1)
+	#define SO_LAYER1_BLEND_MULTIPLY
+#endif
+
+
+
+#if !defined(SO_SF_SURFACE_MAPG_BIT3) && !defined(SO_SF_SURFACE_MAPG_BIT2) && !defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_EMPTY
+#endif
+
+#if !defined(SO_SF_SURFACE_MAPG_BIT3) && !defined(SO_SF_SURFACE_MAPG_BIT2) && defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_METALLIC
+#endif
+
+#if !defined(SO_SF_SURFACE_MAPG_BIT3) && defined(SO_SF_SURFACE_MAPG_BIT2) && !defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_SMOOTHNESS
+#endif
+
+#if !defined(SO_SF_SURFACE_MAPG_BIT3) && defined(SO_SF_SURFACE_MAPG_BIT2) && defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_ROUGHNESS
+#endif
+
+#if defined(SO_SF_SURFACE_MAPG_BIT3) && !defined(SO_SF_SURFACE_MAPG_BIT2) && !defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_AMBIENT_OCCLUSION
+#endif
+
+#if defined(SO_SF_SURFACE_MAPG_BIT3) && !defined(SO_SF_SURFACE_MAPG_BIT2) && defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_PARALLAX_HEIGHT
+#endif
+
+#if defined(SO_SF_SURFACE_MAPG_BIT3) && defined(SO_SF_SURFACE_MAPG_BIT2) && !defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_UNLIT_MASK
+#endif
+
+#if defined(SO_SF_SURFACE_MAPG_BIT3) && defined(SO_SF_SURFACE_MAPG_BIT2) && defined(SO_SF_SURFACE_MAPG_BIT1)
+	#define SO_SURFACE_MAPG_PROGRESS_GRADIENT
+#endif
+
+
+
+#if !defined(SO_SF_SURFACE_MAPB_BIT3) && !defined(SO_SF_SURFACE_MAPB_BIT2) && !defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_EMPTY
+#endif
+
+#if !defined(SO_SF_SURFACE_MAPB_BIT3) && !defined(SO_SF_SURFACE_MAPB_BIT2) && defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_METALLIC
+#endif
+
+#if !defined(SO_SF_SURFACE_MAPB_BIT3) && defined(SO_SF_SURFACE_MAPB_BIT2) && !defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_SMOOTHNESS
+#endif
+
+#if !defined(SO_SF_SURFACE_MAPB_BIT3) && defined(SO_SF_SURFACE_MAPB_BIT2) && defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_ROUGHNESS
+#endif
+
+#if defined(SO_SF_SURFACE_MAPB_BIT3) && !defined(SO_SF_SURFACE_MAPB_BIT2) && !defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_AMBIENT_OCCLUSION
+#endif
+
+#if defined(SO_SF_SURFACE_MAPB_BIT3) && !defined(SO_SF_SURFACE_MAPB_BIT2) && defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_PARALLAX_HEIGHT
+#endif
+
+#if defined(SO_SF_SURFACE_MAPB_BIT3) && defined(SO_SF_SURFACE_MAPB_BIT2) && !defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_UNLIT_MASK
+#endif
+
+#if defined(SO_SF_SURFACE_MAPB_BIT3) && defined(SO_SF_SURFACE_MAPB_BIT2) && defined(SO_SF_SURFACE_MAPB_BIT1)
+	#define SO_SURFACE_MAPB_PROGRESS_GRADIENT
+#endif
+
+
+
+#if !defined(SO_SF_ALPHA_MAP_BIT3) && !defined(SO_SF_ALPHA_MAP_BIT2) && !defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_EMPTY
+#endif
+
+#if !defined(SO_SF_ALPHA_MAP_BIT3) && !defined(SO_SF_ALPHA_MAP_BIT2) && defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_METALLIC
+#endif
+
+#if !defined(SO_SF_ALPHA_MAP_BIT3) && defined(SO_SF_ALPHA_MAP_BIT2) && !defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_SMOOTHNESS
+#endif
+
+#if !defined(SO_SF_ALPHA_MAP_BIT3) && defined(SO_SF_ALPHA_MAP_BIT2) && defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_ROUGHNESS
+#endif
+
+#if defined(SO_SF_ALPHA_MAP_BIT3) && !defined(SO_SF_ALPHA_MAP_BIT2) && !defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_AMBIENT_OCCLUSION
+#endif
+
+#if defined(SO_SF_ALPHA_MAP_BIT3) && !defined(SO_SF_ALPHA_MAP_BIT2) && defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_PARALLAX_HEIGHT
+#endif
+
+#if defined(SO_SF_ALPHA_MAP_BIT3) && defined(SO_SF_ALPHA_MAP_BIT2) && !defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_UNLIT_MASK
+#endif
+
+#if defined(SO_SF_ALPHA_MAP_BIT3) && defined(SO_SF_ALPHA_MAP_BIT2) && defined(SO_SF_ALPHA_MAP_BIT1)
+	#define SO_ALPHA_MAP_PROGRESS_GRADIENT
+#endif
+
+
+
+
+#if defined (SO_SURFACE_MAPR_EMPTY) || defined (SO_SURFACE_MAPG_EMPTY) || defined (SO_SURFACE_MAPB_EMPTY) || defined (SO_SURFACE_MAPA_EMPTY) 
+	#define SO_SURFACE_MAP_EMPTY
+#endif
+
+#if defined(SO_SURFACE_MAP_EMPTY) || defined(SO_ALPHA_MAP_EMPTY) || defined(SO_SPECULAR_MAP_EMPTY)
+	#define SO_MAP_EMPTY
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_METALLIC) || defined (SO_SURFACE_MAPG_METALLIC) || defined (SO_SURFACE_MAPB_METALLIC) || defined (SO_SURFACE_MAPA_METALLIC) 
+	#define SO_SURFACE_MAP_METALLIC
+#endif
+
+#if defined(SO_SURFACE_MAP_METALLIC) || defined(SO_ALPHA_MAP_METALLIC) || defined(SO_SPECULAR_MAP_METALLIC)
+	#define SO_MAP_METALLIC
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_SMOOTHNESS) || defined (SO_SURFACE_MAPG_SMOOTHNESS) || defined (SO_SURFACE_MAPB_SMOOTHNESS) || defined (SO_SURFACE_MAPA_SMOOTHNESS) 
+	#define SO_SURFACE_MAP_SMOOTHNESS
+#endif
+
+#if defined(SO_SURFACE_MAP_SMOOTHNESS) || defined(SO_ALPHA_MAP_SMOOTHNESS) || defined(SO_SPECULAR_MAP_SMOOTHNESS)
+	#define SO_MAP_SMOOTHNESS
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_ROUGHNESS) || defined (SO_SURFACE_MAPG_ROUGHNESS) || defined (SO_SURFACE_MAPB_ROUGHNESS) || defined (SO_SURFACE_MAPA_ROUGHNESS) 
+	#define SO_SURFACE_MAP_ROUGHNESS
+#endif
+
+#if defined(SO_SURFACE_MAP_ROUGHNESS) || defined(SO_ALPHA_MAP_ROUGHNESS) || defined(SO_SPECULAR_MAP_ROUGHNESS)
+	#define SO_MAP_ROUGHNESS
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_AMBIENT_OCCLUSION) || defined (SO_SURFACE_MAPG_AMBIENT_OCCLUSION) || defined (SO_SURFACE_MAPB_AMBIENT_OCCLUSION) || defined (SO_SURFACE_MAPA_AMBIENT_OCCLUSION) 
+	#define SO_SURFACE_MAP_AMBIENT_OCCLUSION
+#endif
+
+#if defined(SO_SURFACE_MAP_AMBIENT_OCCLUSION) || defined(SO_ALPHA_MAP_AMBIENT_OCCLUSION) || defined(SO_SPECULAR_MAP_AMBIENT_OCCLUSION)
+	#define SO_MAP_AMBIENT_OCCLUSION
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_PARALLAX_HEIGHT) || defined (SO_SURFACE_MAPG_PARALLAX_HEIGHT) || defined (SO_SURFACE_MAPB_PARALLAX_HEIGHT) || defined (SO_SURFACE_MAPA_PARALLAX_HEIGHT) 
+	#define SO_SURFACE_MAP_PARALLAX_HEIGHT
+#endif
+
+#if defined(SO_SURFACE_MAP_PARALLAX_HEIGHT) || defined(SO_ALPHA_MAP_PARALLAX_HEIGHT) || defined(SO_SPECULAR_MAP_PARALLAX_HEIGHT)
+	#define SO_MAP_PARALLAX_HEIGHT
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_UNLIT_MASK) || defined (SO_SURFACE_MAPG_UNLIT_MASK) || defined (SO_SURFACE_MAPB_UNLIT_MASK) || defined (SO_SURFACE_MAPA_UNLIT_MASK) 
+	#define SO_SURFACE_MAP_UNLIT_MASK
+#endif
+
+#if defined(SO_SURFACE_MAP_UNLIT_MASK) || defined(SO_ALPHA_MAP_UNLIT_MASK) || defined(SO_SPECULAR_MAP_UNLIT_MASK)
+	#define SO_MAP_UNLIT_MASK
+#endif
+
+
+
+#if defined (SO_SURFACE_MAPR_PROGRESS_GRADIENT) || defined (SO_SURFACE_MAPG_PROGRESS_GRADIENT) || defined (SO_SURFACE_MAPB_PROGRESS_GRADIENT) || defined (SO_SURFACE_MAPA_PROGRESS_GRADIENT) 
+	#define SO_SURFACE_MAP_PROGRESS_GRADIENT
+#endif
+
+#if defined(SO_SURFACE_MAP_PROGRESS_GRADIENT) || defined(SO_ALPHA_MAP_PROGRESS_GRADIENT) || defined(SO_SPECULAR_MAP_PROGRESS_GRADIENT)
+	#define SO_MAP_PROGRESS_GRADIENT
+#endif
+
+

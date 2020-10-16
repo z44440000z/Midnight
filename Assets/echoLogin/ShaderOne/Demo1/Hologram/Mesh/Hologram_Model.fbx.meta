@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: c02a447b02a44f54c876dae5ea77b360
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bottom
+    100002: //RootNode
+    100004: Middle
+    100006: Top
+    100008: Top.split
+    100010: inner
+    100012: inner.1
+    100014: Tube
+    100016: Tube.1
+    100018: Shield
+    100020: Cylinder
+    100022: Cylinder.1
+    100024: middleLines
+    100026: middleNames
+    100028: middlePanels
+    100030: middleNumbers
+    100032: LowerRing
+    100034: UpperRing
+    100036: BottomDisc
+    100038: d1
+    100040: d2
+    100042: d3
+    100044: d4
+    100046: d5
+    100048: BottomDiscs
+    100050: lowerInside
+    100052: lowerRing
+    100054: shield
+    100056: upperInside
+    100058: upperRing
+    400000: Bottom
+    400002: //RootNode
+    400004: Middle
+    400006: Top
+    400008: Top.split
+    400010: inner
+    400012: inner.1
+    400014: Tube
+    400016: Tube.1
+    400018: Shield
+    400020: Cylinder
+    400022: Cylinder.1
+    400024: middleLines
+    400026: middleNames
+    400028: middlePanels
+    400030: middleNumbers
+    400032: LowerRing
+    400034: UpperRing
+    400036: BottomDisc
+    400038: d1
+    400040: d2
+    400042: d3
+    400044: d4
+    400046: d5
+    400048: BottomDiscs
+    400050: lowerInside
+    400052: lowerRing
+    400054: shield
+    400056: upperInside
+    400058: upperRing
+    2100000: phong1
+    2100002: phong2
+    2300000: Bottom
+    2300002: Middle
+    2300004: Top
+    2300006: Top.split
+    2300008: inner
+    2300010: inner.1
+    2300012: Tube
+    2300014: Tube.1
+    2300016: Shield
+    2300018: Cylinder
+    2300020: Cylinder.1
+    2300022: middleLines
+    2300024: middleNames
+    2300026: middlePanels
+    2300028: middleNumbers
+    2300030: LowerRing
+    2300032: UpperRing
+    2300034: BottomDisc
+    2300036: d1
+    2300038: d2
+    2300040: d3
+    2300042: d4
+    2300044: d5
+    2300046: lowerInside
+    2300048: lowerRing
+    2300050: shield
+    2300052: upperInside
+    2300054: upperRing
+    3300000: Bottom
+    3300002: Middle
+    3300004: Top
+    3300006: Top.split
+    3300008: inner
+    3300010: inner.1
+    3300012: Tube
+    3300014: Tube.1
+    3300016: Shield
+    3300018: Cylinder
+    3300020: Cylinder.1
+    3300022: middleLines
+    3300024: middleNames
+    3300026: middlePanels
+    3300028: middleNumbers
+    3300030: LowerRing
+    3300032: UpperRing
+    3300034: BottomDisc
+    3300036: d1
+    3300038: d2
+    3300040: d3
+    3300042: d4
+    3300044: d5
+    3300046: lowerInside
+    3300048: lowerRing
+    3300050: shield
+    3300052: upperInside
+    3300054: upperRing
+    4300000: Top
+    4300002: Middle
+    4300004: Bottom
+    4300006: Top.split
+    4300008: Tube
+    4300010: inner
+    4300012: Tube.1
+    4300014: inner.1
+    4300016: Shield
+    4300018: Cylinder
+    4300020: Cylinder.1
+    4300022: middlePanels
+    4300024: middleNames
+    4300026: middleLines
+    4300028: middleNumbers
+    4300030: UpperRing
+    4300032: LowerRing
+    4300034: BottomDisc
+    4300036: d1
+    4300038: d2
+    4300040: d3
+    4300042: d4
+    4300044: d5
+    4300046: shield
+    4300048: upperRing
+    4300050: upperInside
+    4300052: lowerRing
+    4300054: lowerInside
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

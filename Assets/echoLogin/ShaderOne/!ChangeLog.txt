@@ -1,0 +1,61 @@
+﻿v0.21
+* fixed: crash in Unity 2017 when building with PBR off
+* fixed: Issue not picking correct additive blend mode when switching from another shader
+* fixed: Brightness issue with rim-lighting
+* fixed: Intersection not working when shadows not checked on generator
+* fixed: Normal-map not UV animating if there was no layer main texture
+* fixed: Version number showing zero on Generator
+* fixed: Sometimes things would not get affected by Warp/Curving World
+* fixed: Null reference error if ShaderOneMaterialControl was on invalid Mesh
+* fixed: error in shader when using unlit mask
+* fixed: error with progress/dissolve feature
+* fixed: error when building app when vertex lights where in use
+* added: option to add scale values for normal maps and ambient occlusion
+* added: Shield example in demo3 and a small music loop
+* added: Shaderone Detects new install or upgrade and lets you generate shader
+* changed: all layer options are visible even if you have no texture set
+* changed: Demo2 now uses forward rendering
+* changed: Intersect default color is now White
+
+v0.20
+* fixed: Issue when using particles
+* fixed: Issue with blend modes
+* fixed: Applying Ambient Occlusion more than once
+* fixed: applying Pre-Multiplied Alpha more than once
+* fixed: Issue with PBR mode where material would turn black
+* fixed: Specular was not being applied correctly
+* fixed: Multiple lights did not work in forward rendering
+* fixed: Issue when using blend modes that needed pre-multiplied alpha
+* fixed: Material editor not updating changes
+* fixed: issue where unlit mode turned black
+* added: One more addtive blend mode
+* added: ShadowCaster for cutout mode
+* added: PBR toggle on material
+* added: Generator reimports materials and sets keywords when you generate shader
+* added: Reimport Material button on Generator
+* added: Optimizations
+* changed: Moved all shader keywords/settings methods into its own class
+* changed: Made additive blend modes work just like unity ones of same name
+
+v0.19
+*fixed: Crash if you pressed cancel when saving settings
+*fixed: Generate would not re-import shader if ShaderOne folder was moved
+*fixed: Somethings would not update on material when Generating shader
+*added: UV World Mapping
+*added: Display version # in Generator
+
+v0.17
+*Fixed: Slowdown in MaterialEditor GUI
+*Fixed: Error when building shader with all settings on LOW/FASTEST settings
+*Fixed: Vertex color and vertex lighting bug
+*Fixed: Instancing bug for unity 2017 and 2018
+*Change: Lightprobes are on by default now
+
+v0.15
+Fixed: Vertex colors not working when unlit
+Fixed: Issue with Particles
+Fixed: Crash when building app bug
+Fixed: Crash when no camera tagged as MainCamera
+
+v0.1
+Initial release

@@ -94,7 +94,7 @@ Material:
     - _OcclusionStrength: 1
     - _Overbright: 0.5
     - _Parallax: 0.02
-    - _Phase: -0.011439836
+    - _Phase: -0.010829106
     - _PhaseRotation: 0.625
     - _PhaseSharpness: 0
     - _Radial: 1
@@ -110,8 +110,8 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.24229631, g: 0.59259635, b: 1, a: 1}
-    - _Color2: {r: 1, g: 0.42766836, b: 0.11760052, a: 1}
+    - _Color: {r: 0.24229297, g: 0.59259635, b: 1, a: 1}
+    - _Color2: {r: 1, g: 0.42766502, b: 0.117597185, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _IdleData: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _PhaseDirection: {r: 0.125, g: 1, b: 0, a: 0}

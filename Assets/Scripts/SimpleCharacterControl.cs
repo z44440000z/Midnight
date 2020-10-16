@@ -211,7 +211,7 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            m_rigidBody.AddForce(-Physics.gravity * 0.2f);
+            m_rigidBody.AddForce(-Physics.gravity * 0.4f);
         }
     }
     private void Climbing()
@@ -287,11 +287,12 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         Vector3 targetPoint;
         RaycastHit hit;
-        Ray ray = new Ray(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward));
+        Ray ray = new Ray(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 2f)), Camera.main.transform.TransformDirection(Vector3.forward));
 
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
+            Debug.Log(hit.transform.name) ;
         }
         else//射線沒有碰撞到目標點
         {

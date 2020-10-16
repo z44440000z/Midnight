@@ -12,13 +12,33 @@ public class GameManager : MonoBehaviour
     public GameState gamestate = GameState.Running;//游戏状态，包括运行暂停
 
     public Transform SavePoint;
+    [SerializeField] private int ringCount = 0;
+    [SerializeField] private int clearCount;
+    private UI ui;
+
+    [HideInInspector]
+    public int nowRingCount
+    {
+        get { return ringCount; }
+        set
+        {
+            ringCount = value;
+            ui.GetClassCondition();
+        }
+    }
+    [HideInInspector]
+    public int maxRingCount
+    {
+        get { return clearCount; }
+        set { maxRingCount = value; }
+    }
 
 
     void Awake()
     {
         _instance = this;
         CursorControl(false);
-
+        ui = GetComponent<UI>();
     }
     //测试添加删除物品
     private void Update()
@@ -61,5 +81,10 @@ public class GameManager : MonoBehaviour
     public void Save(Transform SP)
     {
         SavePoint = SP;
+    }
+
+    public void AddRing()
+    {
+        nowRingCount++;
     }
 }

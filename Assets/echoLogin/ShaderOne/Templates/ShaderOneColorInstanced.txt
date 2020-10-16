@@ -1,0 +1,14 @@
+﻿UNITY_INSTANCING_CBUFFER_START(Props)
+	UNITY_DEFINE_INSTANCED_PROP(SOFLOAT4, _Color)
+	UNITY_DEFINE_INSTANCED_PROP(SOFLOAT4, _ColorBack)
+UNITY_INSTANCING_CBUFFER_END
+
+inline void ApplyGlobalColor ( inout SOLightingData i_sold )
+{
+	#ifdef SO_SF_NORMAL_FIX
+		i_sold.finalRGBA *= lerp ( UNITY_ACCESS_INSTANCED_PROP(Props,_ColorBack), UNITY_ACCESS_INSTANCED_PROP( Props, _Color), ( ( i_sold.facing + 1.0 ) * 0.5 ) );
+	#else
+		i_sold.finalRGBA *= UNITY_ACCESS_INSTANCED_PROP( Props, _Color );
+	#endif
+}
+

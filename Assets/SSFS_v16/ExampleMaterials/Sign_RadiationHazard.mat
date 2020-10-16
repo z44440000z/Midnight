@@ -52,7 +52,7 @@ Material:
     - _InvertIdle: 0
     - _InvertPhase: 0
     - _Overbright: 0
-    - _Phase: -0.0020002518
+    - _Phase: 0
     - _PhaseRotation: 0.25
     - _PhaseSharpness: 1
     - _Radial: 0
@@ -67,7 +67,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2: {r: 1, g: 0.39309752, b: 0, a: 1}
+    - _Color2: {r: 1, g: 0.39309725, b: 0, a: 1}
     - _IdleData: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _PhaseDirection: {r: 0, g: 0, b: 0, a: 0}
     - _ScaleCenter: {r: 0, g: 1, b: 0, a: 0}
