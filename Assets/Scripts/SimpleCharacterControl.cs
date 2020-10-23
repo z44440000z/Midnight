@@ -292,7 +292,6 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
-            Debug.Log(hit.transform.name) ;
         }
         else//射線沒有碰撞到目標點
         {

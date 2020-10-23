@@ -36,8 +36,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(this);
         _instance = this;
-        CursorControl(false);
+        // CursorControl(false);
         ui = GetComponent<UI>();
     }
     //测试添加删除物品
@@ -52,17 +53,20 @@ public class GameManager : MonoBehaviour
     //改变游戏的运行状态，运行与暂停
     public void TransformGameState()
     {
-        if (gamestate == GameState.Running)
+        if(_instance.isActiveAndEnabled)
         {
-            Time.timeScale = 0;
-            gamestate = GameState.Pause;
-            CursorControl(true);
-        }
-        else if (gamestate == GameState.Pause)
-        {
-            Time.timeScale = 1;
-            gamestate = GameState.Running;
-            CursorControl(false);
+            if (gamestate == GameState.Running)
+            {
+                Time.timeScale = 0;
+                gamestate = GameState.Pause;
+                CursorControl(true);
+            }
+            else if (gamestate == GameState.Pause)
+            {
+                Time.timeScale = 1;
+                gamestate = GameState.Running;
+                CursorControl(false);
+            }
         }
     }
     public void CursorControl(bool isCursorVisible)

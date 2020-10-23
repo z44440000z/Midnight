@@ -47,9 +47,9 @@ public class Switch : MonoBehaviour
             { StartCoroutine("TunnelSwicthOff"); }
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other) 
     {
-        if (other.tag == "Bullet")
+        if (other.collider.tag == "Bullet")
         {
             if (turnOnTunnels)
             { StartCoroutine("TunnelSwicthOn"); }

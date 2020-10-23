@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
 {
     public CinemachineVirtualCameraBase vCam;
     public CinemachineVirtualCameraBase aimCam;
+    public Camera menuCamera;
+    public Camera mainCamera;
 
     public LayerMask layerMask;
     [Space(10)]
@@ -27,18 +29,25 @@ public class CameraController : MonoBehaviour
     {
         if (vCam)
         { vCam.MoveToTopOfPrioritySubqueue(); }
+        // mainCamera.enabled = false;
+        // menuCamera.enabled = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (doAim)
-        { aimCam.MoveToTopOfPrioritySubqueue(); }
-        else
+        if (GameManager._instance.gameObject.activeSelf)
         {
-            if (vCam)
-            { vCam.MoveToTopOfPrioritySubqueue(); }
+            // menuCamera.enabled = false; 
+            // mainCamera.enabled = true;
         }
+        // if (doAim)
+        // { aimCam.MoveToTopOfPrioritySubqueue(); }
+        // else
+        // {
+        //     if (vCam)
+        //     { vCam.MoveToTopOfPrioritySubqueue(); }
+        // }
     }
     public void DoAim()
     {
