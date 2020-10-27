@@ -6,10 +6,9 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    public CinemachineVirtualCameraBase vCam;
-    public CinemachineVirtualCameraBase aimCam;
-    public Camera menuCamera;
-    public Camera mainCamera;
+    public CinemachineVirtualCameraBase main_vcam;
+    public CinemachineVirtualCameraBase aim_vcam;
+    public CinemachineVirtualCameraBase menu_vcam;
 
     public LayerMask layerMask;
     [Space(10)]
@@ -23,24 +22,26 @@ public class CameraController : MonoBehaviour
     public float latentMinSpecialAngle = 65f;
     public float latentMaxSpecialAngle = 90f;
     public float angle;
-    public float offsetYLatentDis = 1.35f;
+    public float speed = 3f;
+
+    private CinemachineDollyCart dCartComp;
+
+    void Awake()
+    {
+        if (MenuManager.instance != null)
+        { menu_vcam.MoveToTopOfPrioritySubqueue(); }
+    }
     // Use this for initialization
     void Start()
     {
-        if (vCam)
-        { vCam.MoveToTopOfPrioritySubqueue(); }
-        // mainCamera.enabled = false;
-        // menuCamera.enabled = true;
+        dCartComp = GetComponent<CinemachineDollyCart>();
+        dCartComp.m_Speed = speed;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GameManager._instance.gameObject.activeSelf)
-        {
-            // menuCamera.enabled = false; 
-            // mainCamera.enabled = true;
-        }
+
         // if (doAim)
         // { aimCam.MoveToTopOfPrioritySubqueue(); }
         // else
@@ -48,6 +49,16 @@ public class CameraController : MonoBehaviour
         //     if (vCam)
         //     { vCam.MoveToTopOfPrioritySubqueue(); }
         // }
+    }
+
+    public void ChangeMenuCamera()
+    {
+        menu_vcam.MoveToTopOfPrioritySubqueue();
+    }
+
+    public void ChangeMainCamera()
+    {
+        main_vcam.MoveToTopOfPrioritySubqueue();
     }
     public void DoAim()
     {

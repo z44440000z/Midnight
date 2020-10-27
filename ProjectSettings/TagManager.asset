@@ -24,9 +24,9 @@ TagManager:
   - Dead
   - Player
   - SceneObject
-  - Post-Pocess
-  - 
-  - 
+  - PostProcessing
+  - Bullet
+  - Drone
   - 
   - 
   - 

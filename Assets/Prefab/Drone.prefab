@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9155155568316388381}
   - component: {fileID: 5207857487248543889}
   - component: {fileID: 9215016428549535826}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,10 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destoryTime: 3
   upForce: 9.81
-  playerMass: 1
   isFloat: 0
   isDestory: 0
-  t: 1
 --- !u!1 &935517582503820994
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +161,7 @@ GameObject:
   - component: {fileID: 935517582503584418}
   - component: {fileID: 935517582507008704}
   - component: {fileID: 935517582506008704}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +239,7 @@ GameObject:
   - component: {fileID: 935517582503584432}
   - component: {fileID: 935517582507008726}
   - component: {fileID: 935517582506008726}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +317,7 @@ GameObject:
   - component: {fileID: 935517582503584434}
   - component: {fileID: 935517582507008720}
   - component: {fileID: 935517582506008720}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +394,7 @@ GameObject:
   - component: {fileID: 935517582503584436}
   - component: {fileID: 935517582507008730}
   - component: {fileID: 935517582506008730}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +472,7 @@ GameObject:
   - component: {fileID: 935517582503584438}
   - component: {fileID: 935517582507008724}
   - component: {fileID: 935517582506008724}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +550,7 @@ GameObject:
   - component: {fileID: 935517582503584440}
   - component: {fileID: 935517582507008734}
   - component: {fileID: 935517582506008734}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +628,7 @@ GameObject:
   - component: {fileID: 935517582503584442}
   - component: {fileID: 935517582507008728}
   - component: {fileID: 935517582506008728}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +706,7 @@ GameObject:
   - component: {fileID: 935517582503584444}
   - component: {fileID: 935517582507008706}
   - component: {fileID: 935517582506008706}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +784,7 @@ GameObject:
   - component: {fileID: 935517582503584446}
   - component: {fileID: 935517582507008732}
   - component: {fileID: 935517582506008732}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: robot_leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
