@@ -24,7 +24,7 @@ public class Drone : MonoBehaviour
             StartCoroutine("Countdown");
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dead"))
-        { Destroy(this.gameObject); }
+        { this.gameObject.SetActive(false); }
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -48,6 +48,7 @@ public class Drone : MonoBehaviour
     {
         mrigidBody = GetComponent<Rigidbody>();
         originPos = transform.position;
+        GameManager._instance.onReset += new GameManager.ManipulationHandler(Reset);
     }
     float t = 0;
     // Update is called once per frame
@@ -88,6 +89,14 @@ public class Drone : MonoBehaviour
 
     void UpForce(float forcePower)
     {
-        mrigidBody.AddForce(Vector3.up * forcePower , ForceMode.Force);
+        mrigidBody.AddForce(Vector3.up * forcePower, ForceMode.Force);
+    }
+
+    private void Reset()
+    {
+        transform.position = originPos;
+        isFloat = false;
+        isDestory = false;
+        this.gameObject.SetActive(true);
     }
 }

@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -78,6 +78,9 @@ public class MenuManager : MonoBehaviour
 
     public void ContinueButton()
     {
+        PlayerData data = SaveSystem.Load();
+        continueScene = data.sceneName;
+        GameManager._instance.SavePoint.position = new Vector3(data.x, data.y, data.z);
         if (continueScene != "")
         { StartCoroutine(LoadScene(continueScene)); }
         else
@@ -107,6 +110,13 @@ public class MenuManager : MonoBehaviour
     public void SetSaveScene()
     {
         continueScene = SceneManager.GetActiveScene().name;
+    }
+    public string GetSaveScene()
+    {
+        if (continueScene != null)
+        { return continueScene; }
+        else
+        { return null; }
     }
     IEnumerator LoadScene(string ns)
     {

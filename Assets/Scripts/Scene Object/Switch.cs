@@ -15,7 +15,9 @@ public class Switch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager._instance.onReset += new GameManager.ManipulationHandler(Reset);
         tunnelsCount = turnOnTunnels.childCount;
+        //打開
         if (turnOnTunnels)
         {
             turnOnArray = new Tunnel[turnOnTunnels.childCount];
@@ -24,6 +26,7 @@ public class Switch : MonoBehaviour
                 turnOnArray[i] = turnOnTunnels.GetChild(i).GetComponent<Tunnel>();
             }
         }
+        //關閉
         if (turnOffTunnels)
         {
             turnOffArray = new Tunnel[turnOffTunnels.childCount];
@@ -47,7 +50,7 @@ public class Switch : MonoBehaviour
             { StartCoroutine("TunnelSwicthOff"); }
         }
     }
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Bullet")
         {
@@ -75,5 +78,11 @@ public class Switch : MonoBehaviour
             yield return new WaitForSeconds(intervalTime);
         }
         yield return null;
+    }
+
+    private void Reset()
+    {
+        switchOn = false;
+        this.gameObject.SetActive(true);
     }
 }

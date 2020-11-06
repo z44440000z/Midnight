@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
         get { return clearCount; }
         set { maxRingCount = value; }
     }
+
+    public int DeadCount = 0;
+    public float GameTime = 0;
+
     void Awake()
     {
         if (_instance != null)
@@ -45,6 +49,14 @@ public class GameManager : MonoBehaviour
         CursorControl(true);
         ui = GetComponent<UI>();
         cc = FindObjectOfType<CameraController>();
+
+    }
+    private void Start()
+    {
+        MenuManager.instance.isAct = true;
+        Time.timeScale = 0;
+        CursorControl(true);
+        gamestate = GameState.Pause;
     }
     //测试添加删除物品
     private void Update()
@@ -54,6 +66,10 @@ public class GameManager : MonoBehaviour
         {
             _instance.TransformGameState();
         }
+        if (gamestate == GameState.Running)
+        { CursorControl(false); }
+        else if (gamestate == GameState.Pause)
+        { CursorControl(true); }
     }
     //改变游戏的运行状态，运行与暂停
     public void TransformGameState()
@@ -62,17 +78,13 @@ public class GameManager : MonoBehaviour
         {
             MenuManager.instance.isAct = true;
             Time.timeScale = 0;
-            CursorControl(true);
             gamestate = GameState.Pause;
-
         }
         else if (gamestate == GameState.Pause)
         {
             MenuManager.instance.isAct = false;
             Time.timeScale = 1;
-            CursorControl(false);
             gamestate = GameState.Running;
-
         }
     }
     public void CursorControl(bool isCursorVisible)
@@ -90,8 +102,17 @@ public class GameManager : MonoBehaviour
     }
     public void Save(Transform SP)
     {
+        //記憶存檔點位置(暫時)
         SavePoint = SP;
         MenuManager.instance.SetSaveScene();
+        //轉換當前參數為PlayerData
+        PlayerData data = new PlayerData();
+        data.x = SP.position.x;
+        data.y = SP.position.y;
+        data.z = SP.position.z;
+        data.sceneName = MenuManager.instance.GetSaveScene();
+        //存檔
+        SaveSystem.Save(data);
     }
 
     public void AddRing()
@@ -114,6 +135,29 @@ public class GameManager : MonoBehaviour
 
     public void ShowWin()
     {
-        ui.win.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        CursorControl(true);
+        gamestate = GameState.Pause;
+        ui.UI_ShowWin();
+    }
+
+    //發布&監聽
+    public delegate void ManipulationHandler();
+    public event ManipulationHandler onReset;
+    protected virtual void OnPlayerDead()
+    {
+        if (onReset != null)
+        {
+            onReset(); /* 事件被触发 */
+        }
+        else
+        {
+            Debug.LogError("event not fire");
+        }
+    }
+
+    public void Dead()
+    {
+        OnPlayerDead();
     }
 }

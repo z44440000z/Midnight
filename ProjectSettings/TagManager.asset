@@ -4,13 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CameraTarget
   - GameManager
-  - ClimbPoint
-  - Block
-  - SavePoint
   - Bullet
+  - CameraTarget
+  - SavePoint
+  - Block
   - Ring
+  - ClimbPoint
   layers:
   - Default
   - TransparentFX
@@ -20,11 +20,11 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
+  - PostProcessing
   - Dead
   - Player
-  - SceneObject
-  - PostProcessing
+  - 
+  - 
   - Bullet
   - Drone
   - 

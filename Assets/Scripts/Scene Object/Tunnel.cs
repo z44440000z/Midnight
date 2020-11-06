@@ -20,6 +20,7 @@ public class Tunnel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager._instance.onReset += new GameManager.ManipulationHandler(Reset);
     }
 
     // Update is called once per frame
@@ -46,5 +47,13 @@ public class Tunnel : MonoBehaviour
     public void swicthOn(bool isOn)
     {
         this.isOn = isOn;
+    }
+
+    private void Reset()
+    {
+        transform.position = originPos;
+        y = -30;
+        timers = 0;
+        isOn = false;
     }
 }

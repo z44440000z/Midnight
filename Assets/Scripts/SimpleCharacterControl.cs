@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SimpleCharacterControl : MonoBehaviour
 {
+    private bool isControling = true;
     #region Move variable
     [SerializeField] private float m_moveSpeed = 5;
     [SerializeField] private float m_jumpForce = 10;
@@ -31,24 +32,24 @@ public class SimpleCharacterControl : MonoBehaviour
     private float climbUpMatchEnd = 0.61f;
     private float climbDownMatchStart = 0.01f;
     private float climbDownMatchEnd = 0.34f;
-    private AnimatorStateInfo m_State;
+    [HideInInspector] public AnimatorStateInfo m_State;
     #endregion
     #region Shoot variable
     [Header("Shoot Variable")]
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform muzzle;
     [SerializeField] private float throwerPower;
-    private float intervalTime = 0.2f;
-    private float t;
-    [SerializeField]private LayerMask layermask;
+    private float intervalTime = 0;
+    private float t = 0.2f;
+    [SerializeField] public LayerMask layermask;
     private int maxDistatnce = 1000;
     #endregion
 
     private void Start()
     {
-        t = intervalTime;
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody>();
+        GameManager._instance.onReset += new GameManager.ManipulationHandler(Dead);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -66,7 +67,9 @@ public class SimpleCharacterControl : MonoBehaviour
             }
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dead"))
-        { Dead(); }
+        {
+            GameManager._instance.Dead();
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -126,65 +129,74 @@ public class SimpleCharacterControl : MonoBehaviour
         if (other.tag == "SavePoint")
         { GameManager._instance.Save(other.transform); }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "ClimbPoint")
+        {
+            rightHand = other.transform.Find("RightHand");
+            rightFoot = other.transform.Find("RightFoot");
+            isClimbPoint = true;
+        }
+    }
 
     private void OnTriggerExit(Collider collision)
     {
         if (collision.tag == "ClimbPoint")
         {
-            rightHand = null;
-            rightFoot = null;
             isClimbPoint = false;
         }
     }
 
     private void FixedUpdate()
     {
-        m_animator.SetBool("Grounded", m_isGrounded);
-        if (!m_State.IsName("Base Layer.Climb.ClimbUp") && !m_State.IsName("Base Layer.Climb.ClimbUp"))
+        if (isControling)
         {
-            float v = Input.GetAxis("Vertical");
-            float h = Input.GetAxis("Horizontal");
-
-
-            m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
-            m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
-
-            Vector3 direction = Camera.main.transform.forward * m_currentV + Camera.main.transform.right * m_currentH;
-
-            float directionLength = direction.magnitude;
-            direction.y = 0;
-            direction = direction.normalized * directionLength;
-
-            if (direction != Vector3.zero)
+            m_animator.SetBool("Grounded", m_isGrounded);
+            if (!m_State.IsName("Base Layer.Climb.ClimbUp") && !m_State.IsName("Base Layer.Climb.ClimbUp"))
             {
-                m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
-                transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
-                m_animator.SetFloat("MoveSpeed", direction.magnitude);
+                float v = Input.GetAxis("Vertical");
+                float h = Input.GetAxis("Horizontal");
+
+
+                m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
+                m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
+
+                Vector3 direction = Camera.main.transform.forward * m_currentV + Camera.main.transform.right * m_currentH;
+
+                float directionLength = direction.magnitude;
+                direction.y = 0;
+                direction = direction.normalized * directionLength;
+
+                if (direction != Vector3.zero)
+                {
+                    m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
+                    transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+                    m_animator.SetFloat("MoveSpeed", direction.magnitude);
+                }
+
+                //上下左右鍵方向
+                if (v > 0)
+                { SmoothRotation(Camera.main.transform.eulerAngles.y); }
+                else if (v < 0)
+                { SmoothRotation(Camera.main.transform.eulerAngles.y - 180); }
+
+                if (h > 0)
+                { SmoothRotation(Camera.main.transform.eulerAngles.y + 90); }
+                else if (h < 0)
+                { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
             }
 
-            //上下左右鍵方向
-            if (v > 0)
-            { SmoothRotation(Camera.main.transform.eulerAngles.y); }
-            else if (v < 0)
-            { SmoothRotation(Camera.main.transform.eulerAngles.y - 180); }
+            //飛行
+            Flying();
+            //跳躍
+            JumpingAndLanding();
+            //攀爬
+            Climbing();
+            //射擊
+            Shoot();
 
-            if (h > 0)
-            { SmoothRotation(Camera.main.transform.eulerAngles.y + 90); }
-            else if (h < 0)
-            { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
+            m_wasGrounded = m_isGrounded;
         }
-
-        //飛行
-        Flying();
-        //跳躍
-        JumpingAndLanding();
-        //攀爬
-        Climbing();
-        //射擊
-        Shoot();
-
-
-        m_wasGrounded = m_isGrounded;
     }
     #region private function
     private void JumpingAndLanding()
@@ -221,11 +233,11 @@ public class SimpleCharacterControl : MonoBehaviour
             //獲取動畫狀態
             m_State = m_animator.GetCurrentAnimatorStateInfo(0);
 
-            if (isClimbPoint && Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 if (m_animator.GetBool("Climb"))
                 { m_animator.SetBool("Climb", false); }
-                else
+                else if (isClimbPoint && !m_animator.GetBool("Climb"))
                 {
                     m_animator.SetBool("Climb", true);
                     Vector3.Lerp(transform.position, rightFoot.position, Time.deltaTime * m_interpolation);
@@ -240,14 +252,16 @@ public class SimpleCharacterControl : MonoBehaviour
             }
             if (m_State.IsName("Base Layer.Climb.ClimbDown"))
             {
-                transform.rotation = rightHand.rotation;
+                transform.rotation = rightFoot.rotation;
                 m_animator.MatchTarget(rightFoot.position, rightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), climbDownMatchStart, climbDownMatchEnd);
             }
         }
     }
-    private void Dead()
+    public void Dead()
     {
         transform.position = GameManager._instance.SavePoint.position;
+        GameManager._instance.DeadCount++;
+        isControling = true;
     }
 
     private void Shoot()
@@ -255,6 +269,7 @@ public class SimpleCharacterControl : MonoBehaviour
         RayAim();
         if (Input.GetButton("Fire1"))
         {
+            SmoothRotation(Camera.main.transform.eulerAngles.y);
             intervalTime -= Time.deltaTime;
             if (intervalTime <= 0)
             {
@@ -283,6 +298,15 @@ public class SimpleCharacterControl : MonoBehaviour
     { m_rigidBody.velocity = Vector3.zero; }
     public void UseGravity(bool isuseGravity)
     { m_rigidBody.useGravity = isuseGravity; }
+    public void OutClimbState()
+    {
+        rightHand = null;
+        rightFoot = null;
+    }
+    public void PlayerControl(bool isControl)
+    {
+        isControling = isControl;
+    }
     public Vector3 RayAim()
     {
         Vector3 targetPoint;
