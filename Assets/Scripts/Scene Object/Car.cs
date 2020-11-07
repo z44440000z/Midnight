@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    public float length = 3;
     public float speed = 0.1f;
     public float IntervalTime = 2;
 
@@ -16,7 +15,7 @@ public GameObject car;
 
     void Start()
     {
-        originPosition = transform.position;
+        originPosition = car.transform.position;
     }
 
     void Update()
@@ -24,32 +23,23 @@ public GameObject car;
         if (!IsDisappear)
         {
             alpha += speed;
-            if (Vector3.Distance(transform.position, endPosition.position) < 0.1f)
+            if (Vector3.Distance(car.transform.position, endPosition.position) < 0.1f)
             { StartCoroutine("TimerAndReset"); }
             else
             { OnMove(endPosition.position); }
 
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Player")
-        { collision.transform.parent = this.transform; }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.tag == "Player")
-        { collision.transform.parent = null; }
-    }
+    
     #region private function
     private void OnMove(Vector3 newPos)
     {
-        car.transform.position = Vector3.Lerp(transform.position, newPos, alpha * Time.deltaTime);
+        car.transform.position = Vector3.Lerp(car.transform.position, newPos, alpha * Time.deltaTime);
     }
     IEnumerator TimerAndReset()
     {
         IsDisappear = true;
-        transform.position = originPosition;
+        car.transform.position = originPosition;
         alpha = 0;
         yield return new WaitForSeconds(IntervalTime);
         IsDisappear = false;

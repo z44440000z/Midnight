@@ -66,7 +66,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.7231237, b: 0.42645955, a: 1}
+    - _Color: {r: 1, g: 0.7231237, b: 0.4264595, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _IdleData: {r: 0.092, g: 0.125, b: 1, a: 0}
     - _PhaseDirection: {r: 0.56055945, g: 1, b: 0, a: 0}

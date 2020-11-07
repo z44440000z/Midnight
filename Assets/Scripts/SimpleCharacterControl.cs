@@ -206,7 +206,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (jumpCooldownOver && m_animator.GetInteger("JumpCount") < 2 && Input.GetKey(KeyCode.Space))
         {
             m_jumpTimeStamp = Time.time;
-            ResetVelocity();
+            // sResetVelocity();
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_animator.SetTrigger("Jump");
 
@@ -305,7 +305,8 @@ public class SimpleCharacterControl : MonoBehaviour
     }
     public void PlayerControl(bool isControl)
     {
-        isControling = isControl;
+        if (m_isGrounded)
+        { isControling = isControl; }
     }
     public Vector3 RayAim()
     {

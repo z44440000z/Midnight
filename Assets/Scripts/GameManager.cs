@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         data.y = SP.position.y;
         data.z = SP.position.z;
         data.sceneName = MenuManager.instance.GetSaveScene();
+        data.score = ringCount;
         //存檔
         SaveSystem.Save(data);
     }

@@ -52,7 +52,7 @@ Material:
     - _InvertIdle: 0
     - _InvertPhase: 0
     - _Overbright: 0
-    - _Phase: -0.021218764
+    - _Phase: 0
     - _PhaseRotation: 0.25
     - _PhaseSharpness: 0.05
     - _Radial: 0
