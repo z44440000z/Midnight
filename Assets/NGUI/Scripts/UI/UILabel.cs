@@ -2170,6 +2170,7 @@ public class UILabel : UIWidget
 
 		NGUIText.Update();
 	}
+
 	void OnApplicationPause (bool paused)
 	{
 		if (!paused && mTrueTypeFont != null) Invalidate(false);
