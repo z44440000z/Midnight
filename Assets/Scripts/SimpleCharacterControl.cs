@@ -22,6 +22,7 @@ public class SimpleCharacterControl : MonoBehaviour
     private float m_minJumpInterval = 0.25f;
     private bool m_isGrounded;
     private List<Collider> m_collisions = new List<Collider>();
+    public GameObject flyParticle;
     #endregion
     #region Climb variable
     [Header("Climb Variable")]
@@ -50,6 +51,7 @@ public class SimpleCharacterControl : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody>();
         GameManager._instance.onReset += new GameManager.ManipulationHandler(Dead);
+        flyParticle.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,6 +66,7 @@ public class SimpleCharacterControl : MonoBehaviour
                     m_collisions.Add(collision.collider);
                 }
                 m_isGrounded = true;
+                flyParticle.SetActive(false);
             }
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dead"))
@@ -87,6 +90,8 @@ public class SimpleCharacterControl : MonoBehaviour
         if (validSurfaceNormal)
         {
             m_isGrounded = true;
+            flyParticle.SetActive(false);
+
             if (!m_collisions.Contains(collision.collider))
             {
                 m_collisions.Add(collision.collider);
@@ -99,7 +104,7 @@ public class SimpleCharacterControl : MonoBehaviour
                 m_collisions.Remove(collision.collider);
             }
             if (m_collisions.Count == 0)
-            { m_isGrounded = false; }
+            { m_isGrounded = false; flyParticle.SetActive(true); }
         }
         if (collision.collider.tag == "SavePoint")
         { transform.parent = collision.transform; }
@@ -114,7 +119,7 @@ public class SimpleCharacterControl : MonoBehaviour
             m_collisions.Remove(collision.collider);
         }
         if (m_collisions.Count == 0)
-        { m_isGrounded = false; }
+        { m_isGrounded = false; flyParticle.SetActive(true); }
         // if (collision.collider.tag == "Block")
         // { transform.parent = null; }
     }
@@ -217,9 +222,15 @@ public class SimpleCharacterControl : MonoBehaviour
     private void Flying()
     {
         if (!isClimbPoint && !m_isGrounded && Input.GetMouseButton(1))
-        { m_animator.SetBool("Fly", true); }
+        {
+            m_animator.SetBool("Fly", true);
+            flyParticle.SetActive(true);
+        }
         else
-        { m_animator.SetBool("Fly", false); }
+        {
+            m_animator.SetBool("Fly", false);
+            flyParticle.SetActive(false);
+        }
 
         if (m_State.IsName("Base Layer.Fly"))
         {
@@ -275,7 +286,7 @@ public class SimpleCharacterControl : MonoBehaviour
             {
                 intervalTime = t;
                 m_animator.SetTrigger("Shoot");
-                GameObject bullet = Instantiate(projectile, muzzle.position, transform.rotation) as GameObject;
+                GameObject bullet = Instantiate(projectile, muzzle.position, muzzle.rotation) as GameObject;
                 bullet.transform.LookAt(RayAim());
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 rb.velocity = bullet.transform.forward * throwerPower;
@@ -283,7 +294,7 @@ public class SimpleCharacterControl : MonoBehaviour
             }
         }
         if (Input.GetButtonUp("Fire1"))
-        { intervalTime = t; }
+        { intervalTime = 0; }
     }
     #endregion
 
@@ -317,6 +328,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
+            Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
         {
