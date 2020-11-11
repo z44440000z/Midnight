@@ -34,10 +34,8 @@ public class Tunnel : MonoBehaviour
         }
         else if (timers >= 0 && !isOn)
         {
-
             transform.position = Vector3.Lerp(originPos, transform.position, timers);
             timers -= Time.deltaTime / speed;
-
         }
         else
         {

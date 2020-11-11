@@ -34,7 +34,7 @@ public class AI : MonoBehaviour
         {
             if (CheackScope(transform.position, player.position))
             {
-                if (pc.m_State.IsName("Base Layer.Climb.ClimbUp") || pc.m_State.IsName("Base Layer.Climb.ClimbDown"))
+                if (pc.m_State.IsName("Base Layer.Climb.Climbing") ||pc.m_State.IsName("Base Layer.Climb.ClimbUp") || pc.m_State.IsName("Base Layer.Climb.ClimbDown"))
                 { }
                 else
                 {

@@ -10,13 +10,11 @@ public class Switch : MonoBehaviour
     [SerializeField] private float intervalTime = 0.1f;
     [SerializeField] private bool switchOn = false;
     [SerializeField] private Tunnel[] turnOnArray;
-    private Tunnel[] turnOffArray;
-    private int tunnelsCount;
+    [SerializeField] private Tunnel[] turnOffArray;
     // Start is called before the first frame update
     void Start()
     {
         GameManager._instance.onReset += new GameManager.ManipulationHandler(Reset);
-        tunnelsCount = turnOnTunnels.childCount;
         //打開
         if (turnOnTunnels)
         {
@@ -32,7 +30,7 @@ public class Switch : MonoBehaviour
             turnOffArray = new Tunnel[turnOffTunnels.childCount];
             for (int i = 0; i < turnOffTunnels.childCount; i++)
             {
-                turnOnArray[i] = turnOffTunnels.GetChild(i).GetComponent<Tunnel>();
+                turnOffArray[i] = turnOffTunnels.GetChild(i).GetComponent<Tunnel>();
             }
         }
     }
@@ -41,41 +39,61 @@ public class Switch : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
-        { switchOn = true; }
+        { switchOn = !switchOn; }
         if (switchOn)
-        {
-            if (turnOnTunnels)
-            { StartCoroutine("TunnelSwicthOn"); }
-            if (turnOffTunnels)
-            { StartCoroutine("TunnelSwicthOff"); }
-        }
+        { StartCoroutine("TunnelSwicthOn"); }
+        else
+        { StartCoroutine("TunnelSwicthOff"); }
     }
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Bullet")
         {
-            if (turnOnTunnels)
+            switchOn = !switchOn;
+            if (switchOn)
             { StartCoroutine("TunnelSwicthOn"); }
-            if (turnOffTunnels)
+            else
             { StartCoroutine("TunnelSwicthOff"); }
         }
     }
 
     IEnumerator TunnelSwicthOn()
     {
-        foreach (Tunnel item in turnOnArray)
+        if (turnOnTunnels)
         {
-            item.swicthOn(true);
-            yield return new WaitForSeconds(intervalTime);
+            foreach (Tunnel item in turnOnArray)
+            {
+                item.swicthOn(true);
+                yield return new WaitForSeconds(intervalTime);
+            }
+        }
+        if (turnOffTunnels)
+        {
+            foreach (Tunnel item in turnOffArray)
+            {
+                item.swicthOn(false);
+                yield return new WaitForSeconds(intervalTime);
+            }
         }
         yield return null;
     }
     IEnumerator TunnelSwicthOff()
     {
-        foreach (Tunnel item in turnOffArray)
+        if (turnOnTunnels)
         {
-            item.swicthOn(false);
-            yield return new WaitForSeconds(intervalTime);
+            foreach (Tunnel item in turnOnArray)
+            {
+                item.swicthOn(false);
+                yield return new WaitForSeconds(intervalTime);
+            }
+        }
+        if (turnOffTunnels)
+        {
+            foreach (Tunnel item in turnOffArray)
+            {
+                item.swicthOn(true);
+                yield return new WaitForSeconds(intervalTime);
+            }
         }
         yield return null;
     }

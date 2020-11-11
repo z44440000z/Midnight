@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Fungus;
 
 public class MenuManager : MonoBehaviour
 {
     public bool isAct;
     public static MenuManager instance;
-    public GameObject menuManager;
     [SerializeField] GameObject Menu_vcam;
     [SerializeField] GameObject mainPanel;
     [SerializeField] GameObject optionsPanel;
@@ -21,6 +20,8 @@ public class MenuManager : MonoBehaviour
     [Space(10), SerializeField, Range(1, 20)]
     private int speed;
     int i = 0;
+    [Header("對話")]
+    public Flowchart flowchart;
     void Awake()
     {
         if (instance != null)
@@ -63,8 +64,10 @@ public class MenuManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            MenuManager.instance.isAct = false;
+            flowchart.ExecuteBlock("New Game");
+            GameObject.FindWithTag("Player").GetComponent<SimpleCharacterControl>().ChangePlayerPosion(GameManager._instance.StartPosition);
             GameManager._instance.TransformGameState();
+            MenuManager.instance.isAct = false;
             MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
         }
         else
@@ -81,6 +84,9 @@ public class MenuManager : MonoBehaviour
         PlayerData data = SaveSystem.Load();
         continueScene = data.sceneName;
         GameManager._instance.SavePoint.position = new Vector3(data.x, data.y, data.z);
+        GameManager._instance.nowRingCount = data.score;
+        GameManager._instance.GameTimer.minute = data.minute;
+        GameManager._instance.GameTimer.second = data.second;
         if (continueScene != "")
         { StartCoroutine(LoadScene(continueScene)); }
         else

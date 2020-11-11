@@ -44,6 +44,7 @@ public class SimpleCharacterControl : MonoBehaviour
     private float t = 0.2f;
     [SerializeField] public LayerMask layermask;
     private int maxDistatnce = 1000;
+    public GameObject groundChecker;
     #endregion
 
     private void Start()
@@ -67,6 +68,7 @@ public class SimpleCharacterControl : MonoBehaviour
                 }
                 m_isGrounded = true;
                 flyParticle.SetActive(false);
+                m_animator.SetInteger("JumpCount", 0);
             }
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dead"))
@@ -199,7 +201,7 @@ public class SimpleCharacterControl : MonoBehaviour
             Climbing();
             //射擊
             Shoot();
-
+            groundChecker.transform.position = GroundCheck();
             m_wasGrounded = m_isGrounded;
         }
     }
@@ -234,7 +236,7 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            m_rigidBody.AddForce(-Physics.gravity * 0.4f);
+            m_rigidBody.AddForce(-Physics.gravity * 1f);
         }
     }
     private void Climbing()
@@ -296,6 +298,24 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         { intervalTime = 0; }
     }
+
+    Vector3 GroundCheck()
+    {
+        Vector3 targetPoint;
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.down));
+        if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
+        {
+            targetPoint = hit.point;//記錄碰撞的目標點
+            Debug.Log(hit.collider.name);
+        }
+        else//射線沒有碰撞到目標點
+        {
+            //將目標點設置在攝像機自身前方1000米處
+            targetPoint = -transform.up * maxDistatnce;
+        }
+        return targetPoint;
+    }
     #endregion
 
     #region public function
@@ -337,6 +357,11 @@ public class SimpleCharacterControl : MonoBehaviour
         }
         Debug.DrawRay(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward) * 100, Color.red);
         return targetPoint;
+    }
+
+    public void ChangePlayerPosion(Vector3 pos)
+    {
+        transform.position = pos;
     }
     #endregion
 }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance;
     public CameraController cc;
     public GameState gamestate = GameState.Pause;//游戏状态，包括运行暂停
-
+    public Vector3 StartPosition;
     public Transform SavePoint;
     [SerializeField] private int ringCount = 0;
     [SerializeField] private int clearCount;
@@ -35,12 +35,15 @@ public class GameManager : MonoBehaviour
     }
 
     public int DeadCount = 0;
-    public float GameTime = 0;
+    public Timer GameTimer;
 
     void Awake()
     {
         if (_instance != null)
-        { Destroy(this.gameObject); }
+        {
+            Destroy(_instance.gameObject);
+            _instance = this;
+        }
         else
         {
             DontDestroyOnLoad(this);
@@ -49,7 +52,8 @@ public class GameManager : MonoBehaviour
         CursorControl(true);
         ui = GetComponent<UI>();
         cc = FindObjectOfType<CameraController>();
-
+        GameTimer = transform.GetComponentInChildren<Timer>();
+        StartPosition = transform.position;
     }
     private void Start()
     {
@@ -61,6 +65,8 @@ public class GameManager : MonoBehaviour
     //测试添加删除物品
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        { nowRingCount = maxRingCount; }
         //按ESC暂停游戏
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -112,6 +118,8 @@ public class GameManager : MonoBehaviour
         data.z = SP.position.z;
         data.sceneName = MenuManager.instance.GetSaveScene();
         data.score = ringCount;
+        data.minute = GameTimer.minute;
+        data.second = GameTimer.second;
         //存檔
         SaveSystem.Save(data);
     }

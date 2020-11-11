@@ -29,6 +29,8 @@ public class UI : MonoBehaviour
     void CloseWinPanel(Scene current, Scene next)
     {
         winPanel.gameObject.SetActive(false);
+        point.SetActive(true);
+        timerText.gameObject.SetActive(true);
     }
 
     // Update is called once per frame

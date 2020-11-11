@@ -10,6 +10,7 @@ public class Land : StateMachineBehaviour
        animator.SetInteger("JumpCount", 0);
        animator.SetBool("Fly", false);
        animator.gameObject.GetComponent<SimpleCharacterControl>().ResetVelocity();
+       animator.gameObject.GetComponent<SimpleCharacterControl>().flyParticle.SetActive(false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

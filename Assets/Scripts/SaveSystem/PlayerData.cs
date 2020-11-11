@@ -8,6 +8,8 @@ public class PlayerData
     public float x, y, z;
     public string sceneName;
     public int score = 0;
+    public int minute = 0;
+    public int second = 0;
 }
 [System.Serializable]
 public class RingData
