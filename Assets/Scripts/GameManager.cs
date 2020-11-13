@@ -1,5 +1,7 @@
-﻿//游戏管理
+﻿//遊戲管理
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -10,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
     public CameraController cc;
-    public GameState gamestate = GameState.Pause;//游戏状态，包括运行暂停
+    public GameState gamestate = GameState.Pause;//遊戲狀態，包括運行暫停
     public Vector3 StartPosition;
     public Transform SavePoint;
     [SerializeField] private int ringCount = 0;
@@ -41,8 +43,7 @@ public class GameManager : MonoBehaviour
     {
         if (_instance != null)
         {
-            Destroy(_instance.gameObject);
-            _instance = this;
+            Destroy(this.gameObject);
         }
         else
         {
@@ -57,35 +58,38 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        //開啟遊戲設置
         MenuManager.instance.isAct = true;
         Time.timeScale = 0;
         CursorControl(true);
         gamestate = GameState.Pause;
     }
-    //测试添加删除物品
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
         { nowRingCount = maxRingCount; }
-        //按ESC暂停游戏
+        //按ESC暫停遊戲
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             _instance.TransformGameState();
+            _instance.SwitchGameState();
         }
         if (gamestate == GameState.Running)
         { CursorControl(false); }
         else if (gamestate == GameState.Pause)
         { CursorControl(true); }
     }
-    //改变游戏的运行状态，运行与暂停
+    //改變運行狀態
     public void TransformGameState()
     {
+        //運行
         if (gamestate == GameState.Running)
         {
             MenuManager.instance.isAct = true;
             Time.timeScale = 0;
             gamestate = GameState.Pause;
         }
+        //暫停
         else if (gamestate == GameState.Pause)
         {
             MenuManager.instance.isAct = false;
@@ -93,6 +97,7 @@ public class GameManager : MonoBehaviour
             gamestate = GameState.Running;
         }
     }
+    //滑鼠控制開關
     public void CursorControl(bool isCursorVisible)
     {
         if (isCursorVisible)
@@ -108,6 +113,7 @@ public class GameManager : MonoBehaviour
     }
     public void Save(Transform SP)
     {
+        // SceneManager.CreateScene("SaveScene");
         //記憶存檔點位置(暫時)
         SavePoint = SP;
         MenuManager.instance.SetSaveScene();
@@ -123,12 +129,12 @@ public class GameManager : MonoBehaviour
         //存檔
         SaveSystem.Save(data);
     }
-
+    //分數增加
     public void AddRing()
     {
         nowRingCount++;
     }
-
+    //確認分數是否達標
     public bool CheckRing()
     {
         if (ringCount == clearCount)
@@ -150,23 +156,27 @@ public class GameManager : MonoBehaviour
         ui.UI_ShowWin();
     }
 
-    //發布&監聽
+    //發布&監聽死亡事件
     public delegate void ManipulationHandler();
     public event ManipulationHandler onReset;
     protected virtual void OnPlayerDead()
     {
         if (onReset != null)
-        {
-            onReset(); /* 事件被触发 */
-        }
+        { onReset(); }
         else
-        {
-            Debug.LogError("event not fire");
-        }
+        { Debug.LogError("event not fire"); }
     }
-
     public void Dead()
+    { OnPlayerDead(); }
+    
+    //發布&監聽遊戲狀態切換
+    public delegate void TransformGameStateHandler();
+    public event TransformGameStateHandler onSwitchGameState;
+    protected virtual void SwitchGameState()
     {
-        OnPlayerDead();
+        if (onSwitchGameState != null)
+        { onSwitchGameState(); } /* 事件觸發 */
+        else
+        { Debug.LogError("event not fire"); }
     }
 }

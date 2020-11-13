@@ -106,7 +106,7 @@ public class SimpleCharacterControl : MonoBehaviour
                 m_collisions.Remove(collision.collider);
             }
             if (m_collisions.Count == 0)
-            { m_isGrounded = false; flyParticle.SetActive(true); }
+            { m_isGrounded = false; }
         }
         if (collision.collider.tag == "SavePoint")
         { transform.parent = collision.transform; }
@@ -121,7 +121,7 @@ public class SimpleCharacterControl : MonoBehaviour
             m_collisions.Remove(collision.collider);
         }
         if (m_collisions.Count == 0)
-        { m_isGrounded = false; flyParticle.SetActive(true); }
+        { m_isGrounded = false; }
         // if (collision.collider.tag == "Block")
         // { transform.parent = null; }
     }
@@ -213,7 +213,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (jumpCooldownOver && m_animator.GetInteger("JumpCount") < 2 && Input.GetKey(KeyCode.Space))
         {
             m_jumpTimeStamp = Time.time;
-            // sResetVelocity();
+            // ResetVelocity();
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
             m_animator.SetTrigger("Jump");
 
@@ -272,9 +272,12 @@ public class SimpleCharacterControl : MonoBehaviour
     }
     public void Dead()
     {
-        transform.position = GameManager._instance.SavePoint.position;
-        GameManager._instance.DeadCount++;
-        isControling = true;
+        if (this != null)
+        {
+            transform.position = GameManager._instance.SavePoint.position;
+            GameManager._instance.DeadCount++;
+            isControling = true;
+        }
     }
 
     private void Shoot()
@@ -307,7 +310,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
-            Debug.Log(hit.collider.name);
+            // Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
         {
@@ -334,10 +337,10 @@ public class SimpleCharacterControl : MonoBehaviour
         rightHand = null;
         rightFoot = null;
     }
-    public void PlayerControl(bool isControl)
+    public void LockPlayerControl()
     {
         if (m_isGrounded)
-        { isControling = isControl; }
+        { isControling = false; }
     }
     public Vector3 RayAim()
     {

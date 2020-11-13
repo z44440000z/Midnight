@@ -49,9 +49,12 @@ public class Tunnel : MonoBehaviour
 
     private void Reset()
     {
-        transform.position = originPos;
-        y = -30;
-        timers = 0;
-        isOn = false;
+        if (this != null)
+        {
+            transform.position = originPos;
+            y = -30;
+            timers = 0;
+            isOn = false;
+        }
     }
 }

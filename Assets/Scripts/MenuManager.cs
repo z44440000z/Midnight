@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Fungus;
 
 public class MenuManager : MonoBehaviour
 {
@@ -20,8 +19,6 @@ public class MenuManager : MonoBehaviour
     [Space(10), SerializeField, Range(1, 20)]
     private int speed;
     int i = 0;
-    [Header("對話")]
-    public Flowchart flowchart;
     void Awake()
     {
         if (instance != null)
@@ -31,12 +28,11 @@ public class MenuManager : MonoBehaviour
             DontDestroyOnLoad(this);
             instance = this;
         }
-        MenuManager.instance.isAct = true;
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        SceneManager.sceneLoaded += LoadNewScene;
     }
 
     // Update is called once per frame
@@ -64,22 +60,15 @@ public class MenuManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            flowchart.ExecuteBlock("New Game");
-            GameObject.FindWithTag("Player").GetComponent<SimpleCharacterControl>().ChangePlayerPosion(GameManager._instance.StartPosition);
-            GameManager._instance.TransformGameState();
-            MenuManager.instance.isAct = false;
-            MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
+            StartCoroutine(LoadScene(0));
         }
         else
         {
             StartCoroutine(LoadScene(0));
-            MenuManager.instance.isAct = false;
-            GameManager._instance.TransformGameState();
-            MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
         }
     }
 
-    public void ContinueButton()
+    public void ContinueButton()//讀取資料
     {
         PlayerData data = SaveSystem.Load();
         continueScene = data.sceneName;
@@ -113,11 +102,11 @@ public class MenuManager : MonoBehaviour
     public void ExitButton()
     { Application.Quit(); }
 
-    public void SetSaveScene()
+    public void SetSaveScene()//暫存現在場景名稱
     {
         continueScene = SceneManager.GetActiveScene().name;
     }
-    public string GetSaveScene()
+    public string GetSaveScene()//存檔現在場景名稱
     {
         if (continueScene != null)
         { return continueScene; }
@@ -154,19 +143,12 @@ public class MenuManager : MonoBehaviour
     {
         yield return null;
 
-        //Begin to load the Scene you specify
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ns);
-        //Don't let the Scene activate until you allow it to
         asyncOperation.allowSceneActivation = false;
-        Debug.Log("Pro :" + asyncOperation.progress);
-        //When the load is still in progress, output the Text and progress bar
         while (!asyncOperation.isDone)
         {
-            //Output the current progress
             m_Lable.text = " " + (asyncOperation.progress * 100) + "%";
-
-            // Check if the load has finished
-            if (asyncOperation.progress >= 0.9f)
+            if (asyncOperation.progress >= 0.90f)
             {
                 m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
@@ -174,5 +156,20 @@ public class MenuManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void LoadNewScene(Scene scene, LoadSceneMode mode)
+    {
+        if (scene == SceneManager.GetSceneByBuildIndex(0))
+        { StartCoroutine("EnterNewScene"); }
+
+    }
+
+    IEnumerator EnterNewScene()
+    {
+        MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
+        MenuManager.instance.m_Lable.GetComponent<TweenAlpha>().enabled = true;
+        GameManager._instance.TransformGameState();
+        yield return null;
     }
 }

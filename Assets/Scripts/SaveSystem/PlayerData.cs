@@ -11,8 +11,3 @@ public class PlayerData
     public int minute = 0;
     public int second = 0;
 }
-[System.Serializable]
-public class RingData
-{
-    public bool isGet = false;
-}

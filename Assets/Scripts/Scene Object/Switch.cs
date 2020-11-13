@@ -40,10 +40,10 @@ public class Switch : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         { switchOn = !switchOn; }
-        if (switchOn)
+        if (switchOn == !switchOn)
         { StartCoroutine("TunnelSwicthOn"); }
-        else
-        { StartCoroutine("TunnelSwicthOff"); }
+        // else
+        // { StartCoroutine("TunnelSwicthOff"); }
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -52,8 +52,8 @@ public class Switch : MonoBehaviour
             switchOn = !switchOn;
             if (switchOn)
             { StartCoroutine("TunnelSwicthOn"); }
-            else
-            { StartCoroutine("TunnelSwicthOff"); }
+            // else
+            // { StartCoroutine("TunnelSwicthOff"); }
         }
     }
 
@@ -100,7 +100,10 @@ public class Switch : MonoBehaviour
 
     private void Reset()
     {
-        switchOn = false;
-        this.gameObject.SetActive(true);
+        if (this != null)
+        {
+            switchOn = false;
+            this.gameObject.SetActive(true);
+        }
     }
 }

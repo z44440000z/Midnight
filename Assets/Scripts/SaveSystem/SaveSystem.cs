@@ -20,6 +20,16 @@ public static class SaveSystem
         fs.Close();
     }
 
+    public static void SaveSceneChange(SceneData data)
+    {
+        string path = Application.persistentDataPath + "/Scene.data";
+        FileStream fs = new FileStream(path, FileMode.Create);
+        BinaryFormatter formatter = new BinaryFormatter();
+        formatter.Serialize(fs, data);
+        Debug.Log("Save Scene");
+        fs.Close();
+    }
+
     // Load File
     public static PlayerData Load()
     {
@@ -41,5 +51,22 @@ public static class SaveSystem
         else
         { Debug.Log("Can't Find File"); }
         return new PlayerData();
+    }
+
+        public static SceneData LoadScene()
+    {
+        string path = Application.persistentDataPath + "/Scene.data";
+        if (File.Exists(path))
+        {
+            FileStream fs = new FileStream(path, FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+            SceneData data = formatter.Deserialize(fs) as SceneData;
+            Debug.Log("Load Scene");
+            fs.Close();
+            return data;
+        }
+        else
+        { Debug.Log("Can't Find File"); }
+        return new SceneData();
     }
 }

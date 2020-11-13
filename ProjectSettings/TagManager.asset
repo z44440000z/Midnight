@@ -11,6 +11,8 @@ TagManager:
   - Block
   - Ring
   - ClimbPoint
+  - MenuPos
+  - SceneSetting
   layers:
   - Default
   - TransparentFX

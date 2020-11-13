@@ -41,7 +41,7 @@ public class AI : MonoBehaviour
                     if (!audioSource.isPlaying)
                     {
                         audioSource.Play();
-                        pc.PlayerControl(false);
+                        pc.LockPlayerControl();
                         StartCoroutine("Timer");
                     }
 

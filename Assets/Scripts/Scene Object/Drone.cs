@@ -94,9 +94,12 @@ public class Drone : MonoBehaviour
 
     private void Reset()
     {
-        transform.position = originPos;
-        isFloat = false;
-        isDestory = false;
-        this.gameObject.SetActive(true);
+        if (this != null)
+        {
+            transform.position = originPos;
+            isFloat = false;
+            isDestory = false;
+            this.gameObject.SetActive(true);
+        }
     }
 }
