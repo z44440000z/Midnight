@@ -6,12 +6,15 @@ public class Drone : MonoBehaviour
 {
     [SerializeField] private float destoryTime = 1;
     [SerializeField] private float upForce = 1;
-    [SerializeField] private bool isFloat = false;
+    [SerializeField] private bool isOn = false;
     [SerializeField] private bool isDestory = false;
 
     private Rigidbody mrigidBody;
+    private Animator mAnimator;
     private Vector3 originPos;
-    private Vector3 startPos;
+    private Vector3 shakePos;
+    [SerializeField] private float shakeDistance = 1;
+
 
 
     private void OnCollisionEnter(Collision collision)
@@ -19,8 +22,7 @@ public class Drone : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             t = 0;
-            isFloat = false;
-            // collision.transform.parent = this.transform;
+            isOn = false;
             StartCoroutine("Countdown");
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Dead"))
@@ -31,8 +33,7 @@ public class Drone : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             t = 0;
-            isFloat = true;
-            startPos = transform.position;
+            isOn = true;
             collision.transform.parent = null;
         }
     }
@@ -48,6 +49,8 @@ public class Drone : MonoBehaviour
     {
         mrigidBody = GetComponent<Rigidbody>();
         originPos = transform.position;
+        shakePos = originPos + new Vector3(0, -shakeDistance, 0);
+        mAnimator = GetComponent<Animator>();
         GameManager._instance.onReset += new GameManager.ManipulationHandler(Reset);
     }
     float t = 0;
@@ -56,25 +59,13 @@ public class Drone : MonoBehaviour
     {
         if (!isDestory)
         {
-            if (isFloat)
-            {
-
-                if (Vector3.Distance(startPos, originPos) < 0.5f)
-                { mrigidBody.velocity = Vector3.zero; }
-                else
-                {
-                    if (t < 1)
-                    {
-                        t += Time.deltaTime / 5;
-                        mrigidBody.MovePosition(Vector3.Lerp(startPos, originPos, t));
-                    }
-                }
-            }
+            if (isOn)
+            { }
             else
             {
                 if (Vector3.Distance(transform.position, originPos) < 0.5f)
                 { }
-                else { UpForce(upForce); }
+                else { }
             }
         }
         else
@@ -83,8 +74,27 @@ public class Drone : MonoBehaviour
 
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(destoryTime);
-        isDestory = true;
+        transform.position = Vector3.Lerp(originPos, shakePos, t);
+        mAnimator.SetBool("Down", true);
+
+        //Get hash of animation
+        int animHash = Animator.StringToHash("Base Layer.robot_drop");
+        //Wait until we enter the current state
+        while (mAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != animHash)
+        {
+            yield return null;
+        }
+
+        float counter = 0;
+        float waitTime = mAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        //Now, Wait until the current state is done playing
+        while (counter < (waitTime))
+        {
+            counter += Time.deltaTime;
+            yield return null;
+            isDestory = true;
+        }
     }
 
     void UpForce(float forcePower)
@@ -96,9 +106,9 @@ public class Drone : MonoBehaviour
     {
         if (this != null)
         {
-            transform.position = originPos;
-            isFloat = false;
+            isOn = false;
             isDestory = false;
+            transform.position = originPos;
             this.gameObject.SetActive(true);
         }
     }

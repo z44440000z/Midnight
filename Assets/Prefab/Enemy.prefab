@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 297949920693868506}
   - component: {fileID: 297949920693868505}
   - component: {fileID: 297949920693868504}
+  - component: {fileID: 44501624}
+  - component: {fileID: 44501625}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 297949920693868487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -126.33, y: 20.88, z: 51.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 436994229026084745}
   - {fileID: 297949919921103238}
@@ -64,8 +66,9 @@ MonoBehaviour:
   animator: {fileID: 436994229026084746}
   audioSource: {fileID: 0}
   player: {fileID: 0}
-  probeDistance: 20
-  probeAngle: 120
+  probeDistance: 30
+  probeAngle: 60
+  Segments: 5
 --- !u!82 &297949920693868505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87,7 +90,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 26.725403
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -122,7 +125,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -200,6 +203,51 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 1
   m_ShadowAngle: 0
+--- !u!33 &44501624
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297949920693868487}
+  m_Mesh: {fileID: 0}
+--- !u!23 &44501625
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297949920693868487}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &297949919921502982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +255,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 297949920693868507}
     m_Modifications:
+    - target: {fileID: 100000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
+      propertyPath: m_Name
+      value: VolumetricLightShaft
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -262,14 +318,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
       propertyPath: m_LocalScale.z
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
-      propertyPath: m_Name
-      value: VolumetricLightShaft
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
-      propertyPath: m_Layer
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: a55883f65fc6e3b4eb3163e63b851431, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public int maxRingCount
     {
         get { return clearCount; }
-        set { maxRingCount = value; }
+        set { clearCount = value; }
     }
 
     public int DeadCount = 0;
@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         else if (gamestate == GameState.Pause)
         {
             MenuManager.instance.isAct = false;
+            MenuManager.instance.ResetText();
             Time.timeScale = 1;
             gamestate = GameState.Running;
         }
@@ -126,8 +127,20 @@ public class GameManager : MonoBehaviour
         data.score = ringCount;
         data.minute = GameTimer.minute;
         data.second = GameTimer.second;
+        data.time = GameTimer.GetTime();
+
+        //場景存檔
+        Ring[] r = GameObject.FindObjectOfType<SceneSetter>().ringObj;
+        data.ringDataArray = new RingData[r.Length];
+        for (var i = 0; i < r.Length; i++)
+        {
+            data.ringDataArray[i] = new RingData();
+            data.ringDataArray[i].index = r[i].index;
+            data.ringDataArray[i].isGet = r[i].isGet;
+        }
         //存檔
         SaveSystem.Save(data);
+        // SaveSystem.SaveSceneChange(sdata);
     }
     //分數增加
     public void AddRing()
@@ -168,7 +181,7 @@ public class GameManager : MonoBehaviour
     }
     public void Dead()
     { OnPlayerDead(); }
-    
+
     //發布&監聽遊戲狀態切換
     public delegate void TransformGameStateHandler();
     public event TransformGameStateHandler onSwitchGameState;
@@ -177,6 +190,6 @@ public class GameManager : MonoBehaviour
         if (onSwitchGameState != null)
         { onSwitchGameState(); } /* 事件觸發 */
         else
-        { Debug.LogError("event not fire"); }
+        { }
     }
 }

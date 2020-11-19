@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SimpleCharacterControl : MonoBehaviour
 {
-    private bool isControling = true;
+    [SerializeField] private bool isControling = true;
     #region Move variable
     [SerializeField] private float m_moveSpeed = 5;
     [SerializeField] private float m_jumpForce = 10;
@@ -43,7 +43,9 @@ public class SimpleCharacterControl : MonoBehaviour
     private float intervalTime = 0;
     private float t = 0.2f;
     [SerializeField] public LayerMask layermask;
+    public GameObject Shoot_Vcam;
     private int maxDistatnce = 1000;
+    [Space(10)]
     public GameObject groundChecker;
     #endregion
 
@@ -67,7 +69,6 @@ public class SimpleCharacterControl : MonoBehaviour
                     m_collisions.Add(collision.collider);
                 }
                 m_isGrounded = true;
-                flyParticle.SetActive(false);
                 m_animator.SetInteger("JumpCount", 0);
             }
         }
@@ -92,7 +93,6 @@ public class SimpleCharacterControl : MonoBehaviour
         if (validSurfaceNormal)
         {
             m_isGrounded = true;
-            flyParticle.SetActive(false);
 
             if (!m_collisions.Contains(collision.collider))
             {
@@ -159,7 +159,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (isControling)
         {
             m_animator.SetBool("Grounded", m_isGrounded);
-            if (!m_State.IsName("Base Layer.Climb.ClimbUp") && !m_State.IsName("Base Layer.Climb.ClimbUp"))
+            if (!m_State.IsName("Base Layer.Climb.ClimbUp") && !m_State.IsName("Base Layer.Climb.ClimbDown") && !m_State.IsName("Base Layer.Climb.Climbing"))
             {
                 float v = Input.GetAxis("Vertical");
                 float h = Input.GetAxis("Horizontal");
@@ -191,16 +191,25 @@ public class SimpleCharacterControl : MonoBehaviour
                 { SmoothRotation(Camera.main.transform.eulerAngles.y + 90); }
                 else if (h < 0)
                 { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
-            }
 
-            //飛行
-            Flying();
-            //跳躍
-            JumpingAndLanding();
+                if (Shoot_Vcam != null)
+                {
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    { Shoot_Vcam.SetActive(true); }
+                    else
+                    { Shoot_Vcam.SetActive(false); }
+                }
+
+                //射擊
+                Shoot();
+                //飛行
+                Flying();
+                //跳躍
+                JumpingAndLanding();
+            }
             //攀爬
             Climbing();
-            //射擊
-            Shoot();
+
             groundChecker.transform.position = GroundCheck();
             m_wasGrounded = m_isGrounded;
         }
@@ -236,7 +245,8 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            m_rigidBody.AddForce(-Physics.gravity * 1f);
+            if (m_rigidBody.velocity.y <= 0)
+            { m_rigidBody.AddForce(-Physics.gravity * 0.9f); }
         }
     }
     private void Climbing()
@@ -251,20 +261,19 @@ public class SimpleCharacterControl : MonoBehaviour
                 if (m_animator.GetBool("Climb"))
                 { m_animator.SetBool("Climb", false); }
                 else if (isClimbPoint && !m_animator.GetBool("Climb"))
-                {
-                    m_animator.SetBool("Climb", true);
-                    Vector3.Lerp(transform.position, rightFoot.position, Time.deltaTime * m_interpolation);
-                }
+                { m_animator.SetBool("Climb", true); }
             }
 
             if (m_State.IsName("Base Layer.Climb.ClimbUp"))
             {
+                m_animator.applyRootMotion = true;
                 transform.rotation = rightHand.rotation;
                 //調用MatchTarget方法				
                 m_animator.MatchTarget(rightHand.position, rightHand.rotation, AvatarTarget.RightHand, new MatchTargetWeightMask(Vector3.one, 0), climbUpMatchStart, climbUpMatchEnd);
             }
             if (m_State.IsName("Base Layer.Climb.ClimbDown"))
             {
+                m_animator.applyRootMotion = true;
                 transform.rotation = rightFoot.rotation;
                 m_animator.MatchTarget(rightFoot.position, rightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), climbDownMatchStart, climbDownMatchEnd);
             }
@@ -339,9 +348,11 @@ public class SimpleCharacterControl : MonoBehaviour
     }
     public void LockPlayerControl()
     {
-        if (m_isGrounded)
-        { isControling = false; }
+        isControling = false;
     }
+
+    public void UnlockPlayerControl()
+    { isControling = true; }
     public Vector3 RayAim()
     {
         Vector3 targetPoint;
@@ -351,7 +362,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
-            Debug.Log(hit.collider.name);
+            // Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
         {

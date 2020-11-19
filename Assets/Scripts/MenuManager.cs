@@ -33,6 +33,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += LoadNewScene;
+        SceneManager.sceneLoaded += LoadContinueScene;
     }
 
     // Update is called once per frame
@@ -58,6 +59,7 @@ public class MenuManager : MonoBehaviour
 
     public void NewGameButton()
     {
+        GameManager._instance.GameTimer.TimeReset();
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             StartCoroutine(LoadScene(0));
@@ -72,10 +74,13 @@ public class MenuManager : MonoBehaviour
     {
         PlayerData data = SaveSystem.Load();
         continueScene = data.sceneName;
+        GameManager._instance.SavePoint = new GameObject().transform;
+        GameManager._instance.SavePoint.name = "TemporarySavePoint";
         GameManager._instance.SavePoint.position = new Vector3(data.x, data.y, data.z);
+        GameManager._instance.SavePoint.SetParent(this.transform);
         GameManager._instance.nowRingCount = data.score;
-        GameManager._instance.GameTimer.minute = data.minute;
-        GameManager._instance.GameTimer.second = data.second;
+        GameManager._instance.GameTimer.SetTime(data.time);
+
         if (continueScene != "")
         { StartCoroutine(LoadScene(continueScene)); }
         else
@@ -96,6 +101,7 @@ public class MenuManager : MonoBehaviour
     }
     public void ChangeNextScene()
     {
+        GameManager._instance.GameTimer.TimeReset();
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -121,7 +127,7 @@ public class MenuManager : MonoBehaviour
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ns);
         //Don't let the Scene activate until you allow it to
         asyncOperation.allowSceneActivation = false;
-        Debug.Log("Pro :" + asyncOperation.progress);
+        // Debug.Log("Pro :" + asyncOperation.progress);
         //When the load is still in progress, output the Text and progress bar
         while (!asyncOperation.isDone)
         {
@@ -157,12 +163,11 @@ public class MenuManager : MonoBehaviour
             yield return null;
         }
     }
-
+    //加載新遊戲場景
     void LoadNewScene(Scene scene, LoadSceneMode mode)
     {
         if (scene == SceneManager.GetSceneByBuildIndex(0))
         { StartCoroutine("EnterNewScene"); }
-
     }
 
     IEnumerator EnterNewScene()
@@ -170,6 +175,24 @@ public class MenuManager : MonoBehaviour
         MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
         MenuManager.instance.m_Lable.GetComponent<TweenAlpha>().enabled = true;
         GameManager._instance.TransformGameState();
+
+        yield return null;
+    }
+    //加載之前遊戲場景
+    void LoadContinueScene(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine("EnterContinueScene");
+    }
+    IEnumerator EnterContinueScene()
+    {
+        if (GameManager._instance.SavePoint)
+        {
+            FindObjectOfType<SimpleCharacterControl>().ChangePlayerPosion(GameManager._instance.SavePoint.position);
+            Destroy(GameManager._instance.SavePoint.gameObject);
+            GameManager._instance.SavePoint = null;
+        }
+        else
+        { Debug.Log("沒有成功加載!"); }
         yield return null;
     }
 }

@@ -23,7 +23,7 @@ public class UI : MonoBehaviour
     {
         GetClassCondition();
         SceneManager.activeSceneChanged += CloseWinPanel;
-        timer = timerText.GetComponent<Timer>();
+        timer = GameManager._instance.GameTimer;
     }
 
     void CloseWinPanel(Scene current, Scene next)

@@ -7,7 +7,6 @@ using UnityEditor;
 public class RingData
 {
     public int index;
-    public float x,y,z;
     public bool isGet = false;
 }
 
@@ -18,5 +17,4 @@ public class SceneData : ScriptableObject
 {
     public int SceneIndex;
     public int RingCount;
-    public RingData[] ringDataArray;
 }

@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     bool isPause;
-    float timer_f = 0f;
-    int timer_i = 0;
-    public int minute = 0;
-    public int second = 0;
+    float timer_f;
+    int timer_i;
+    public int minute;
+    public int second;
     private void Start()
     {
-        SceneManager.activeSceneChanged += TimeReset;
+
     }
     // Update is called once per frame
     void Update()
@@ -31,11 +31,21 @@ public class Timer : MonoBehaviour
         minute = timer_i / 60;
         second = timer_i % 60;
     }
-    public void TimeReset(Scene current, Scene next)
+    public void TimeReset()
     {
         timer_f = 0f;
         timer_i = 0;
-        minute = 0;
-        second = 0;
+    }
+
+    public void SetTime(float time_f)
+    {
+        timer_f = time_f;
+        timer_i = (int)timer_f;
+        turn_time();
+    }
+
+    public float GetTime()
+    {
+        return timer_f;
     }
 }

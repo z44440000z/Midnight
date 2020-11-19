@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneSetter : MonoBehaviour
 {
@@ -9,31 +10,18 @@ public class SceneSetter : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (sceneData.ringDataArray.Length == 0)
+        // SceneManager.sceneLoaded += LoadNewScene;
+        GameManager._instance.maxRingCount = sceneData.RingCount;
+    
+        ringObj = new Ring[sceneData.RingCount];
+        Ring[] rA = GameObject.FindObjectsOfType<Ring>();
+        //儲存場景、收集物資訊
+        for (var i = 0; i < ringObj.Length; i++)
         {
-            ringObj = GameObject.FindObjectsOfType<Ring>();
-            //儲存場景、收集物資訊
-            sceneData.ringDataArray = new RingData[ringObj.Length];
-            for (var i = 0; i < ringObj.Length; i++)
-            {
-                sceneData.ringDataArray[i].x = ringObj[i].transform.position.x;
-                sceneData.ringDataArray[i].y = ringObj[i].transform.position.y;
-                sceneData.ringDataArray[i].z = ringObj[i].transform.position.z;
-            }
-            Debug.Log("Saved Scene");
+            ringObj[i] = rA[i];
+            ringObj[i].index = i;
         }
-        else
-        {
-            ringObj = GameObject.FindObjectsOfType<Ring>();
-            //讀取資料
-            for (var i = 0; i < ringObj.Length; i++)
-            {
-                if (sceneData.ringDataArray[i].isGet)
-                { ringObj[i].gameObject.SetActive(false); }
-                else
-                { ringObj[i].transform.position = new Vector3(sceneData.ringDataArray[i].x, sceneData.ringDataArray[i].y, sceneData.ringDataArray[i].z); }
-            }
-        }
+        Debug.Log("Load Scene Data");
     }
 
     // Update is called once per frame

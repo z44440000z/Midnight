@@ -34,7 +34,7 @@ public GameObject car;
     #region private function
     private void OnMove(Vector3 newPos)
     {
-        car.transform.position = Vector3.Lerp(car.transform.position, newPos, alpha * Time.deltaTime);
+        car.transform.position = Vector3.MoveTowards(car.transform.position, newPos, alpha * Time.deltaTime);
     }
     IEnumerator TimerAndReset()
     {

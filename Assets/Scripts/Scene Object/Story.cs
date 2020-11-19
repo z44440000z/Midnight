@@ -8,16 +8,23 @@ public class Story : MonoBehaviour
     [Header("對話")]
     public Flowchart flowchart;
     private GameObject sayDialog;
+
+    public GameObject StartPoint;
+    private SimpleCharacterControl player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<SimpleCharacterControl>();
         sayDialog = GetComponentInChildren<SayDialog>().gameObject;
         GameManager._instance.onSwitchGameState += new GameManager.TransformGameStateHandler(ShowAndHideSayDialog);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        { flowchart.ExecuteBlock("New Game"); }
+        {
+            player.LockPlayerControl();
+            flowchart.ExecuteBlock("New Game");
+        }
     }
     void ShowAndHideSayDialog()
     {
@@ -28,5 +35,13 @@ public class Story : MonoBehaviour
             if (GameManager._instance.gamestate == GameState.Running)
             { sayDialog.GetComponent<Canvas>().enabled = true; }
         }
+    }
+    private void OnDestroy()
+    {
+        if (player != null)
+        { player.UnlockPlayerControl(); }
+        else
+        { Debug.LogError("no player"); }
+        StartPoint.SetActive(true);
     }
 }
