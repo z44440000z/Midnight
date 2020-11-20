@@ -86,10 +86,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6967179526577208408}
-  - component: {fileID: 276398592932771087}
   - component: {fileID: 6967179526580632698}
   - component: {fileID: 6967179526579633722}
-  - component: {fileID: 5780600755265505785}
   m_Layer: 0
   m_Name: switch_big
   m_TagString: Untagged
@@ -104,32 +102,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6967179526577430648}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 4.699765, y: 2.7887716, z: 0.4324641}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6967179526577208390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
---- !u!114 &276398592932771087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967179526577430648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c0ea4b9d3828f40b2945d8a3ef7a39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnOnTunnels: {fileID: 0}
-  turnOffTunnels: {fileID: 0}
-  intervalTime: 1
-  switchOn: 0
-  turnOnArray: []
-  turnOffArray: []
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6967179526580632698
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -175,16 +155,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5780600755265505785
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967179526577430648}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0732245, y: 1, z: 3.4437773}
-  m_Center: {x: 0.25363517, y: 0.24511787, z: 1.7218881}
