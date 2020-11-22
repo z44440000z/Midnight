@@ -44,7 +44,7 @@ public class SimpleCharacterControl : MonoBehaviour
     private float t = 0.2f;
     [SerializeField] public LayerMask layermask;
     public GameObject Shoot_Vcam;
-    private int maxDistatnce = 1000;
+    private int maxDistatnce = 500;
     [Space(10)]
     public GameObject groundChecker;
     #endregion
@@ -268,12 +268,13 @@ public class SimpleCharacterControl : MonoBehaviour
             {
                 m_animator.applyRootMotion = true;
                 transform.rotation = rightHand.rotation;
+                transform.position = rightHand.position;
                 //調用MatchTarget方法				
                 m_animator.MatchTarget(rightHand.position, rightHand.rotation, AvatarTarget.RightHand, new MatchTargetWeightMask(Vector3.one, 0), climbUpMatchStart, climbUpMatchEnd);
             }
             if (m_State.IsName("Base Layer.Climb.ClimbDown"))
             {
-                m_animator.applyRootMotion = true;
+                // m_animator.applyRootMotion = true;
                 transform.rotation = rightFoot.rotation;
                 m_animator.MatchTarget(rightFoot.position, rightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), climbDownMatchStart, climbDownMatchEnd);
             }
@@ -291,7 +292,7 @@ public class SimpleCharacterControl : MonoBehaviour
 
     private void Shoot()
     {
-        RayAim();
+        Vector3 look = RayAim();
         if (Input.GetButton("Fire1"))
         {
             SmoothRotation(Camera.main.transform.eulerAngles.y);
@@ -301,10 +302,11 @@ public class SimpleCharacterControl : MonoBehaviour
                 intervalTime = t;
                 m_animator.SetTrigger("Shoot");
                 GameObject bullet = Instantiate(projectile, muzzle.position, muzzle.rotation) as GameObject;
-                bullet.transform.LookAt(RayAim());
+                bullet.transform.LookAt(look,Vector3.up);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                rb.velocity = bullet.transform.forward * throwerPower;
                 Physics.IgnoreCollision(rb.GetComponent<Collider>(), this.GetComponent<Collider>());
+                rb.velocity = bullet.transform.forward * throwerPower;
+                
             }
         }
         if (Input.GetButtonUp("Fire1"))
@@ -357,19 +359,19 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         Vector3 targetPoint;
         RaycastHit hit;
-        Ray ray = new Ray(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 2f)), Camera.main.transform.TransformDirection(Vector3.forward));
+        Ray ray = new Ray(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward));
 
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
-            // Debug.Log(hit.collider.name);
+            Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
         {
             //將目標點設置在攝像機自身前方1000米處
             targetPoint = Camera.main.transform.forward * maxDistatnce;
         }
-        Debug.DrawRay(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward) * 100, Color.red);
+        Debug.DrawRay(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward) * maxDistatnce, Color.red);
         return targetPoint;
     }
 

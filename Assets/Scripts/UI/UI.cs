@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
+    public Canvas ui_canvas;
     [Header("Point")]
     public GameObject point;
     public Text now;
@@ -24,6 +25,7 @@ public class UI : MonoBehaviour
         GetClassCondition();
         SceneManager.activeSceneChanged += CloseWinPanel;
         timer = GameManager._instance.GameTimer;
+        ui_canvas = GetComponentInChildren<Canvas>();
     }
 
     void CloseWinPanel(Scene current, Scene next)
@@ -31,6 +33,7 @@ public class UI : MonoBehaviour
         winPanel.gameObject.SetActive(false);
         point.SetActive(true);
         timerText.gameObject.SetActive(true);
+        ui_canvas.worldCamera = Camera.main;
     }
 
     // Update is called once per frame

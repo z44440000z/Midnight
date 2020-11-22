@@ -23,5 +23,6 @@ public class Follow : MonoBehaviour
         if (!FollowTarget)
         { FollowTarget = GameObject.FindWithTag("MenuPos").transform; }
         transform.position = FollowTarget.position;
+        transform.rotation = FollowTarget.rotation;
     }
 }

@@ -21,7 +21,6 @@ public class Drone : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            t = 0;
             isOn = false;
             StartCoroutine("Countdown");
         }
@@ -74,6 +73,7 @@ public class Drone : MonoBehaviour
 
     IEnumerator Countdown()
     {
+        t = 0;
         transform.position = Vector3.Lerp(originPos, shakePos, t);
         mAnimator.SetBool("Down", true);
 

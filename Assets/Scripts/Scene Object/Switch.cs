@@ -11,6 +11,7 @@ public class Switch : MonoBehaviour
     [SerializeField] private bool switchOn = false;
     [SerializeField] private Tunnel[] turnOnArray;
     [SerializeField] private Tunnel[] turnOffArray;
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class Switch : MonoBehaviour
                 turnOffArray[i] = turnOffTunnels.GetChild(i).GetComponent<Tunnel>();
             }
         }
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,10 @@ public class Switch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         { switchOn = !switchOn; }
         if (switchOn == !switchOn)
-        { StartCoroutine("TunnelSwicthOn"); }
+        {
+            StartCoroutine("TunnelSwicthOn");
+            animator.SetBool("ON", true);
+        }
         // else
         // { StartCoroutine("TunnelSwicthOff"); }
     }
@@ -51,7 +56,10 @@ public class Switch : MonoBehaviour
         {
             switchOn = !switchOn;
             if (switchOn)
-            { StartCoroutine("TunnelSwicthOn"); }
+            {
+                StartCoroutine("TunnelSwicthOn");
+                animator.SetBool("ON", true);
+            }
             // else
             // { StartCoroutine("TunnelSwicthOff"); }
         }

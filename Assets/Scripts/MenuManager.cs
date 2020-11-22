@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject mainPanel;
     [SerializeField] GameObject optionsPanel;
     [SerializeField] UILabel m_Lable;
+    Vector3 originPos;
     // [SerializeField] Text m_Text;
 
     [Header("場景")]
@@ -34,6 +35,7 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += LoadNewScene;
         SceneManager.sceneLoaded += LoadContinueScene;
+        originPos =mainPanel.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -93,6 +95,8 @@ public class MenuManager : MonoBehaviour
     public void ResetText()
     {
         m_Lable.text = "";
+        mainPanel.transform.localPosition = originPos;
+        mainPanel.transform.localPosition = originPos;
     }
 
     public void ChangeScene(string ns)
