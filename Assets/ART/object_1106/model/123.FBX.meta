@@ -1,0 +1,320 @@
+fileFormatVersion: 2
+guid: 439c7eb938c70ce40b6e759b6137c8d9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: bridge
+    100004: bridge_light
+    100006: bridge_window
+    100008: building_bottom
+    100010: building_mid01
+    100012: building_mid01_light
+    100014: building_mid02
+    100016: building_mid02_light
+    100018: building_top
+    100020: building_top_light
+    100022: car
+    100024: kanban_image
+    100026: kanban_L
+    100028: kanban_L_leg
+    100030: kanban_R
+    100032: kanban_R_leg
+    100034: kanban_word01
+    100036: kanban_word02
+    100038: kanban_word03
+    100040: kanban_word04
+    100042: kanban_word05
+    100044: kanban_word06
+    100046: kanban_word07
+    100048: kanban_word08
+    100050: kanban_word09
+    100052: neon_01
+    100054: neon_02
+    100056: neon_03
+    100058: robot_body
+    100060: robot_leg1
+    100062: robot_leg1_1
+    100064: robot_leg2
+    100066: robot_leg2_1
+    100068: robot_leg3
+    100070: robot_leg3_1
+    100072: robot_leg4
+    100074: robot_leg4_1
+    100076: robot_light
+    100078: switch_big
+    100080: switch_big_light001
+    100082: switch_small
+    100084: switch_small_light
+    400000: //RootNode
+    400002: bridge
+    400004: bridge_light
+    400006: bridge_window
+    400008: building_bottom
+    400010: building_mid01
+    400012: building_mid01_light
+    400014: building_mid02
+    400016: building_mid02_light
+    400018: building_top
+    400020: building_top_light
+    400022: car
+    400024: kanban_image
+    400026: kanban_L
+    400028: kanban_L_leg
+    400030: kanban_R
+    400032: kanban_R_leg
+    400034: kanban_word01
+    400036: kanban_word02
+    400038: kanban_word03
+    400040: kanban_word04
+    400042: kanban_word05
+    400044: kanban_word06
+    400046: kanban_word07
+    400048: kanban_word08
+    400050: kanban_word09
+    400052: neon_01
+    400054: neon_02
+    400056: neon_03
+    400058: robot_body
+    400060: robot_leg1
+    400062: robot_leg1_1
+    400064: robot_leg2
+    400066: robot_leg2_1
+    400068: robot_leg3
+    400070: robot_leg3_1
+    400072: robot_leg4
+    400074: robot_leg4_1
+    400076: robot_light
+    400078: switch_big
+    400080: switch_big_light001
+    400082: switch_small
+    400084: switch_small_light
+    2100000: 02 - Default
+    2100002: 03 - Default
+    2100004: 24 - Default
+    2100006: 08 - Default
+    2100008: 10 - Default
+    2100010: 05 - Default
+    2100012: 09 - Default
+    2100014: _model0905-0palette
+    2100016: 12 - Default
+    2100018: 06 - Default
+    2100020: 11 - Default
+    2100022: 04 - Default
+    2100024: 07 - Default
+    2100026: 13 - Default
+    2100028: 23 - Default
+    2300000: bridge
+    2300002: bridge_light
+    2300004: bridge_window
+    2300006: building_bottom
+    2300008: building_mid01
+    2300010: building_mid01_light
+    2300012: building_mid02
+    2300014: building_mid02_light
+    2300016: building_top
+    2300018: building_top_light
+    2300020: car
+    2300022: kanban_image
+    2300024: kanban_L
+    2300026: kanban_L_leg
+    2300028: kanban_R
+    2300030: kanban_R_leg
+    2300032: kanban_word01
+    2300034: kanban_word02
+    2300036: kanban_word03
+    2300038: kanban_word04
+    2300040: kanban_word05
+    2300042: kanban_word06
+    2300044: kanban_word07
+    2300046: kanban_word08
+    2300048: kanban_word09
+    2300050: neon_01
+    2300052: neon_02
+    2300054: neon_03
+    2300056: robot_body
+    2300058: robot_leg1
+    2300060: robot_leg1_1
+    2300062: robot_leg2
+    2300064: robot_leg2_1
+    2300066: robot_leg3
+    2300068: robot_leg3_1
+    2300070: robot_leg4
+    2300072: robot_leg4_1
+    2300074: robot_light
+    2300076: switch_big
+    2300078: switch_big_light001
+    2300080: switch_small
+    2300082: switch_small_light
+    3300000: bridge
+    3300002: bridge_light
+    3300004: bridge_window
+    3300006: building_bottom
+    3300008: building_mid01
+    3300010: building_mid01_light
+    3300012: building_mid02
+    3300014: building_mid02_light
+    3300016: building_top
+    3300018: building_top_light
+    3300020: car
+    3300022: kanban_image
+    3300024: kanban_L
+    3300026: kanban_L_leg
+    3300028: kanban_R
+    3300030: kanban_R_leg
+    3300032: kanban_word01
+    3300034: kanban_word02
+    3300036: kanban_word03
+    3300038: kanban_word04
+    3300040: kanban_word05
+    3300042: kanban_word06
+    3300044: kanban_word07
+    3300046: kanban_word08
+    3300048: kanban_word09
+    3300050: neon_01
+    3300052: neon_02
+    3300054: neon_03
+    3300056: robot_body
+    3300058: robot_leg1
+    3300060: robot_leg1_1
+    3300062: robot_leg2
+    3300064: robot_leg2_1
+    3300066: robot_leg3
+    3300068: robot_leg3_1
+    3300070: robot_leg4
+    3300072: robot_leg4_1
+    3300074: robot_light
+    3300076: switch_big
+    3300078: switch_big_light001
+    3300080: switch_small
+    3300082: switch_small_light
+    4300000: robot_body
+    4300002: robot_leg1
+    4300004: robot_leg1_1
+    4300006: robot_leg3
+    4300008: robot_leg3_1
+    4300010: robot_leg2
+    4300012: robot_leg2_1
+    4300014: robot_leg4
+    4300016: robot_leg4_1
+    4300018: robot_light
+    4300020: kanban_word01
+    4300022: kanban_L
+    4300024: kanban_L_leg
+    4300026: kanban_R
+    4300028: kanban_R_leg
+    4300030: kanban_image
+    4300032: building_bottom
+    4300034: neon_01
+    4300036: neon_02
+    4300038: building_top
+    4300040: building_top_light
+    4300042: building_mid01
+    4300044: building_mid01_light
+    4300046: building_mid02
+    4300048: building_mid02_light
+    4300050: neon_03
+    4300052: switch_small
+    4300054: switch_small_light
+    4300056: switch_big
+    4300058: switch_big_light001
+    4300060: car
+    4300062: bridge
+    4300064: bridge_light
+    4300066: bridge_window
+    4300068: kanban_word02
+    4300070: kanban_word03
+    4300072: kanban_word04
+    4300074: kanban_word05
+    4300076: kanban_word06
+    4300078: kanban_word07
+    4300080: kanban_word08
+    4300082: kanban_word09
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

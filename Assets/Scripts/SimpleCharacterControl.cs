@@ -302,11 +302,11 @@ public class SimpleCharacterControl : MonoBehaviour
                 intervalTime = t;
                 m_animator.SetTrigger("Shoot");
                 GameObject bullet = Instantiate(projectile, muzzle.position, muzzle.rotation) as GameObject;
-                bullet.transform.LookAt(look,Vector3.up);
+                bullet.transform.LookAt(look, Vector3.up);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 Physics.IgnoreCollision(rb.GetComponent<Collider>(), this.GetComponent<Collider>());
                 rb.velocity = bullet.transform.forward * throwerPower;
-                
+
             }
         }
         if (Input.GetButtonUp("Fire1"))
@@ -328,6 +328,7 @@ public class SimpleCharacterControl : MonoBehaviour
             //將目標點設置在攝像機自身前方1000米處
             targetPoint = -transform.up * maxDistatnce;
         }
+        targetPoint -= Vector3.up * 0.1f;
         return targetPoint;
     }
     #endregion

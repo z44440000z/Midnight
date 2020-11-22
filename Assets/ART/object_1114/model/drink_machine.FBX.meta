@@ -1,0 +1,139 @@
+fileFormatVersion: 2
+guid: 90850287725ae854fbfa41172a5428c9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: drink_arrow
+    100002: drink_arrow_02
+    100004: drink_glass
+    100006: //RootNode
+    100008: drink_picture
+    100010: drink_sign_01
+    100012: drink_sign_01_light1
+    100014: drink_sign_01_light1 1
+    100016: drink_sign_02
+    400000: drink_arrow
+    400002: drink_arrow_02
+    400004: drink_glass
+    400006: //RootNode
+    400008: drink_picture
+    400010: drink_sign_01
+    400012: drink_sign_01_light1
+    400014: drink_sign_01_light1 1
+    400016: drink_sign_02
+    2100000: 24 - Default
+    2100002: 21 - Default
+    2100004: 'Material #1162'
+    2300000: drink_arrow
+    2300002: drink_arrow_02
+    2300004: drink_glass
+    2300006: //RootNode
+    2300008: drink_picture
+    2300010: drink_sign_01
+    2300012: drink_sign_01_light1
+    2300014: drink_sign_01_light1 1
+    2300016: drink_sign_02
+    3300000: drink_arrow
+    3300002: drink_arrow_02
+    3300004: drink_glass
+    3300006: //RootNode
+    3300008: drink_picture
+    3300010: drink_sign_01
+    3300012: drink_sign_01_light1
+    3300014: drink_sign_01_light1 1
+    3300016: drink_sign_02
+    4300000: drink_machine
+    4300002: drink_glass
+    4300004: drink_arrow_02
+    4300006: drink_arrow
+    4300008: drink_sign_02
+    4300010: drink_sign_01
+    4300012: drink_sign_01_light1
+    4300014: drink_sign_01_light1
+    4300016: drink_picture
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
