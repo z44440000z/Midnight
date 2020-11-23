@@ -17,12 +17,11 @@ public class CheckPoint : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.tag=="Player")
+        if(other.tag=="Bullet")
         {
             if(GameManager._instance.CheckRing())
             {
                 //升起電梯
-                GameManager._instance.ShowWin();
             }
         }
         

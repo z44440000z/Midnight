@@ -129,8 +129,8 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         if (other.tag == "ClimbPoint")
         {
-            rightHand = other.transform.Find("RightHand");
-            rightFoot = other.transform.Find("RightFoot");
+            rightHand = other.transform.parent.Find("RightHand");
+            rightFoot = other.transform.parent.Find("RightFoot");
             isClimbPoint = true;
         }
         if (other.tag == "SavePoint")
@@ -140,8 +140,8 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         if (other.tag == "ClimbPoint")
         {
-            rightHand = other.transform.Find("RightHand");
-            rightFoot = other.transform.Find("RightFoot");
+            rightHand = other.transform.parent.Find("RightHand");
+            rightFoot = other.transform.parent.Find("RightFoot");
             isClimbPoint = true;
         }
     }
@@ -370,7 +370,7 @@ public class SimpleCharacterControl : MonoBehaviour
         else//射線沒有碰撞到目標點
         {
             //將目標點設置在攝像機自身前方1000米處
-            targetPoint = Camera.main.transform.forward * maxDistatnce;
+            targetPoint = Camera.main.transform.TransformDirection(Vector3.forward) * maxDistatnce * maxDistatnce;
         }
         Debug.DrawRay(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), Camera.main.transform.TransformDirection(Vector3.forward) * maxDistatnce, Color.red);
         return targetPoint;
