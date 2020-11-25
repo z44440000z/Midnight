@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2922647981744178938}
   - component: {fileID: 2922647981744948956}
   - component: {fileID: 2922647981745947804}
+  - component: {fileID: 2202953332109150601}
   m_Layer: 0
   m_Name: switch_small_light
   m_TagString: Untagged
@@ -77,6 +78,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &2202953332109150601
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2922647981743692506}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 439c7eb938c70ce40b6e759b6137c8d9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 89464481f7fd7294bb06fe620b26385e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2922647981743692508
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +149,8 @@ MonoBehaviour:
   intervalTime: 1
   switchOn: 0
   turnOnArray: []
+  turnOffArray: []
+  animator: {fileID: 0}
 --- !u!33 &2922647981744948958
 MeshFilter:
   m_ObjectHideFlags: 0

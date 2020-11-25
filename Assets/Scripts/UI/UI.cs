@@ -19,13 +19,18 @@ public class UI : MonoBehaviour
     public Text time;
     public Text count;
 
+    private void Awake() 
+    {
+        ui_canvas = GetComponentInChildren<Canvas>();
+    }
+
     // Start is called before the first frame update
-    void Start()
+     void Start()
     {
         GetClassCondition();
         SceneManager.activeSceneChanged += CloseWinPanel;
         timer = GameManager._instance.GameTimer;
-        ui_canvas = GetComponentInChildren<Canvas>();
+        GameManager._instance.onSwitchGameState += new GameManager.TransformGameStateHandler(ShowTimeAndPoint);
     }
 
     void CloseWinPanel(Scene current, Scene next)
@@ -34,6 +39,14 @@ public class UI : MonoBehaviour
         point.SetActive(true);
         timerText.gameObject.SetActive(true);
         ui_canvas.worldCamera = Camera.main;
+    }
+
+    public void ShowTimeAndPoint()
+    {
+        if (GameManager._instance.gamestate == GameState.Pause)
+        { ui_canvas.gameObject.SetActive(false); }
+        else
+        { ui_canvas.gameObject.SetActive(true); }
     }
 
     // Update is called once per frame
@@ -67,19 +80,19 @@ public class UI : MonoBehaviour
         {
 
             if (timer.second < 10)
-            { time.text = "通關時間：0" + timer.minute + ":0" + timer.second; }
+            { time.text = "0" + timer.minute + ":0" + timer.second; }
             else
-            { time.text = "通關時間：0" + timer.minute + ":" + timer.second; }
+            { time.text = "0" + timer.minute + ":" + timer.second; }
         }
         else
         {
             if (timer.second < 10)
-            { time.text = "通關時間：" + timer.minute + ":0" + timer.second; }
+            { time.text = timer.minute + ":0" + timer.second; }
             else
-            { time.text = "通關時間：" + timer.minute + ":" + timer.second; }
+            { time.text = timer.minute + ":" + timer.second; }
         }
         //死亡次數
-        count.text = "死亡次數：" + GameManager._instance.DeadCount.ToString();
+        count.text = GameManager._instance.DeadCount.ToString();
     }
 
     public void GetClassCondition()

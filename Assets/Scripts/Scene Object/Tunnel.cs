@@ -29,7 +29,7 @@ public class Tunnel : MonoBehaviour
         if (timers <= 1 && isOn)
         {
 
-            transform.position = Vector3.Lerp(transform.position, finalPos, timers);
+            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, finalPos, timers);
             timers += Time.deltaTime / speed;
         }
         else if (timers >= 0 && !isOn)

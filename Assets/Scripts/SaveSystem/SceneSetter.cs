@@ -7,12 +7,16 @@ public class SceneSetter : MonoBehaviour
 {
     public SceneData sceneData;
     public Ring[] ringObj;
+
+    private void Awake()
+    {
+        GameManager._instance.maxRingCount = sceneData.RingCount;
+    }
     // Start is called before the first frame update
     private void Start()
     {
         // SceneManager.sceneLoaded += LoadNewScene;
-        GameManager._instance.maxRingCount = sceneData.RingCount;
-    
+
         ringObj = new Ring[sceneData.RingCount];
         Ring[] rA = GameObject.FindObjectsOfType<Ring>();
         //儲存場景、收集物資訊

@@ -17,4 +17,5 @@ public class SceneData : ScriptableObject
 {
     public int SceneIndex;
     public int RingCount;
+    public Vector3 StartPosition;
 }

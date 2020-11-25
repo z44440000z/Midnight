@@ -24,16 +24,13 @@ public class GameManager : MonoBehaviour
     {
         get { return ringCount; }
         set
-        {
-            ringCount = value;
-            ui.GetClassCondition();
-        }
+        { ringCount = value; ui.GetClassCondition(); }
     }
     [HideInInspector]
     public int maxRingCount
     {
         get { return clearCount; }
-        set { clearCount = value; }
+        set { clearCount = value; ui.GetClassCondition(); }
     }
 
     public int DeadCount = 0;
@@ -55,6 +52,7 @@ public class GameManager : MonoBehaviour
         cc = FindObjectOfType<CameraController>();
         GameTimer = transform.GetComponentInChildren<Timer>();
         StartPosition = transform.position;
+        ui.ShowTimeAndPoint();
     }
     private void Start()
     {

@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject mainPanel;
     [SerializeField] GameObject optionsPanel;
     [SerializeField] UILabel m_Lable;
+    [SerializeField] UI2DSprite m_NoSaveSprite;
     Vector3 originPos;
     // [SerializeField] Text m_Text;
 
@@ -35,7 +36,8 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += LoadNewScene;
         SceneManager.sceneLoaded += LoadContinueScene;
-        originPos =mainPanel.transform.localPosition;
+        originPos = mainPanel.transform.localPosition;
+        m_NoSaveSprite.enabled = false;
     }
 
     // Update is called once per frame
@@ -52,6 +54,27 @@ public class MenuManager : MonoBehaviour
             mainPanel.SetActive(false);
             optionsPanel.SetActive(false);
         }
+
+        //作弊鍵
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            GameManager._instance.GameTimer.TimeReset();
+            GameManager._instance.nowRingCount = 0;
+            StartCoroutine(LoadScene(0));
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            GameManager._instance.GameTimer.TimeReset();
+            GameManager._instance.nowRingCount = 0;
+            StartCoroutine(LoadScene(1));
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            GameManager._instance.GameTimer.TimeReset();
+            GameManager._instance.nowRingCount = 0;
+            StartCoroutine(LoadScene(2));
+        }
+
     }
 
     public void MenuActive()
@@ -87,8 +110,8 @@ public class MenuManager : MonoBehaviour
         { StartCoroutine(LoadScene(continueScene)); }
         else
         {
-            m_Lable.text = "No save file!";
-            m_Lable.gameObject.GetComponent<TweenAlpha>().enabled = true;
+            m_NoSaveSprite.enabled = true;
+            m_NoSaveSprite.gameObject.GetComponent<TweenAlpha>().enabled = true;
         }
     }
 
@@ -105,6 +128,7 @@ public class MenuManager : MonoBehaviour
     }
     public void ChangeNextScene()
     {
+        Debug.Log("Next!");
         GameManager._instance.GameTimer.TimeReset();
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
@@ -193,10 +217,19 @@ public class MenuManager : MonoBehaviour
         {
             FindObjectOfType<SimpleCharacterControl>().ChangePlayerPosion(GameManager._instance.SavePoint.position);
             Destroy(GameManager._instance.SavePoint.gameObject);
-            GameManager._instance.SavePoint = null;
         }
         else
         { Debug.Log("沒有成功加載!"); }
+        //場景讀檔
+        PlayerData data = SaveSystem.Load();
+        Ring[] r = GameObject.FindObjectOfType<SceneSetter>().ringObj;
+        data.ringDataArray = new RingData[r.Length];
+        for (var i = 0; i < r.Length; i++)
+        {
+            data.ringDataArray[i] = new RingData();
+            data.ringDataArray[i].index = r[i].index;
+            data.ringDataArray[i].isGet = r[i].isGet;
+        }
         yield return null;
     }
 }

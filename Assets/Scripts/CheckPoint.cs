@@ -22,7 +22,10 @@ public class CheckPoint : MonoBehaviour
             if(GameManager._instance.CheckRing())
             {
                 //升起電梯
+                //換招牌
             }
+            else
+            {}
         }
         
     }

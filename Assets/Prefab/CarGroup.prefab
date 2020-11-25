@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b553b23f42283544a8385be3d47500a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
+  speed: 0.1
   IntervalTime: 0.5
   car: {fileID: 1537677480036107665}
   originPosition: {x: 0, y: 0, z: 0}
