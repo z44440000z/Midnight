@@ -1136,7 +1136,7 @@ AnimatorStateMachine:
     m_Position: {x: 924, y: 636, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102374422018267320}
-    m_Position: {x: 348, y: 540, z: 0}
+    m_Position: {x: 360, y: 468, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -5762901203517415663}
@@ -1525,9 +1525,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Shoot
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Grounded
-    m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
@@ -1844,7 +1841,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shoot-half
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101959991591110954}

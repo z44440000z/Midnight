@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    public Animator finalaniomator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,9 @@ public class CheckPoint : MonoBehaviour
             if(GameManager._instance.CheckRing())
             {
                 //升起電梯
+                finalaniomator.SetBool("Up",true);
                 //換招牌
+                
             }
             else
             {}

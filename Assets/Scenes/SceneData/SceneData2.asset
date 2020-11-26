@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SceneData2
   m_EditorClassIdentifier: 
   SceneIndex: 0
-  RingCount: 10
+  RingCount: 9
   StartPosition: {x: 0, y: 0, z: 0}
