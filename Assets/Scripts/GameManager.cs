@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Transform SavePoint;
     [SerializeField] private int ringCount = 0;
     [SerializeField] private int clearCount;
-    private UI ui;
+    public UI ui;
 
     [HideInInspector]
     public int nowRingCount

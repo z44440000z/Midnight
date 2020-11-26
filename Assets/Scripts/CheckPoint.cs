@@ -8,28 +8,28 @@ public class CheckPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    private void OnTriggerEnter(Collider other) 
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.tag=="Bullet")
+        if (other.collider.tag == "Bullet")
         {
-            if(GameManager._instance.CheckRing())
+            if (GameManager._instance.CheckRing())
             {
                 //升起電梯
-                finalaniomator.SetBool("Up",true);
+                finalaniomator.SetBool("Up", true);
                 //換招牌
-                
+
             }
             else
-            {}
+            { }
         }
-        
+
     }
 }

@@ -19,18 +19,19 @@ public class UI : MonoBehaviour
     public Text time;
     public Text count;
 
-    private void Awake() 
+    private void Awake()
     {
         ui_canvas = GetComponentInChildren<Canvas>();
     }
 
     // Start is called before the first frame update
-     void Start()
+    void Start()
     {
         GetClassCondition();
         SceneManager.activeSceneChanged += CloseWinPanel;
         timer = GameManager._instance.GameTimer;
         GameManager._instance.onSwitchGameState += new GameManager.TransformGameStateHandler(ShowTimeAndPoint);
+        SceneManager.sceneLoaded += ShowTimeAndPoint;
     }
 
     void CloseWinPanel(Scene current, Scene next)
@@ -48,25 +49,35 @@ public class UI : MonoBehaviour
         else
         { ui_canvas.gameObject.SetActive(true); }
     }
+    public void ShowTimeAndPoint(Scene scene, LoadSceneMode mode)
+    {
+        if (GameManager._instance.gamestate == GameState.Pause)
+        { ui_canvas.gameObject.SetActive(false); }
+        else
+        { ui_canvas.gameObject.SetActive(true); }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //印出時間動作
-        if (timer.minute < 10)
+        if (timerText.enabled)
         {
+            //印出時間動作
+            if (timer.minute < 10)
+            {
 
-            if (timer.second < 10)
-            { timerText.text = "0" + timer.minute + ":0" + timer.second; }
+                if (timer.second < 10)
+                { timerText.text = "0" + timer.minute + ":0" + timer.second; }
+                else
+                { timerText.text = "0" + timer.minute + ":" + timer.second; }
+            }
             else
-            { timerText.text = "0" + timer.minute + ":" + timer.second; }
-        }
-        else
-        {
-            if (timer.second < 10)
-            { timerText.text = timer.minute + ":0" + timer.second; }
-            else
-            { timerText.text = timer.minute + ":" + timer.second; }
+            {
+                if (timer.second < 10)
+                { timerText.text = timer.minute + ":0" + timer.second; }
+                else
+                { timerText.text = timer.minute + ":" + timer.second; }
+            }
         }
     }
 
@@ -99,5 +110,10 @@ public class UI : MonoBehaviour
     {
         now.text = GameManager._instance.nowRingCount.ToString();
         max.text = GameManager._instance.maxRingCount.ToString();
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= ShowTimeAndPoint;
     }
 }

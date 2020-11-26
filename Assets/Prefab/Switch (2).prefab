@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331973634007016928}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -41.36, y: 39.53, z: 72.48}
+  m_LocalPosition: {x: -41, y: 40, z: 72}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2756885725628245759}
@@ -118,6 +118,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6967179526577208390, guid: cabc7608a9371d34e9a4c9a58d3874ad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967179526577208390, guid: cabc7608a9371d34e9a4c9a58d3874ad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 276398592932771087, guid: cabc7608a9371d34e9a4c9a58d3874ad,
         type: 3}
       propertyPath: turnOnTunnels
@@ -152,12 +162,12 @@ PrefabInstance:
     - target: {fileID: 6309951100959454046, guid: 84e88dab7c85e9a42a2c966c5e18ee2a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.33
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6309951100959454046, guid: 84e88dab7c85e9a42a2c966c5e18ee2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.36
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6309951100959454046, guid: 84e88dab7c85e9a42a2c966c5e18ee2a,
         type: 3}
@@ -204,11 +214,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6309951100951927998, guid: 84e88dab7c85e9a42a2c966c5e18ee2a,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 0cca32cfbcfd3e34f8bb1184723d7a57, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84e88dab7c85e9a42a2c966c5e18ee2a, type: 3}
 --- !u!4 &2756885725628245759 stripped

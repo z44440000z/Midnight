@@ -42,6 +42,7 @@ public class Story : MonoBehaviour
         { player.UnlockPlayerControl(); }
         else
         { Debug.LogError("no player"); }
-        StartPoint.SetActive(true);
+        if (StartPoint != null)
+        { StartPoint.SetActive(true); }
     }
 }

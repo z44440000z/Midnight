@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93420030}
   - component: {fileID: 93420031}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 720
   mHeight: 164
-  mDepth: 20
+  mDepth: 1
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236552198}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1322324435}
   - component: {fileID: 1322324437}
   - component: {fileID: 1322324436}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1375099714}
   - component: {fileID: 1375099716}
   - component: {fileID: 1375099715}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -265,11 +265,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 0d06ef852ef32124d9b139a84eda3f45, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467320740}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 1474286906}
   - component: {fileID: 1474286907}
   - component: {fileID: 1628607548965727478}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: NoSaveFlile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 882
   mHeight: 50
-  mDepth: 21
+  mDepth: 2
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 2025768691}
   - component: {fileID: 2025768690}
   - component: {fileID: 2025768689}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 690584783290211203}
   - component: {fileID: 690584783290211201}
   - component: {fileID: 690584783290211200}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -622,11 +622,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 0d06ef852ef32124d9b139a84eda3f45, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -639,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 690584783299470431}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 690584783415592696}
   - component: {fileID: 690584783415592694}
   - component: {fileID: 690584783415592697}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 690584783674713753}
   - component: {fileID: 690584783674713734}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Slider-Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 690584784078306060}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 690584784787478875}
   - component: {fileID: 690584784787478872}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Slider-Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 690584784833048938}
   - component: {fileID: 690584784833048936}
   - component: {fileID: 690584784833048939}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082494601590728}
   - component: {fileID: 2362082494601590729}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082494790059378}
   - component: {fileID: 2362082494790059379}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495019995270}
   - component: {fileID: 2362082495019995271}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1307,7 +1307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495065453590}
   - component: {fileID: 2362082495065453591}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495181968261}
   - component: {fileID: 2362082495181968262}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495229112445}
   - component: {fileID: 2362082495229112446}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1505,7 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495314480802}
   - component: {fileID: 2362082495314480803}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1605,7 +1605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495649370085}
   - component: {fileID: 2362082495649370086}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UISlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1659,7 +1659,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 200
   mHeight: 50
-  mDepth: 19
+  mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -1691,7 +1691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495705474315}
   - component: {fileID: 2362082495705474316}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495746721809}
   - component: {fileID: 2362082495746721810}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495798273915}
   - component: {fileID: 2362082495798273916}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UISlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1926,7 +1926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495913134674}
   - component: {fileID: 2362082495913134675}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UISlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 200
   mHeight: 50
-  mDepth: 19
+  mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -2012,7 +2012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495918619697}
   - component: {fileID: 2362082495918619698}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UISlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2098,7 +2098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495947738572}
   - component: {fileID: 2362082495947738573}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2147,7 +2147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082495981039393}
   - component: {fileID: 2362082495981039394}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UISlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2201,7 +2201,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 125
   mHeight: 50
-  mDepth: 19
+  mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -2233,7 +2233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082496025506925}
   - component: {fileID: 2362082496025506926}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2334,7 +2334,7 @@ GameObject:
   - component: {fileID: 2362082496300722476}
   - component: {fileID: 2362082496300722474}
   - component: {fileID: 2362082496300722475}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2388,7 +2388,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 10
   mHeight: 28
-  mDepth: 20
+  mDepth: 1
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -2491,7 +2491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362082496338223465}
   - component: {fileID: 2362082496338223466}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2538,7 +2538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651967097116439}
   - component: {fileID: 2977651967097116436}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2639,7 +2639,7 @@ GameObject:
   - component: {fileID: 690584784117768935}
   - component: {fileID: 690584784117768933}
   - component: {fileID: 690584784117768932}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2715,7 +2715,7 @@ GameObject:
   - component: {fileID: 2977651967249826973}
   - component: {fileID: 2977651967249826972}
   - component: {fileID: 2977651967249826975}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Panel - Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2776,7 +2776,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -2841,7 +2841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977651967259466283}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Option - Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2872,7 +2872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977651967381730548}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2907,7 +2907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651967419926607}
   - component: {fileID: 2977651967419926604}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2999,7 +2999,7 @@ GameObject:
   - component: {fileID: 2977651967500698509}
   - component: {fileID: 2977651967500698508}
   - component: {fileID: 2977651967500698614}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3084,13 +3084,13 @@ MonoBehaviour:
   softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3003
-  mClipTexture: {fileID: 0}
+  mClipTexture: {fileID: 2800000, guid: 1722dd4872eb02445afb850336384c43, type: 3}
   mAlpha: 1
   mClipping: 0
-  mClipRange: {x: 0, y: 0, z: 300, w: 200}
+  mClipRange: {x: 0, y: 0, z: 1920, w: 1080}
   mClipSoftness: {x: 4, y: 4}
-  mDepth: 10
-  mSortingOrder: 0
+  mDepth: 11
+  mSortingOrder: 50
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
   useSortingOrder: 0
@@ -3227,7 +3227,7 @@ GameObject:
   - component: {fileID: 2977651967520889038}
   - component: {fileID: 2977651967520889025}
   - component: {fileID: 2977651967520889024}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: OptionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3410,7 +3410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651967540082821}
   - component: {fileID: 2977651967540082818}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UILabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3509,7 +3509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977651967550321539}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3549,7 +3549,7 @@ GameObject:
   - component: {fileID: 2977651967668100005}
   - component: {fileID: 2977651967668100004}
   - component: {fileID: 2977651967668100007}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3647,7 +3647,7 @@ GameObject:
   - component: {fileID: 2977651968029231335}
   - component: {fileID: 2977651968029231334}
   - component: {fileID: 2977651968029231353}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651968114256373}
   - component: {fileID: 2977651968114256370}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3879,7 +3879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651968130821305}
   - component: {fileID: 2977651968130821286}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3931,7 +3931,7 @@ GameObject:
   - component: {fileID: 2977651968224518202}
   - component: {fileID: 2977651968224518205}
   - component: {fileID: 2977651968224518204}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4070,7 +4070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651968267399622}
   - component: {fileID: 2977651968267399623}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UISlicedSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4124,7 +4124,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 200
   mHeight: 50
-  mDepth: 19
+  mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
@@ -4156,7 +4156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651968435704064}
   - component: {fileID: 2977651968435704067}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Menu_Vcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4229,7 +4229,7 @@ GameObject:
   - component: {fileID: 2977651968442810005}
   - component: {fileID: 2977651968442810004}
   - component: {fileID: 2977651968442810007}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4368,7 +4368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2977651968496691494}
   - component: {fileID: 2977651968496691495}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4458,7 +4458,7 @@ GameObject:
   - component: {fileID: 2977651968497158987}
   - component: {fileID: 2977651968497158986}
   - component: {fileID: 2977651968497158989}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: NewGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4596,7 +4596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977651968517404672}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Option - Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4632,7 +4632,7 @@ GameObject:
   - component: {fileID: 2977651968636406421}
   - component: {fileID: 2977651968636406420}
   - component: {fileID: 2977651968636406423}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Checkbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: 2977651968751504249}
   - component: {fileID: 2977651968751504231}
   - component: {fileID: 2977651968751504230}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Panel - Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4826,7 +4826,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3003
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0

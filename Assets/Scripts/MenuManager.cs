@@ -74,6 +74,10 @@ public class MenuManager : MonoBehaviour
             GameManager._instance.nowRingCount = 0;
             StartCoroutine(LoadScene(2));
         }
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+
+        }
 
     }
 
@@ -105,6 +109,7 @@ public class MenuManager : MonoBehaviour
         GameManager._instance.SavePoint.SetParent(this.transform);
         GameManager._instance.nowRingCount = data.score;
         GameManager._instance.GameTimer.SetTime(data.time);
+        GameManager._instance.ui.ShowTimeAndPoint();
 
         if (continueScene != "")
         { StartCoroutine(LoadScene(continueScene)); }
@@ -226,9 +231,8 @@ public class MenuManager : MonoBehaviour
         data.ringDataArray = new RingData[r.Length];
         for (var i = 0; i < r.Length; i++)
         {
-            data.ringDataArray[i] = new RingData();
-            data.ringDataArray[i].index = r[i].index;
-            data.ringDataArray[i].isGet = r[i].isGet;
+            r[i].index = data.ringDataArray[i].index;
+            r[i].isGet = data.ringDataArray[i].isGet;
         }
         yield return null;
     }

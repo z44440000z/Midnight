@@ -7,7 +7,7 @@ public class Car : MonoBehaviour
     public float speed = 0.1f;
     public float IntervalTime = 2;
 
-public GameObject car;
+    public GameObject car;
     public Vector3 originPosition;
     public Transform endPosition;
     private bool IsDisappear = false;
@@ -30,7 +30,7 @@ public GameObject car;
 
         }
     }
-    
+
     #region private function
     private void OnMove(Vector3 newPos)
     {
@@ -43,6 +43,11 @@ public GameObject car;
         alpha = 0;
         yield return new WaitForSeconds(IntervalTime);
         IsDisappear = false;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(endPosition.position, Vector3.one * 5);
     }
     #endregion
 }
