@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: car_door
-  m_Shader: {fileID: 4800000, guid: db2f41b4ac0f00146993285049afe31f, type: 3}
+  m_Shader: {fileID: 4800000, guid: a404215970344bb49b4b293bebc1376c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,11 +20,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_A2B32D9F:
-        m_Texture: {fileID: 2800000, guid: 905674ff6ca58314c87b0d240e765b0a, type: 3}
+        m_Texture: {fileID: 2800000, guid: ac43dbc7afc291f49a66990f471b3286, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_37E39E19: 1.5
+    - Vector1_37E39E19: 1
     - Vector1_6DC77AA2: 28
     - Vector1_8FEA3985: 3.5
     - Vector1_F7BB54ED: 0.2
