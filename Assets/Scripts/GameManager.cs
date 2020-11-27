@@ -143,7 +143,8 @@ public class GameManager : MonoBehaviour
     //分數增加
     public void AddRing()
     {
-        nowRingCount++;
+        if(nowRingCount<maxRingCount)
+        {nowRingCount++;}
     }
     //確認分數是否達標
     public bool CheckRing()

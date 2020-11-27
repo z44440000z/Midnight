@@ -89,7 +89,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1.5
-  MaxDistance: 65
+  MaxDistance: 150
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -351,11 +351,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3981172073179418040, guid: 6b76c1fd9c5d02f429e541870812d91d,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b76c1fd9c5d02f429e541870812d91d, type: 3}

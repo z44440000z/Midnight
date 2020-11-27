@@ -74,7 +74,8 @@ public class Drone : MonoBehaviour
     IEnumerator Countdown()
     {
         t = 0;
-        transform.position = Vector3.Lerp(originPos, shakePos, t);
+        yield return new WaitForSeconds(destoryTime);
+        transform.position = Vector3.Lerp(transform.position, shakePos, t);
         mAnimator.SetBool("Down", true);
 
         //Get hash of animation
@@ -106,8 +107,10 @@ public class Drone : MonoBehaviour
     {
         if (this != null)
         {
+            StopCoroutine("Countdown");
             isOn = false;
             isDestory = false;
+            mAnimator.SetBool("Down", false);
             transform.position = originPos;
             this.gameObject.SetActive(true);
         }

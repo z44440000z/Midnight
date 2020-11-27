@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 8083688554484530491}
   - component: {fileID: 8083688554484530493}
   - component: {fileID: 8083688554484530492}
+  - component: {fileID: 5873379626231497302}
   m_Layer: 0
   m_Name: building_mid02_light
   m_TagString: Untagged
@@ -404,6 +405,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5873379626231497302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083688554484530490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8239317, y: 8.674088, z: 1.02}
+  m_Center: {x: 2.8191679, y: 0.0000019073489, z: 0.58}
 --- !u!1 &8083688554546142903
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +678,7 @@ GameObject:
   - component: {fileID: 8083688554977355341}
   - component: {fileID: 8083688554977355343}
   - component: {fileID: 8083688554977355342}
+  - component: {fileID: 3027722600628459011}
   m_Layer: 0
   m_Name: building_mid01_light
   m_TagString: Untagged
@@ -730,6 +745,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3027722600628459011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083688554977355340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.0900183, y: 8.674081, z: 1.02}
+  m_Center: {x: 3.4695153, y: -0.0000009536744, z: -0.01}
 --- !u!1 &8083688555006472893
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +769,7 @@ GameObject:
   - component: {fileID: 8083688555006472894}
   - component: {fileID: 8083688555006472832}
   - component: {fileID: 8083688555006472895}
+  - component: {fileID: 5327202589652675507}
   m_Layer: 0
   m_Name: building_mid01_light
   m_TagString: Untagged
@@ -807,6 +836,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5327202589652675507
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083688555006472893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.0900183, y: 8.674081, z: 1.02}
+  m_Center: {x: 3.4695191, y: -0.0000009536744, z: 0.1}
 --- !u!1 &8083688555192794517
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +860,7 @@ GameObject:
   - component: {fileID: 8083688555192794518}
   - component: {fileID: 8083688555192794520}
   - component: {fileID: 8083688555192794519}
+  - component: {fileID: 4867682592666205307}
   m_Layer: 0
   m_Name: building_mid01_light
   m_TagString: Untagged
@@ -884,6 +927,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4867682592666205307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083688555192794517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.0900183, y: 8.674081, z: 1.02}
+  m_Center: {x: 3.4695153, y: -0.0000009536744, z: -0.02}
 --- !u!1 &8083688555359112600
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +951,7 @@ GameObject:
   - component: {fileID: 8083688555359112601}
   - component: {fileID: 8083688555359112603}
   - component: {fileID: 8083688555359112602}
+  - component: {fileID: 2061908451394787068}
   m_Layer: 0
   m_Name: building_mid02_light
   m_TagString: Untagged
@@ -961,6 +1018,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2061908451394787068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083688555359112600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8239317, y: 8.674084, z: 1.02}
+  m_Center: {x: 2.819168, y: -0.0000019073486, z: 0.64}
 --- !u!1 &8083688555465124969
 GameObject:
   m_ObjectHideFlags: 0

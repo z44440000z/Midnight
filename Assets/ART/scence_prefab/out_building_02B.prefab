@@ -2258,6 +2258,7 @@ GameObject:
   - component: {fileID: 8313759310543513876}
   - component: {fileID: 8313759310543513874}
   - component: {fileID: 8313759310543513877}
+  - component: {fileID: 9172806351903709561}
   m_Layer: 0
   m_Name: out_building_02B
   m_TagString: Untagged
@@ -2340,6 +2341,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &9172806351903709561
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313759310543513879}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.7684062, y: 5.8410273, z: 17.753359}
+  m_Center: {x: 1.8842038, y: -2.920512, z: -5.5557413}
 --- !u!1 &8313759310703907511
 GameObject:
   m_ObjectHideFlags: 0

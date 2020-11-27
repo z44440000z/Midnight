@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 5126348618500631341}
   - component: {fileID: 5126348618504022797}
   - component: {fileID: 5126348618502924749}
+  - component: {fileID: 3700416512514933411}
   m_Layer: 0
   m_Name: building02_glass
   m_TagString: Untagged
@@ -415,6 +416,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3700416512514933411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126348618500732685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.551535, y: 7.913661, z: 0.5652589}
+  m_Center: {x: 5.2757587, y: -3.7684174, z: 0.2826319}
 --- !u!1 &5126348618500732687
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +440,6 @@ GameObject:
   - component: {fileID: 5126348618500631343}
   - component: {fileID: 5126348618504022799}
   - component: {fileID: 5126348618502924751}
-  - component: {fileID: 5126348618500732686}
   m_Layer: 0
   m_Name: building02
   m_TagString: Untagged
@@ -495,19 +508,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5126348618500732686
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5126348618500732687}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 10.551544, y: 8.102077, z: 1.358432}
-  m_Center: {x: 4.710505, y: 3.4857726, z: 0.6791982}
 --- !u!1 &5192598985792819987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1184,7 @@ GameObject:
   - component: {fileID: 6056164094285831108}
   - component: {fileID: 6056164094285831106}
   - component: {fileID: 6056164094285831107}
+  - component: {fileID: 3220344837899367291}
   m_Layer: 0
   m_Name: building02_glass
   m_TagString: Untagged
@@ -1250,6 +1251,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3220344837899367291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056164094285831109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.551535, y: 7.913661, z: 0.565259}
+  m_Center: {x: 5.2757587, y: -3.7684155, z: 0.28263146}
 --- !u!1 &6056164094524849886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1275,7 @@ GameObject:
   - component: {fileID: 6056164094524849885}
   - component: {fileID: 6056164094524849883}
   - component: {fileID: 6056164094524849884}
+  - component: {fileID: 264412851820258484}
   m_Layer: 0
   m_Name: building02_glass
   m_TagString: Untagged
@@ -1327,6 +1342,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &264412851820258484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056164094524849886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.551535, y: 7.913661, z: 0.565259}
+  m_Center: {x: 5.2757587, y: -3.7684164, z: 0.28263193}
 --- !u!1 &6056164094607039412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1449,7 @@ GameObject:
   - component: {fileID: 6056164094716895236}
   - component: {fileID: 6056164094716895234}
   - component: {fileID: 6056164094716895235}
+  - component: {fileID: 3078042268397492228}
   m_Layer: 0
   m_Name: building02_glass
   m_TagString: Untagged
@@ -1487,6 +1516,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3078042268397492228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056164094716895237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.551535, y: 7.913661, z: 0.565259}
+  m_Center: {x: 5.2757587, y: -3.7684164, z: 0.28262907}
 --- !u!1 &6056164094834523775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,6 +1943,7 @@ GameObject:
   - component: {fileID: 6056164095446906679}
   - component: {fileID: 6056164095446906677}
   - component: {fileID: 6056164095446906678}
+  - component: {fileID: 2116460852039385276}
   m_Layer: 0
   m_Name: building02_glass
   m_TagString: Untagged
@@ -1967,6 +2010,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2116460852039385276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056164095446906680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.551535, y: 7.913661, z: 0.565259}
+  m_Center: {x: 5.2757587, y: -3.7684155, z: 0.28263003}
 --- !u!1 &6056164095478145538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2113,7 @@ GameObject:
   - component: {fileID: 6056164095514301080}
   - component: {fileID: 6056164095514301078}
   - component: {fileID: 6056164095514301079}
+  - component: {fileID: 8010818348343298145}
   m_Layer: 0
   m_Name: building02_glass
   m_TagString: Untagged
@@ -2123,6 +2180,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8010818348343298145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056164095514301081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.551535, y: 7.913661, z: 0.565259}
+  m_Center: {x: 5.2757587, y: -3.7684155, z: 0.28263003}
 --- !u!1 &6056164095662124554
 GameObject:
   m_ObjectHideFlags: 0
