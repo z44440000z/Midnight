@@ -11,7 +11,7 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
-    public CameraController cc;
+    public SimpleCharacterControl player;
     public GameState gamestate = GameState.Pause;//遊戲狀態，包括運行暫停
     public Vector3 StartPosition;
     public Transform SavePoint;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         }
         CursorControl(true);
         ui = GetComponent<UI>();
-        cc = FindObjectOfType<CameraController>();
+        GameManager._instance.player = FindObjectOfType<SimpleCharacterControl>();
         GameTimer = transform.GetComponentInChildren<Timer>();
         StartPosition = transform.position;
         ui.ShowTimeAndPoint();
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        //作弊鍵
         if (Input.GetKeyDown(KeyCode.X))
         { nowRingCount = maxRingCount; }
         //按ESC暫停遊戲
@@ -130,11 +131,17 @@ public class GameManager : MonoBehaviour
         //場景存檔
         Ring[] r = GameObject.FindObjectOfType<SceneSetter>().ringObj;
         data.ringDataArray = new RingData[r.Length];
-        for (var i = 0; i < r.Length; i++)
+        if (r.Length != 0)
         {
-            data.ringDataArray[i] = new RingData();
-            data.ringDataArray[i].index = r[i].index;
-            data.ringDataArray[i].isGet = r[i].isGet;
+            for (var i = 0; i < r.Length; i++)
+            {
+                data.ringDataArray[i] = new RingData();
+                data.ringDataArray[i].index = r[i].index;
+                data.ringDataArray[i].isGet = r[i].isGet;
+                data.ringDataArray[i].x = r[i].transform.position.x;
+                data.ringDataArray[i].y = r[i].transform.position.y;
+                data.ringDataArray[i].z = r[i].transform.position.z;
+            }
         }
         //存檔
         SaveSystem.Save(data);
@@ -143,8 +150,8 @@ public class GameManager : MonoBehaviour
     //分數增加
     public void AddRing()
     {
-        if(nowRingCount<maxRingCount)
-        {nowRingCount++;}
+        if (nowRingCount < maxRingCount)
+        { nowRingCount++; }
     }
     //確認分數是否達標
     public bool CheckRing()

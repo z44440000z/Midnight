@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 //Loading場景的UI動畫
 public class Loading : MonoBehaviour
 {
     public Animator animator;
+    public TimelineAsset timeline;
+    public PlayableDirector playableDirector;
     public float transitionTime = 1f;
-    public Text loadText;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-
+        transitionTime = (float)timeline.duration + 0.5f;
     }
 
     // Update is called once per frame
     void Update()
+    { }
+
+    public bool IfPlayFinish()
     {
-        // mathf = Mathf.PingPong(Time.time, 180);
-        loadText.color = new Color(1, 1, 1, Mathf.PingPong(Time.time, 1));
+        if ((  playableDirector.time) < timeline.duration)
+        { return true; }
+        else
+        { return false; }
     }
 }

@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: power_blue
       objectReference: {fileID: 0}
+    - target: {fileID: 8711239368414624966, guid: 8a9d99c5c4a11794d9e7bb60eae974f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8711239368415109350, guid: 8a9d99c5c4a11794d9e7bb60eae974f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -126,6 +131,11 @@ PrefabInstance:
     - target: {fileID: 8711239368415109350, guid: 8a9d99c5c4a11794d9e7bb60eae974f2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711239368414624964, guid: 8a9d99c5c4a11794d9e7bb60eae974f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -106,6 +106,12 @@ public class UI : MonoBehaviour
         count.text = GameManager._instance.DeadCount.ToString();
     }
 
+    public void UI_Buttom_Next()
+    {
+        GameManager._instance.nowRingCount = 0;
+        MenuManager.instance.ChangeNextScene();
+    }
+
     public void GetClassCondition()
     {
         now.text = GameManager._instance.nowRingCount.ToString();

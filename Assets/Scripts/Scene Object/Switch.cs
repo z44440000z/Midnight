@@ -40,8 +40,6 @@ public class Switch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        { switchOn = !switchOn; }
         if (switchOn == !switchOn)
         {
             StartCoroutine("TunnelSwicthOn");

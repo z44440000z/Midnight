@@ -135,7 +135,7 @@ Transform:
   - {fileID: 6146739443295920649}
   - {fileID: 76946233439624178}
   m_Father: {fileID: 6618115900096121669}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6151962927372212166
 MeshFilter:
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalaniomator: {fileID: 8007128649978662912}
+  drink_sign_animation: {fileID: 0}
 --- !u!1 &2795846800773196690
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +397,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6618115900096121669
 Transform:
@@ -409,6 +410,7 @@ Transform:
   m_LocalPosition: {x: -4.1388, y: -1.9532, z: 0.23651}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6293443242886492347}
   - {fileID: 8190293301042797999}
   - {fileID: 6306689480537667879}
   m_Father: {fileID: 3715115110529207074}
@@ -921,11 +923,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8100517923968885927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1388, y: -1.9532, z: 0.23651}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3715115110529207074}
-  m_RootOrder: 1
+  m_Father: {fileID: 6618115900096121669}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3241329198256977161
 BoxCollider:
@@ -938,8 +940,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8694925, y: 3.8411026, z: 3.6658077}
-  m_Center: {x: 2.467564, y: -1.9205513, z: 1.7146492}
+  m_Size: {x: 3.4364529, y: 3.8411026, z: 2.8698175}
+  m_Center: {x: 2.184083, y: -1.9205513, z: 1.3166541}
 --- !u!114 &7465446086693614047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +985,6 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 6618115900096121669}
-  - {fileID: 6293443242886492347}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -75.949005}
@@ -1075,7 +1076,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6618115900096121669}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &24491062895074061
 MeshFilter:

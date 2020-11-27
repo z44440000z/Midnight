@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5635275644702274301}
   - component: {fileID: 510537520}
   m_Layer: 0
-  m_Name: Ring
+  m_Name: Power_Oange
   m_TagString: Ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: power_orange
       objectReference: {fileID: 0}
+    - target: {fileID: 6417266075600762243, guid: 3140c4bfdabd58147be64cdb5ed9c3fa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6417266075601119651, guid: 3140c4bfdabd58147be64cdb5ed9c3fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -126,6 +131,11 @@ PrefabInstance:
     - target: {fileID: 6417266075601119651, guid: 3140c4bfdabd58147be64cdb5ed9c3fa,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417266075600762241, guid: 3140c4bfdabd58147be64cdb5ed9c3fa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -7,14 +7,15 @@ public class Ring : MonoBehaviour
     public int index;
     public bool isGet = false;
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable() 
     {
-        CheckIsGet();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckIsGet();
     }
     private void OnTriggerEnter(Collider other)
     {

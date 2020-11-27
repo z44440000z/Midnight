@@ -36,10 +36,10 @@ MonoBehaviour:
     value: 7.58
   threshold:
     overrideState: 1
-    value: 0.6
+    value: 0.71
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0.199
   clamp:
     overrideState: 0
     value: 65472
@@ -133,9 +133,9 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 0
-    value: 0
+    value: 0.01
   contrast:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerRedOutRedIn:
     overrideState: 0

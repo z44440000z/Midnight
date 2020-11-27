@@ -30,6 +30,7 @@ public class MenuManager : MonoBehaviour
             instance = this;
         }
         loadingCanvas.SetActive(false);
+        loading = loadingCanvas.GetComponent<Loading>();
     }
     // Start is called before the first frame update
     void Start()
@@ -76,7 +77,7 @@ public class MenuManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad5))
         {
-
+            GameManager._instance.player.transform.position = GameObject.FindGameObjectWithTag("Finish").transform.position;
         }
 
     }
@@ -89,6 +90,8 @@ public class MenuManager : MonoBehaviour
     public void NewGameButton()
     {
         GameManager._instance.GameTimer.TimeReset();
+        GameManager._instance.nowRingCount = 0;
+        continueScene = "";
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             StartCoroutine(LoadScene(0));
@@ -151,6 +154,14 @@ public class MenuManager : MonoBehaviour
         else
         { return null; }
     }
+
+    public bool CheckedIfContinueScene()//設置場景前的檢查
+    {
+        if (continueScene == SceneManager.GetActiveScene().name)
+        { return true; }
+        else
+        { return false; }
+    }
     IEnumerator LoadScene(string ns)
     {
         yield return null;
@@ -158,13 +169,12 @@ public class MenuManager : MonoBehaviour
         loading.animator.SetTrigger("Start");
         if (GameManager._instance.gamestate == GameState.Pause)
         { GameManager._instance.TransformGameState(); }
-        yield return new WaitForSeconds(loading.transitionTime);
 
         //Begin to load the Scene you specify
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ns);
         //Don't let the Scene activate until you allow it to
         asyncOperation.allowSceneActivation = false;
-        // Debug.Log("Pro :" + asyncOperation.progress);
+        yield return new WaitForSeconds(loading.transitionTime);
         //When the load is still in progress, output the Text and progress bar
         while (!asyncOperation.isDone)
         {
@@ -172,7 +182,7 @@ public class MenuManager : MonoBehaviour
             // m_Lable.text = " " + (asyncOperation.progress * 100) + "%";
 
             // Check if the load has finished
-            if (asyncOperation.progress >= 0.9f)
+            if (asyncOperation.progress >= 0.9f && loading.IfPlayFinish())
             {
                 // m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
@@ -190,13 +200,13 @@ public class MenuManager : MonoBehaviour
         loading.animator.SetTrigger("Start");
         if (GameManager._instance.gamestate == GameState.Pause)
         { GameManager._instance.TransformGameState(); }
-        yield return new WaitForSeconds(loading.transitionTime);
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ns);
         asyncOperation.allowSceneActivation = false;
+        yield return new WaitForSeconds(loading.transitionTime);
         while (!asyncOperation.isDone)
         {
-            if (asyncOperation.progress >= 0.90f)
+            if (asyncOperation.progress >= 0.90f && loading.IfPlayFinish())
             {
                 // m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
@@ -208,8 +218,11 @@ public class MenuManager : MonoBehaviour
     //加載新遊戲場景
     void LoadNewScene(Scene scene, LoadSceneMode mode)
     {
-        if (scene == SceneManager.GetSceneByBuildIndex(0))
+        if (scene == SceneManager.GetSceneByBuildIndex(0) && (continueScene == ""))
         { StartCoroutine("EnterNewScene"); }
+        else if (continueScene != "")
+        { StartCoroutine("EnterContinueScene"); }
+        GameManager._instance.player = FindObjectOfType<SimpleCharacterControl>();
     }
 
     IEnumerator EnterNewScene()
@@ -239,15 +252,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         { Debug.Log("沒有成功加載!"); }
-        //場景讀檔
-        PlayerData data = SaveSystem.Load();
-        Ring[] r = GameObject.FindObjectOfType<SceneSetter>().ringObj;
-        data.ringDataArray = new RingData[r.Length];
-        for (var i = 0; i < r.Length; i++)
-        {
-            r[i].index = data.ringDataArray[i].index;
-            r[i].isGet = data.ringDataArray[i].isGet;
-        }
+        GameManager._instance.GameTimer.TimerSwitch(true);
         yield return null;
     }
 }

@@ -192,13 +192,13 @@ public class SimpleCharacterControl : MonoBehaviour
                 else if (h < 0)
                 { SmoothRotation(Camera.main.transform.eulerAngles.y - 90); }
 
-                if (Shoot_Vcam != null)
-                {
-                    if (Input.GetKey(KeyCode.LeftShift))
-                    { Shoot_Vcam.SetActive(true); }
-                    else
-                    { Shoot_Vcam.SetActive(false); }
-                }
+                // if (Shoot_Vcam != null)
+                // {
+                //     if (Input.GetKey(KeyCode.LeftShift))
+                //     { Shoot_Vcam.SetActive(true); }
+                //     else
+                //     { Shoot_Vcam.SetActive(false); }
+                // }
 
                 //射擊
                 Shoot();
@@ -365,7 +365,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
             targetPoint = hit.point;//記錄碰撞的目標點
-            Debug.Log(hit.collider.name);
+            // Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
         {

@@ -8,6 +8,7 @@ public class RingData
 {
     public int index;
     public bool isGet = false;
+    public float x, y, z;
 }
 
 

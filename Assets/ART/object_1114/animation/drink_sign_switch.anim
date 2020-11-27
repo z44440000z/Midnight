@@ -51,25 +51,7 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves:
-  - curve:
-    - time: 0
-      value: {fileID: 2100000, guid: d73ac4d27886784469bc00eb6cc84442, type: 2}
-    - time: 0.16666667
-      value: {fileID: 2100000, guid: d73ac4d27886784469bc00eb6cc84442, type: 2}
-    attribute: m_Materials.Array.data[0]
-    path: 
-    classID: 23
-    script: {fileID: 0}
-  - curve:
-    - time: 0
-      value: {fileID: 2100000, guid: 7dbf9a074241ff640a95c06c177069a9, type: 2}
-    - time: 0.16666667
-      value: {fileID: 0}
-    attribute: m_Materials.Array.data[1]
-    path: 
-    classID: 23
-    script: {fileID: 0}
+  m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -84,25 +66,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 23
-      customType: 21
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 0
-      attribute: 1
-      script: {fileID: 0}
-      typeID: 23
-      customType: 21
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: 2100000, guid: d73ac4d27886784469bc00eb6cc84442, type: 2}
-    - {fileID: 2100000, guid: d73ac4d27886784469bc00eb6cc84442, type: 2}
-    - {fileID: 2100000, guid: 7dbf9a074241ff640a95c06c177069a9, type: 2}
-    - {fileID: 0}
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

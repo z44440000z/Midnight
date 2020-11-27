@@ -26,7 +26,7 @@ public class CheckPoint : MonoBehaviour
                 //升起電梯
                 finalaniomator.SetBool("Up", true);
                 //換招牌
-                drink_sign_animation.Play("drink_sign_switch");
+                // drink_sign_animation.Play("drink_sign_switch");
             }
             else
             { }

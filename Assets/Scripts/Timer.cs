@@ -35,6 +35,15 @@ public class Timer : MonoBehaviour
     {
         timer_f = 0f;
         timer_i = 0;
+        isPause = true;
+    }
+
+    public void TimerSwitch(bool open)
+    {
+        if (open)
+        { isPause = false; }
+        else
+        { isPause = true; }
     }
 
     public void SetTime(float time_f)
