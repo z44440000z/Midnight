@@ -9,7 +9,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject Menu_vcam;
     [SerializeField] GameObject mainPanel;
     [SerializeField] GameObject optionsPanel;
-    [SerializeField] UILabel m_Lable;
     [SerializeField] UI2DSprite m_NoSaveSprite;
     Vector3 originPos;
     // [SerializeField] Text m_Text;
@@ -18,9 +17,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] string continueScene;
 
     [Header("轉場黑幕")]
-    [Space(10), SerializeField, Range(1, 20)]
-    private int speed;
-    int i = 0;
+    [Space(10), SerializeField]
+    public GameObject loadingCanvas;
+    public Loading loading;
     void Awake()
     {
         if (instance != null)
@@ -30,6 +29,7 @@ public class MenuManager : MonoBehaviour
             DontDestroyOnLoad(this);
             instance = this;
         }
+        loadingCanvas.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -122,7 +122,6 @@ public class MenuManager : MonoBehaviour
 
     public void ResetText()
     {
-        m_Lable.text = "";
         mainPanel.transform.localPosition = originPos;
         mainPanel.transform.localPosition = originPos;
     }
@@ -155,6 +154,11 @@ public class MenuManager : MonoBehaviour
     IEnumerator LoadScene(string ns)
     {
         yield return null;
+        loadingCanvas.SetActive(true);
+        loading.animator.SetTrigger("Start");
+        if (GameManager._instance.gamestate == GameState.Pause)
+        { GameManager._instance.TransformGameState(); }
+        yield return new WaitForSeconds(loading.transitionTime);
 
         //Begin to load the Scene you specify
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ns);
@@ -165,12 +169,12 @@ public class MenuManager : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             //Output the current progress
-            m_Lable.text = " " + (asyncOperation.progress * 100) + "%";
+            // m_Lable.text = " " + (asyncOperation.progress * 100) + "%";
 
             // Check if the load has finished
             if (asyncOperation.progress >= 0.9f)
             {
-                m_Lable.text = "Done!";
+                // m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
             }
 
@@ -182,14 +186,19 @@ public class MenuManager : MonoBehaviour
     {
         yield return null;
 
+        loadingCanvas.SetActive(true);
+        loading.animator.SetTrigger("Start");
+        if (GameManager._instance.gamestate == GameState.Pause)
+        { GameManager._instance.TransformGameState(); }
+        yield return new WaitForSeconds(loading.transitionTime);
+
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ns);
         asyncOperation.allowSceneActivation = false;
         while (!asyncOperation.isDone)
         {
-            m_Lable.text = " " + (asyncOperation.progress * 100) + "%";
             if (asyncOperation.progress >= 0.90f)
             {
-                m_Lable.text = "Done!";
+                // m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
             }
 
@@ -206,8 +215,12 @@ public class MenuManager : MonoBehaviour
     IEnumerator EnterNewScene()
     {
         MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
-        MenuManager.instance.m_Lable.GetComponent<TweenAlpha>().enabled = true;
-        GameManager._instance.TransformGameState();
+        // MenuManager.instance.m_Lable.GetComponent<TweenAlpha>().enabled = true;
+        loading.animator.SetTrigger("End");
+        while (loading.animator.GetCurrentAnimatorStateInfo(0).IsName("UI_cross_FadeOut"))
+        {
+            yield return null;
+        }
 
         yield return null;
     }
@@ -218,6 +231,7 @@ public class MenuManager : MonoBehaviour
     }
     IEnumerator EnterContinueScene()
     {
+        loading.animator.SetTrigger("End");
         if (GameManager._instance.SavePoint)
         {
             FindObjectOfType<SimpleCharacterControl>().ChangePlayerPosion(GameManager._instance.SavePoint.position);
