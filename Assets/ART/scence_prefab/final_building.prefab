@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!111 &44809690252272989
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100114811635298599}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 75655a597833f2245bf76177d763fb68, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 75655a597833f2245bf76177d763fb68, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4267994987303450681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3516,11 +3532,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.949005
       objectReference: {fileID: 0}
+    - target: {fileID: 2250107240840545293, guid: e9652aa0a7b0d7e438d763d93e661389,
+        type: 3}
+      propertyPath: drink_sign_animation
+      value: 
+      objectReference: {fileID: 44809690252272989}
+    - target: {fileID: 6187663174556161041, guid: e9652aa0a7b0d7e438d763d93e661389,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663174556161041, guid: e9652aa0a7b0d7e438d763d93e661389,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7dbf9a074241ff640a95c06c177069a9, type: 2}
+    - target: {fileID: 6187663174556161041, guid: e9652aa0a7b0d7e438d763d93e661389,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7dbf9a074241ff640a95c06c177069a9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9652aa0a7b0d7e438d763d93e661389, type: 3}
 --- !u!4 &8775894095474453506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3715115110529207074, guid: e9652aa0a7b0d7e438d763d93e661389,
+    type: 3}
+  m_PrefabInstance: {fileID: 5351543735827326752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2100114811635298599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6296485174154270215, guid: e9652aa0a7b0d7e438d763d93e661389,
     type: 3}
   m_PrefabInstance: {fileID: 5351543735827326752}
   m_PrefabAsset: {fileID: 0}

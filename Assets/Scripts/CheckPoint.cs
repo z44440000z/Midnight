@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     public Animator finalaniomator;
+    public Animation drink_sign_animation;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class CheckPoint : MonoBehaviour
                 //升起電梯
                 finalaniomator.SetBool("Up", true);
                 //換招牌
-
+                drink_sign_animation.Play("drink_sign_switch");
             }
             else
             { }
