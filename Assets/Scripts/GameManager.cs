@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public enum GameState
 {
     Running,
-    Pause
+    Pause,
+    Win
 }
 public class GameManager : MonoBehaviour
 {
@@ -76,6 +77,8 @@ public class GameManager : MonoBehaviour
         if (gamestate == GameState.Running)
         { CursorControl(false); }
         else if (gamestate == GameState.Pause)
+        { CursorControl(true); }
+        else if (gamestate == GameState.Win) 
         { CursorControl(true); }
     }
     //改變運行狀態
@@ -169,9 +172,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowWin()
     {
-        Time.timeScale = 0;
         CursorControl(true);
-        gamestate = GameState.Pause;
+        gamestate = GameState.Win;
+        player.LockPlayerControl();
         ui.UI_ShowWin();
     }
 

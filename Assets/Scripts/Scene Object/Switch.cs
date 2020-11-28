@@ -109,6 +109,7 @@ public class Switch : MonoBehaviour
         if (this != null)
         {
             switchOn = false;
+            animator.SetBool("ON", false);
             this.gameObject.SetActive(true);
         }
     }

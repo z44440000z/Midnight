@@ -208,7 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalaniomator: {fileID: 8007128649978662912}
-  drink_sign_animation: {fileID: 0}
+  drink_sign: {fileID: 6187663174556161041}
+  M_drink_picture_B: {fileID: 2100000, guid: d73ac4d27886784469bc00eb6cc84442, type: 2}
 --- !u!1 &2795846800773196690
 GameObject:
   m_ObjectHideFlags: 0

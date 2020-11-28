@@ -34,7 +34,15 @@ public class UI : MonoBehaviour
         SceneManager.sceneLoaded += ShowTimeAndPoint;
     }
 
-    void CloseWinPanel(Scene current, Scene next)
+    public void CloseWinPanel()
+    {
+        winPanel.gameObject.SetActive(false);
+        point.SetActive(true);
+        timerText.gameObject.SetActive(true);
+        ui_canvas.worldCamera = Camera.main;
+    }
+
+    public void CloseWinPanel(Scene current, Scene next)
     {
         winPanel.gameObject.SetActive(false);
         point.SetActive(true);

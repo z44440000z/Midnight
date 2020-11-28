@@ -1061,6 +1061,7 @@ GameObject:
   - component: {fileID: 7810919173305830195}
   - component: {fileID: 6946199945618562957}
   - component: {fileID: 2377235239958175197}
+  - component: {fileID: 3459538527414334896}
   m_Layer: 5
   m_Name: CrossfadeCanvas
   m_TagString: Untagged
@@ -1164,6 +1165,18 @@ MonoBehaviour:
   timeline: {fileID: 11400000, guid: dc02d9114bc675b4c913ffc765e3bf1b, type: 2}
   playableDirector: {fileID: 7714119503029297142}
   transitionTime: 1
+--- !u!225 &3459538527414334896
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908386466791096762}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1624178629298965104
 GameObject:
   m_ObjectHideFlags: 0

@@ -3521,6 +3521,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.949005
       objectReference: {fileID: 0}
+    - target: {fileID: 2250107240840545293, guid: e9652aa0a7b0d7e438d763d93e661389,
+        type: 3}
+      propertyPath: drink_sign_animation
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3241329198256977161, guid: e9652aa0a7b0d7e438d763d93e661389,
         type: 3}
       propertyPath: m_Size.z
@@ -3531,21 +3536,6 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 1.3560872
       objectReference: {fileID: 0}
-    - target: {fileID: 2250107240840545293, guid: e9652aa0a7b0d7e438d763d93e661389,
-        type: 3}
-      propertyPath: drink_sign_animation
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6187663174556161041, guid: e9652aa0a7b0d7e438d763d93e661389,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6187663174556161041, guid: e9652aa0a7b0d7e438d763d93e661389,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7dbf9a074241ff640a95c06c177069a9, type: 2}
     - target: {fileID: 6187663174556161041, guid: e9652aa0a7b0d7e438d763d93e661389,
         type: 3}
       propertyPath: m_Materials.Array.data[1]

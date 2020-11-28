@@ -352,6 +352,7 @@ public class SimpleCharacterControl : MonoBehaviour
     public void LockPlayerControl()
     {
         isControling = false;
+        m_animator.SetFloat("MoveSpeed", 0);
     }
 
     public void UnlockPlayerControl()

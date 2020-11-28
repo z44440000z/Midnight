@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("場景")]
     [SerializeField] string continueScene;
+    bool LoadSceneRunning;
 
     [Header("轉場黑幕")]
     [Space(10), SerializeField]
@@ -57,23 +58,26 @@ public class MenuManager : MonoBehaviour
         }
 
         //作弊鍵
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (!LoadSceneRunning)
         {
-            GameManager._instance.GameTimer.TimeReset();
-            GameManager._instance.nowRingCount = 0;
-            StartCoroutine(LoadScene(0));
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            GameManager._instance.GameTimer.TimeReset();
-            GameManager._instance.nowRingCount = 0;
-            StartCoroutine(LoadScene(1));
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            GameManager._instance.GameTimer.TimeReset();
-            GameManager._instance.nowRingCount = 0;
-            StartCoroutine(LoadScene(2));
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                GameManager._instance.GameTimer.TimeReset();
+                GameManager._instance.nowRingCount = 0;
+                StartCoroutine(LoadScene(0));
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                GameManager._instance.GameTimer.TimeReset();
+                GameManager._instance.nowRingCount = 0;
+                StartCoroutine(LoadScene(1));
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                GameManager._instance.GameTimer.TimeReset();
+                GameManager._instance.nowRingCount = 0;
+                StartCoroutine(LoadScene(2));
+            }
         }
         if (Input.GetKeyDown(KeyCode.Keypad5))
         {
@@ -92,7 +96,7 @@ public class MenuManager : MonoBehaviour
         GameManager._instance.GameTimer.TimeReset();
         GameManager._instance.nowRingCount = 0;
         continueScene = "";
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0 && GameManager._instance.gamestate == GameState.Pause)
         {
             StartCoroutine(LoadScene(0));
         }
@@ -137,7 +141,14 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Next!");
         GameManager._instance.GameTimer.TimeReset();
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+        int i = SceneManager.GetActiveScene().buildIndex + 1;
+        if (i < SceneManager.sceneCountInBuildSettings)
+        { StartCoroutine(LoadScene(i)); }
+        else
+        {
+            GameManager._instance.ui.CloseWinPanel();
+            GameObject.FindObjectOfType<Story>().Say();
+        }
     }
 
     public void ExitButton()
@@ -164,6 +175,7 @@ public class MenuManager : MonoBehaviour
     }
     IEnumerator LoadScene(string ns)
     {
+        LoadSceneRunning = true;
         yield return null;
         loadingCanvas.SetActive(true);
         loading.animator.SetTrigger("Start");
@@ -187,13 +199,15 @@ public class MenuManager : MonoBehaviour
                 // m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
             }
-
+            LoadSceneRunning = false;
+            GameManager._instance.gamestate = GameState.Running;
             yield return null;
         }
     }
 
     IEnumerator LoadScene(int ns)
     {
+        LoadSceneRunning = true;
         yield return null;
 
         loadingCanvas.SetActive(true);
@@ -211,7 +225,8 @@ public class MenuManager : MonoBehaviour
                 // m_Lable.text = "Done!";
                 asyncOperation.allowSceneActivation = true;
             }
-
+            LoadSceneRunning = false;
+            GameManager._instance.gamestate = GameState.Running;
             yield return null;
         }
     }
@@ -230,6 +245,8 @@ public class MenuManager : MonoBehaviour
         MenuManager.instance.gameObject.GetComponent<TweenAlpha>().enabled = true;
         // MenuManager.instance.m_Lable.GetComponent<TweenAlpha>().enabled = true;
         loading.animator.SetTrigger("End");
+        // if (GameManager._instance.gamestate == GameState.Running)
+        // { GameManager._instance.TransformGameState(); }
         while (loading.animator.GetCurrentAnimatorStateInfo(0).IsName("UI_cross_FadeOut"))
         {
             yield return null;
