@@ -1455,7 +1455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isControling: 1
-  m_moveSpeed: 10
+  m_moveSpeed: 8
   m_jumpForce: 13
   m_animator: {fileID: 4317773357379172365}
   m_rigidBody: {fileID: 0}
@@ -1472,6 +1472,10 @@ MonoBehaviour:
     m_Bits: 9510
   Shoot_Vcam: {fileID: 1451125553}
   groundChecker: {fileID: 1781651408}
+  m_audio: {fileID: 6419461778698080935}
+  clip_shoot: {fileID: 0}
+  clip_walksound: {fileID: 0}
+  clip_flysound: {fileID: 0}
 --- !u!54 &866553225
 Rigidbody:
   m_ObjectHideFlags: 0

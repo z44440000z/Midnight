@@ -34,7 +34,7 @@ public class AI : MonoBehaviour
         {
             if (CheackScope(transform.position, player.position))
             {
-                if (pc.m_State.IsName("Base Layer.Climb.Climbing") ||pc.m_State.IsName("Base Layer.Climb.ClimbUp") || pc.m_State.IsName("Base Layer.Climb.ClimbDown"))
+                if (pc.m_State.IsName("Base Layer.Climb.Climbing") || pc.m_State.IsName("Base Layer.Climb.ClimbUp") || pc.m_State.IsName("Base Layer.Climb.ClimbDown"))
                 { }
                 else
                 {
@@ -42,7 +42,6 @@ public class AI : MonoBehaviour
                     {
                         Debug.Log("進入檢測範圍");
                         audioSource.Play();
-                        pc.LockPlayerControl();
                         StartCoroutine("Timer");
                     }
 
@@ -72,11 +71,12 @@ public class AI : MonoBehaviour
     }
     IEnumerator Timer()
     {
+        pc.LockPlayerControl();
         yield return new WaitForSeconds(audioSource.clip.length);
-        pc.Dead(); 
+        pc.Dead();
     }
 
-    private float innerRadius = 3 ;
+    private float innerRadius = 3;
 
     public int Segments = 60;//分割数  
 

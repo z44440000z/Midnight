@@ -6,10 +6,11 @@ public class Ring : MonoBehaviour
 {
     public int index;
     public bool isGet = false;
+    AudioSource m_audio;
     // Start is called before the first frame update
-    private void OnEnable() 
+     private void Start() 
     {
-        
+        m_audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class Ring : MonoBehaviour
         {
             GameManager._instance.AddRing();
             isGet = true;
+            m_audio.Play();
             CheckIsGet();
         }
     }

@@ -47,14 +47,34 @@ public class SimpleCharacterControl : MonoBehaviour
     private int maxDistatnce = 500;
     [Space(10)]
     public GameObject groundChecker;
+
+    [Header("Audio")]
+    public AudioSource m_audio;
+
+    public AudioClip clip_shoot;
+    public AudioClip clip_walksound;
+    public AudioClip clip_flysound;
+    
     #endregion
+    GameObject CameraD_object;
+    Transform CameraD;
+
 
     private void Start()
     {
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody>();
+        m_audio = GetComponent<AudioSource>();
         GameManager._instance.onReset += new GameManager.ManipulationHandler(Dead);
         flyParticle.SetActive(false);
+
+        CameraD_object = new GameObject();
+        CameraD_object.transform.parent = transform;
+        CameraD_object.transform.position = transform.position;
+        CameraD_object.name = "Direction";
+        CameraD = CameraD_object.transform;
+
+        StartCoroutine(FootSound());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -295,7 +315,9 @@ public class SimpleCharacterControl : MonoBehaviour
         Vector3 look = RayAim();
         if (Input.GetButton("Fire1"))
         {
-            SmoothRotation(Camera.main.transform.eulerAngles.y);
+            //人物跟隨攝影機方向
+            CameraD.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+            transform.rotation = CameraD.rotation;
             intervalTime -= Time.deltaTime;
             if (intervalTime <= 0)
             {
@@ -306,7 +328,13 @@ public class SimpleCharacterControl : MonoBehaviour
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 Physics.IgnoreCollision(rb.GetComponent<Collider>(), this.GetComponent<Collider>());
                 rb.velocity = bullet.transform.forward * throwerPower;
-
+                m_audio.PlayOneShot(clip_shoot);
+                // m_animator.SetLookAtWeight(1);
+                // m_animator.SetLookAtPosition(RayAim());
+                // m_animator.SetIKPositionWeight(AvatarTarget.RightHand, 1);
+                // m_animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+                // m_animator.SetIKPosition(AvatarIKGoal.RightHand, RayAim());
+                // m_animator.SetIKRotation(AvatarIKGoal.RightHand, Camera.main.transform.rotation);
             }
         }
         if (Input.GetButtonUp("Fire1"))
@@ -380,6 +408,26 @@ public class SimpleCharacterControl : MonoBehaviour
     public void ChangePlayerPosion(Vector3 pos)
     {
         transform.position = pos;
+    }
+
+    IEnumerator FootSound()
+    {
+        //Debug.Log(_player.velocity.magnitude);
+        while (true)
+        {
+            if (m_animator.GetBool("Grounded") && m_animator.GetFloat("MoveSpeed") > 0)
+            {
+                m_audio.PlayOneShot(clip_walksound);
+                yield return new WaitForSeconds(clip_walksound.length);
+            }
+            else if (m_animator.GetBool("Fly"))
+            {
+                m_audio.PlayOneShot(clip_walksound);
+                yield return new WaitForSeconds(clip_walksound.length);
+            }
+            else
+            { yield return null; }
+        }
     }
     #endregion
 }

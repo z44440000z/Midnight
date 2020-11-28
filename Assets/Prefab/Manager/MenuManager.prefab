@@ -1164,7 +1164,7 @@ MonoBehaviour:
   animator: {fileID: 726343135176414482}
   timeline: {fileID: 11400000, guid: dc02d9114bc675b4c913ffc765e3bf1b, type: 2}
   playableDirector: {fileID: 7714119503029297142}
-  transitionTime: 1
+  transitionTime: 1.5
 --- !u!225 &3459538527414334896
 CanvasGroup:
   m_ObjectHideFlags: 0
