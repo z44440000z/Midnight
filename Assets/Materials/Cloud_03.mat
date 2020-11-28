@@ -309,7 +309,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_1E1923F7: {r: 0.004405484, g: 0.043297198, b: 0.084905684, a: 0.5882353}
-    - Color_EFFD2B33: {r: 0.24186143, g: 0.5660378, b: 0.2322891, a: 0.5882353}
+    - Color_EFFD2B33: {r: 0.23806134, g: 0.4528302, b: 0.23282307, a: 0.6431373}
     - Vector2_F4CAC2B3: {r: -10, g: 10, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
