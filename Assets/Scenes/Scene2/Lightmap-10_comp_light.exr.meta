@@ -1,17 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-10_comp_light.exr.meta
 guid: ddf91aa52da377046bb49e474a21e1ea
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 9
-=======
-guid: 77b552609da4ebc4a9fcb2cec011feed
-TextureImporter:
-  fileIDToRecycleName: {}
-  externalObjects: {}
-  serializedVersion: 7
->>>>>>> amy:Assets/ART/object_1114/uv/building_02_uv.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -29,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
-  streamingMipmaps: 1
+  streamingMipmaps: 0
   streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
@@ -39,21 +31,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-10_comp_light.exr.meta
-    filterMode: 1
-    aniso: 3
-    mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
-=======
     filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: -1
     wrapV: -1
     wrapW: -1
->>>>>>> amy:Assets/ART/object_1114/uv/building_02_uv.png.meta
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -65,17 +48,10 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-10_comp_light.exr.meta
-  alphaUsage: 0
-  alphaIsTransparency: 0
-  spriteTessellationDetail: -1
-  textureType: 6
-=======
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
->>>>>>> amy:Assets/ART/object_1114/uv/building_02_uv.png.meta
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -87,11 +63,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-10_comp_light.exr.meta
-    textureCompression: 2
-=======
     textureCompression: 1
->>>>>>> amy:Assets/ART/object_1114/uv/building_02_uv.png.meta
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0

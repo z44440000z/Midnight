@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-0_comp_light.exr.meta
 guid: 6a278dfabfd172e468576107e3193378
-=======
-guid: a4676884bdcc4724cac244aa9c5f35b2
->>>>>>> amy:Assets/ART/object_1114/material/building_02_wall_uv_03.png.meta
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -35,21 +31,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-0_comp_light.exr.meta
     filterMode: 1
     aniso: 3
     mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
-=======
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
-    wrapU: -1
-    wrapV: -1
-    wrapW: -1
->>>>>>> amy:Assets/ART/object_1114/material/building_02_wall_uv_03.png.meta
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -61,17 +48,10 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-<<<<<<< HEAD:Assets/Scenes/Scene2/Lightmap-0_comp_light.exr.meta
   alphaUsage: 0
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 6
-=======
-  alphaUsage: 1
-  alphaIsTransparency: 0
-  spriteTessellationDetail: -1
-  textureType: 0
->>>>>>> amy:Assets/ART/object_1114/material/building_02_wall_uv_03.png.meta
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -83,7 +63,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
