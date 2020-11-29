@@ -20,7 +20,7 @@ public class ClimbDown : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.gameObject.GetComponent<SimpleCharacterControl>().OutClimbState();
-        animator.applyRootMotion = false;
+        // animator.applyRootMotion = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

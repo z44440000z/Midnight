@@ -6,7 +6,7 @@ using UnityEngine.Timeline;
 using UnityEngine.Playables;
 
 //Loading場景的UI動畫
-public class Loading : MonoBehaviour
+public class loading : MonoBehaviour
 {
     public Animator animator;
     public TimelineAsset timeline;

@@ -267,7 +267,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81fec0210aef8764fb00d0fcd86b4f76, type: 2}
+  - {fileID: 2100000, guid: 077b13770437ba54c93dfabd8af83d68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1473,9 +1473,9 @@ MonoBehaviour:
   Shoot_Vcam: {fileID: 1451125553}
   groundChecker: {fileID: 1781651408}
   m_audio: {fileID: 6419461778698080935}
-  clip_shoot: {fileID: 0}
-  clip_walksound: {fileID: 0}
-  clip_flysound: {fileID: 0}
+  clip_shoot: {fileID: 8300000, guid: 88bda4ae790ffd34f929e2e50c596bb1, type: 3}
+  clip_walksound: {fileID: 8300000, guid: 04f986b1a27041447b616c6b7cf0d542, type: 3}
+  clip_flysound: {fileID: 8300000, guid: 3cc957c5b1ff11649aa7e8b84220549c, type: 3}
 --- !u!54 &866553225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3853,14 +3853,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 78a587be044ba7045ac1193fc3312c90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

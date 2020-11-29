@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 2737183844264144352}
   - component: {fileID: 7810919173305830195}
   - component: {fileID: 6946199945618562957}
-  - component: {fileID: 2377235239958175197}
+  - component: {fileID: 5423239069023841167}
   - component: {fileID: 3459538527414334896}
   m_Layer: 5
   m_Name: CrossfadeCanvas
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &2377235239958175197
+--- !u!114 &5423239069023841167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   animator: {fileID: 726343135176414482}
   timeline: {fileID: 11400000, guid: dc02d9114bc675b4c913ffc765e3bf1b, type: 2}
   playableDirector: {fileID: 7714119503029297142}
-  transitionTime: 1.5
+  transitionTime: 1
 --- !u!225 &3459538527414334896
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3109,7 +3109,7 @@ MonoBehaviour:
   m_NoSaveSprite: {fileID: 1474286907}
   continueScene: 
   loadingCanvas: {fileID: 908386466791096762}
-  loading: {fileID: 2377235239958175197}
+  loading: {fileID: 0}
 --- !u!114 &4415414286021055710
 MonoBehaviour:
   m_ObjectHideFlags: 0

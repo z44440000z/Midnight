@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ToNext : MonoBehaviour
 {
+    public AudioSource m_audio;
+    public AudioClip clip_pass;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class ToNext : MonoBehaviour
         {
             GameManager._instance.ShowWin();
             other.gameObject.GetComponent<SimpleCharacterControl>().LockPlayerControl();
+            m_audio.PlayOneShot(clip_pass);
         }
     }
 }

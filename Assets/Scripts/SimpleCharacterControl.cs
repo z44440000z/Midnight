@@ -173,7 +173,8 @@ public class SimpleCharacterControl : MonoBehaviour
             isClimbPoint = false;
         }
     }
-
+    float v;
+    float h;
     private void FixedUpdate()
     {
         if (isControling)
@@ -181,9 +182,8 @@ public class SimpleCharacterControl : MonoBehaviour
             m_animator.SetBool("Grounded", m_isGrounded);
             if (!m_State.IsName("Base Layer.Climb.ClimbUp") && !m_State.IsName("Base Layer.Climb.ClimbDown") && !m_State.IsName("Base Layer.Climb.Climbing"))
             {
-                float v = Input.GetAxis("Vertical");
-                float h = Input.GetAxis("Horizontal");
-
+                v = Input.GetAxis("Vertical");
+                h = Input.GetAxis("Horizontal");
 
                 m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
                 m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
@@ -198,7 +198,11 @@ public class SimpleCharacterControl : MonoBehaviour
                 {
                     m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
                     transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
-                    m_animator.SetFloat("MoveSpeed", direction.magnitude);
+                    m_animator.SetFloat("MoveSpeed", directionLength);
+                }
+                else
+                {
+                    m_animator.SetFloat("MoveSpeed", 0);
                 }
 
                 //上下左右鍵方向
@@ -249,6 +253,8 @@ public class SimpleCharacterControl : MonoBehaviour
             int jc = m_animator.GetInteger("JumpCount") + 1;
             m_animator.SetInteger("JumpCount", jc);
         }
+        if (m_rigidBody.velocity.y == 1 && m_animator.GetBool("Grounded"))
+        { ResetVelocity(); }
     }
     private void Flying()
     {
@@ -294,7 +300,8 @@ public class SimpleCharacterControl : MonoBehaviour
             }
             if (m_State.IsName("Base Layer.Climb.ClimbDown"))
             {
-                // m_animator.applyRootMotion = true;
+                m_animator.applyRootMotion = false;
+                // transform.position = rightFoot.position;
                 transform.rotation = rightFoot.rotation;
                 m_animator.MatchTarget(rightFoot.position, rightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), climbDownMatchStart, climbDownMatchEnd);
             }
@@ -348,7 +355,7 @@ public class SimpleCharacterControl : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.down));
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
-            targetPoint = hit.point + Vector3.up * 0.2f;//記錄碰撞的目標點
+            targetPoint = hit.point + Vector3.up * 0.01f;//記錄碰撞的目標點
             // Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
@@ -414,15 +421,26 @@ public class SimpleCharacterControl : MonoBehaviour
         //Debug.Log(_player.velocity.magnitude);
         while (true)
         {
-            if (m_animator.GetBool("Grounded") && m_animator.GetFloat("MoveSpeed") > 0)
+            if (m_animator.GetBool("Grounded"))
             {
-                m_audio.PlayOneShot(clip_walksound);
-                yield return new WaitForSeconds(clip_walksound.length);
+                if (v == 0 && h == 0)
+                { yield return null; }
+                else
+                {
+                    m_audio.PlayOneShot(clip_walksound);
+                    if (v == 0 && h == 0)
+                    {
+                        m_audio.Stop();
+                        yield return null;
+                    }
+                    else
+                    { yield return new WaitForSeconds(clip_walksound.length); }
+                }
             }
             else if (m_animator.GetBool("Fly"))
             {
-                m_audio.PlayOneShot(clip_walksound);
-                yield return new WaitForSeconds(clip_walksound.length);
+                m_audio.PlayOneShot(clip_flysound);
+                yield return new WaitForSeconds(clip_flysound.length);
             }
             else
             { yield return null; }

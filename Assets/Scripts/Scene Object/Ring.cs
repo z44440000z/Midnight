@@ -6,11 +6,13 @@ public class Ring : MonoBehaviour
 {
     public int index;
     public bool isGet = false;
-    AudioSource m_audio;
+    public GameObject powerObj;
+    public AudioSource m_audio;
     // Start is called before the first frame update
-     private void Start() 
+    private void Start()
     {
         m_audio = GetComponent<AudioSource>();
+        powerObj = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class Ring : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !isGet)
         {
             GameManager._instance.AddRing();
             isGet = true;
@@ -32,8 +34,8 @@ public class Ring : MonoBehaviour
     void CheckIsGet()
     {
         if (isGet)
-        { this.gameObject.SetActive(false); }
+        { powerObj.SetActive(false); }
         else
-        { this.gameObject.SetActive(true); }
+        { powerObj.SetActive(true); }
     }
 }

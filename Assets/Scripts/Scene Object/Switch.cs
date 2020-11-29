@@ -12,6 +12,8 @@ public class Switch : MonoBehaviour
     [SerializeField] private Tunnel[] turnOnArray;
     [SerializeField] private Tunnel[] turnOffArray;
     [SerializeField] Animator animator;
+    [SerializeField] AudioSource m_audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class Switch : MonoBehaviour
             }
         }
         animator = GetComponentInChildren<Animator>();
+        m_audio = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class Switch : MonoBehaviour
 
     IEnumerator TunnelSwicthOn()
     {
+        m_audio.Play();
         if (turnOnTunnels)
         {
             foreach (Tunnel item in turnOnArray)

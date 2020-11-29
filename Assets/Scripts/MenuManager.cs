@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour
     [Header("轉場黑幕")]
     [Space(10), SerializeField]
     public GameObject loadingCanvas;
-    public Loading loading;
+    public loading loading;
     void Awake()
     {
         if (instance != null)
@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
             instance = this;
         }
         loadingCanvas.SetActive(false);
-        loading = loadingCanvas.GetComponent<Loading>();
+        loading = loadingCanvas.GetComponent<loading>();
     }
     // Start is called before the first frame update
     void Start()
