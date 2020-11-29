@@ -54,7 +54,7 @@ public class SimpleCharacterControl : MonoBehaviour
     public AudioClip clip_shoot;
     public AudioClip clip_walksound;
     public AudioClip clip_flysound;
-    
+
     #endregion
     GameObject CameraD_object;
     Transform CameraD;
@@ -348,7 +348,7 @@ public class SimpleCharacterControl : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.down));
         if (Physics.Raycast(ray, out hit, maxDistatnce, ~layermask))//如果射線碰撞到物體
         {
-            targetPoint = hit.point;//記錄碰撞的目標點
+            targetPoint = hit.point + Vector3.up * 0.2f;//記錄碰撞的目標點
             // Debug.Log(hit.collider.name);
         }
         else//射線沒有碰撞到目標點
@@ -356,7 +356,6 @@ public class SimpleCharacterControl : MonoBehaviour
             //將目標點設置在攝像機自身前方1000米處
             targetPoint = -transform.up * maxDistatnce;
         }
-        targetPoint -= Vector3.up * 0.1f;
         return targetPoint;
     }
     #endregion
