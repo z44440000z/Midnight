@@ -72,8 +72,8 @@ public class AI : MonoBehaviour
     IEnumerator Timer()
     {
         pc.LockPlayerControl();
+        MenuManager.instance.Enemy_fade();
         yield return new WaitForSeconds(audioSource.clip.length);
-        pc.Dead();
     }
 
     private float innerRadius = 3;

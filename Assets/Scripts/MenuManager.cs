@@ -173,6 +173,12 @@ public class MenuManager : MonoBehaviour
         else
         { return false; }
     }
+
+    public void Enemy_fade()
+    {
+        loadingCanvas.SetActive(true);
+        loading.animator.SetTrigger("enemy");
+    }
     IEnumerator LoadScene(string ns)
     {
         LoadSceneRunning = true;
