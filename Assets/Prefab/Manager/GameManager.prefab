@@ -730,9 +730,9 @@ MonoBehaviour:
   SavePoint: {fileID: 0}
   ringCount: 0
   clearCount: 2
-  ui: {fileID: 0}
+  ui: {fileID: 3037944173626839627}
   DeadCount: 0
-  GameTimer: {fileID: 0}
+  GameTimer: {fileID: 3037944173504459804}
 --- !u!114 &3037944173626839627
 MonoBehaviour:
   m_ObjectHideFlags: 0

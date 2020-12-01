@@ -606,7 +606,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Time: 1.25
   m_Parameters:
     serializedVersion: 3
@@ -741,7 +741,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Time: 1.25
   m_Parameters:
     serializedVersion: 3
@@ -1433,7 +1433,7 @@ Animator:
   m_GameObject: {fileID: 4317773357379172364}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 06cf8dae4029cc34f8a2be5ae0101c85, type: 3}
-  m_Controller: {fileID: 9100000, guid: f297797635a2b7445ad2ea55cec7353b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5bf877809d849bc4b81691bb713a20ad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

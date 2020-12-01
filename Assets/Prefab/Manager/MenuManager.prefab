@@ -3109,7 +3109,7 @@ MonoBehaviour:
   m_NoSaveSprite: {fileID: 1474286907}
   continueScene: 
   loadingCanvas: {fileID: 908386466791096762}
-  loading: {fileID: 0}
+  loading: {fileID: 5423239069023841167}
 --- !u!114 &4415414286021055710
 MonoBehaviour:
   m_ObjectHideFlags: 0

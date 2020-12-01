@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0018768, y: 1.7632122, z: 1.1201172}
-  m_Center: {x: 0.002281189, y: -0.34959698, z: -0.41007233}
+  m_Size: {x: 1.8062363, y: 3.5365105, z: 1.9481316}
+  m_Center: {x: 0.014110565, y: 0.3360777, z: -0.8240795}
 --- !u!114 &297949920693868506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,11 +292,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 297949920693868507}
     m_Modifications:
-    - target: {fileID: 3981172073179418039, guid: 6b76c1fd9c5d02f429e541870812d91d,
-        type: 3}
-      propertyPath: m_Name
-      value: enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 3981172073179418043, guid: 6b76c1fd9c5d02f429e541870812d91d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -351,6 +346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981172073179418039, guid: 6b76c1fd9c5d02f429e541870812d91d,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b76c1fd9c5d02f429e541870812d91d, type: 3}
