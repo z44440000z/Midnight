@@ -101,6 +101,8 @@ public class MenuManager : MonoBehaviour
             if (SceneManager.GetActiveScene().buildIndex == 0 && GameManager._instance.gamestate == GameState.Pause && GameObject.Find("Story") != null)
             {
                 GameManager._instance.TransformGameState();
+                GameManager._instance.GameTimer.TimerSwitch(true);
+                GameManager._instance.ui.ShowTimeAndPoint();
             }
             else
             {
