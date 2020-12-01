@@ -397,6 +397,7 @@ public class SimpleCharacterControl : MonoBehaviour
     {
         isControling = false;
         m_animator.SetFloat("MoveSpeed", 0);
+        v = h = 0;
     }
 
     public void UnlockPlayerControl()
@@ -434,6 +435,8 @@ public class SimpleCharacterControl : MonoBehaviour
             if (m_animator.GetBool("Grounded"))
             {
                 if (v == 0 && h == 0)
+                { yield return null; }
+                else if (m_animator.GetFloat("MoveSpeed") < 0.1f)
                 { yield return null; }
                 else
                 {

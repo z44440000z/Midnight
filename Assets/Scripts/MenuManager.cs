@@ -93,37 +93,45 @@ public class MenuManager : MonoBehaviour
 
     public void NewGameButton()
     {
-        GameManager._instance.GameTimer.TimeReset();
-        GameManager._instance.nowRingCount = 0;
-        continueScene = "";
-        if (SceneManager.GetActiveScene().buildIndex == 0 && GameManager._instance.gamestate == GameState.Pause)
+        if (!LoadSceneRunning)
         {
-            StartCoroutine(LoadScene(0));
-        }
-        else
-        {
-            StartCoroutine(LoadScene(0));
+            GameManager._instance.GameTimer.TimeReset();
+            GameManager._instance.nowRingCount = 0;
+            continueScene = "";
+            if (SceneManager.GetActiveScene().buildIndex == 0 && GameManager._instance.gamestate == GameState.Pause && GameObject.Find("Story") != null)
+            {
+                GameManager._instance.TransformGameState();
+            }
+            else
+            {
+                StartCoroutine(LoadScene(0));
+            }
         }
     }
 
     public void ContinueButton()//讀取資料
     {
-        PlayerData data = SaveSystem.Load();
-        continueScene = data.sceneName;
-        GameManager._instance.SavePoint = new GameObject().transform;
-        GameManager._instance.SavePoint.name = "TemporarySavePoint";
-        GameManager._instance.SavePoint.position = new Vector3(data.x, data.y, data.z);
-        GameManager._instance.SavePoint.SetParent(this.transform);
-        GameManager._instance.nowRingCount = data.score;
-        GameManager._instance.GameTimer.SetTime(data.time);
-        GameManager._instance.ui.ShowTimeAndPoint();
-
-        if (continueScene != "")
-        { StartCoroutine(LoadScene(continueScene)); }
-        else
+        Debug.Log(continueScene);
+        if (!LoadSceneRunning)
         {
-            m_NoSaveSprite.enabled = true;
-            m_NoSaveSprite.gameObject.GetComponent<TweenAlpha>().enabled = true;
+            PlayerData data = SaveSystem.Load();
+            continueScene = data.sceneName;
+            GameManager._instance.SavePoint = new GameObject().transform;
+            GameManager._instance.SavePoint.name = "TemporarySavePoint";
+            GameManager._instance.SavePoint.position = new Vector3(data.x, data.y, data.z);
+            GameManager._instance.SavePoint.SetParent(this.transform);
+            GameManager._instance.nowRingCount = data.score;
+            GameManager._instance.GameTimer.SetTime(data.time);
+            GameManager._instance.ui.ShowTimeAndPoint();
+
+            if (continueScene != null)
+            { StartCoroutine(LoadScene(continueScene)); }
+            else
+            {
+                m_NoSaveSprite.enabled = true;
+                m_NoSaveSprite.gameObject.GetComponent<TweenAlpha>().enabled = true;
+                Destroy(GameObject.Find("TemporarySavePoint"));
+            }
         }
     }
 
@@ -131,6 +139,7 @@ public class MenuManager : MonoBehaviour
     {
         mainPanel.transform.localPosition = originPos;
         mainPanel.transform.localPosition = originPos;
+        m_NoSaveSprite.enabled = false;
     }
 
     public void ChangeScene(string ns)
