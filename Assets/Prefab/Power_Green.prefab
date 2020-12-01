@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5635275644702274301}
   - component: {fileID: 510537520}
   - component: {fileID: 507657667}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Power_Green
   m_TagString: Ring
   m_Icon: {fileID: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   isGet: 0
+  powerObj: {fileID: 0}
   m_audio: {fileID: 0}
 --- !u!82 &507657667
 AudioSource:

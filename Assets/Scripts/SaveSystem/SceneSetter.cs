@@ -49,7 +49,6 @@ public class SceneSetter : MonoBehaviour
                     ringObj[i].transform.position = new Vector3(data.ringDataArray[i].x, data.ringDataArray[i].y, data.ringDataArray[i].z);
                 }
                 SaveSystem.Save(data);
-                Debug.Log("成功加載!");
             }
             else
             {

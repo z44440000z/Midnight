@@ -11,7 +11,6 @@ public class Car : MonoBehaviour
     public Vector3 originPosition;
     public Transform endPosition;
     private bool IsDisappear = false;
-    private float alpha = 0;
 
     void Start()
     {
@@ -22,7 +21,6 @@ public class Car : MonoBehaviour
     {
         if (!IsDisappear)
         {
-            alpha += speed;
             if (Vector3.Distance(car.transform.position, endPosition.position) < 0.1f)
             { StartCoroutine("TimerAndReset"); }
             else
@@ -34,13 +32,12 @@ public class Car : MonoBehaviour
     #region private function
     private void OnMove(Vector3 newPos)
     {
-        car.transform.position = Vector3.MoveTowards(car.transform.position, newPos, alpha * Time.deltaTime);
+        car.transform.position = Vector3.MoveTowards(car.transform.position, newPos, speed * Time.deltaTime);
     }
     IEnumerator TimerAndReset()
     {
         IsDisappear = true;
         car.transform.position = originPosition;
-        alpha = 0;
         yield return new WaitForSeconds(IntervalTime);
         IsDisappear = false;
     }

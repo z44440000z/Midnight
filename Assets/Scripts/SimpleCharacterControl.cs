@@ -233,10 +233,12 @@ public class SimpleCharacterControl : MonoBehaviour
             }
             //攀爬
             Climbing();
-
-            groundChecker.transform.position = GroundCheck();
             m_wasGrounded = m_isGrounded;
         }
+    }
+    private void Update()
+    {
+        groundChecker.transform.position = GroundCheck();
     }
     #region private function
     private void JumpingAndLanding()
@@ -271,8 +273,13 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            if (m_rigidBody.velocity.y <= 0)
-            { m_rigidBody.AddForce(-Physics.gravity * 0.9f); }
+            if (m_rigidBody.velocity.y > -4)
+            { m_rigidBody.AddForce(-(m_rigidBody.velocity + Physics.gravity) * 0.7f); }
+            else
+            { m_rigidBody.velocity = new Vector3(0.0f, -4.0f, 0.0f); }
+
+
+            Debug.Log(m_rigidBody.velocity);
         }
     }
     private void Climbing()
@@ -300,7 +307,7 @@ public class SimpleCharacterControl : MonoBehaviour
             }
             if (m_State.IsName("Base Layer.Climb.ClimbDown"))
             {
-                m_animator.applyRootMotion = false;
+                // m_animator.applyRootMotion = false;
                 // transform.position = rightFoot.position;
                 transform.rotation = rightFoot.rotation;
                 m_animator.MatchTarget(rightFoot.position, rightFoot.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 0), climbDownMatchStart, climbDownMatchEnd);
@@ -347,6 +354,7 @@ public class SimpleCharacterControl : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         { intervalTime = 0; }
     }
+    float groundCheckDistance;
 
     Vector3 GroundCheck()
     {
@@ -360,9 +368,11 @@ public class SimpleCharacterControl : MonoBehaviour
         }
         else//射線沒有碰撞到目標點
         {
-            //將目標點設置在攝像機自身前方1000米處
             targetPoint = -transform.up * maxDistatnce;
         }
+        if (m_isGrounded)
+        { targetPoint = transform.position; }
+        groundCheckDistance = Vector3.Distance(transform.position, targetPoint);
         return targetPoint;
     }
     #endregion
@@ -428,13 +438,7 @@ public class SimpleCharacterControl : MonoBehaviour
                 else
                 {
                     m_audio.PlayOneShot(clip_walksound);
-                    if (v == 0 && h == 0)
-                    {
-                        m_audio.Stop();
-                        yield return null;
-                    }
-                    else
-                    { yield return new WaitForSeconds(clip_walksound.length); }
+                    yield return new WaitForSeconds(clip_walksound.length);
                 }
             }
             else if (m_animator.GetBool("Fly"))

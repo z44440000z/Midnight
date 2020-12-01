@@ -3618,6 +3618,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.949005
       objectReference: {fileID: 0}
+    - target: {fileID: 7465446086693614047, guid: e9652aa0a7b0d7e438d763d93e661389,
+        type: 3}
+      propertyPath: m_audio
+      value: 
+      objectReference: {fileID: 2729698643854587699}
     - target: {fileID: 2250107240840545293, guid: e9652aa0a7b0d7e438d763d93e661389,
         type: 3}
       propertyPath: drink_sign_animation

@@ -10,6 +10,7 @@ public class Story : MonoBehaviour
     public string blockName;
     private GameObject sayDialog;
     public GameObject StartPoint;
+    public GameObject Story_Vcam;
     private SimpleCharacterControl player;
     // Start is called before the first frame update
     void Start()
@@ -29,13 +30,14 @@ public class Story : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Story_Vcam.SetActive(true);
             player.LockPlayerControl();
             flowchart.ExecuteBlock(blockName);
         }
     }
     public void Say()
     {
-        sayDialog.SetActive(true);
+        Story_Vcam.SetActive(true);
         player.LockPlayerControl();
         flowchart.ExecuteBlock(blockName);//播放到一半突然停止???
     }
