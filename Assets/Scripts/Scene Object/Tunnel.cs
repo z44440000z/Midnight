@@ -4,57 +4,57 @@ using UnityEngine;
 
 public class Tunnel : MonoBehaviour
 {
-    [SerializeField] private float y = -30;
+    [SerializeField] private float hiddenY = -30f;  // 隱藏時的 Y 座標
     [SerializeField] private bool isOn;
-    private Vector3 finalPos;
-    private Vector3 originPos;
-    private float timers = 0;
-    private float speed = 5;
+    [SerializeField] private float speed = 5f;
+
+    private Vector3 finalPos;   // 最後要到的位置
+    private Vector3 originPos;  // 起始隱藏的位置
+    private float timers = 0f;  // 0~1 的插值時間
 
     private void Awake()
     {
         finalPos = transform.position;
-        originPos = transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        originPos = new Vector3(transform.position.x, hiddenY, transform.position.z);
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameManager._instance.onReset += new GameManager.ManipulationHandler(Reset);
+        // 一開始先隱藏
+        transform.position = originPos;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (timers <= 1 && isOn)
-        {
+        GameManager._instance.onReset += Reset;
+    }
 
-            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, finalPos, timers);
-            timers += Time.deltaTime / speed;
-        }
-        else if (timers >= 0 && !isOn)
+    private void Update()
+    {
+        // 根據 isOn 來決定 timers 往前還是往後
+        if (isOn)
         {
-            transform.position = Vector3.Lerp(originPos, transform.position, timers);
-            timers -= Time.deltaTime / speed;
+            timers = Mathf.Clamp01(timers + Time.deltaTime / speed);
         }
         else
         {
-
+            timers = Mathf.Clamp01(timers - Time.deltaTime / speed);
         }
+
+        // 在 origin 和 final 之間做插值
+        transform.position = Vector3.Lerp(originPos, finalPos, timers);
     }
-    public void swicthOn(bool isOn)
+
+    public void SwitchOn(bool value)
     {
-        this.isOn = isOn;
+        isOn = value;
     }
 
     private void Reset()
     {
-        if (this != null)
+        if (this == null)
         {
-            transform.position = originPos;
-            y = -30;
-            timers = 0;
-            isOn = false;
+            return;
         }
+        transform.position = originPos;
+        timers = 0f;
+        isOn = false;
     }
 }

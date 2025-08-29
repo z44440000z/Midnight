@@ -73,7 +73,7 @@ public class Switch : MonoBehaviour
         {
             foreach (Tunnel item in turnOnArray)
             {
-                item.swicthOn(true);
+                item.SwitchOn(true);
                 yield return new WaitForSeconds(intervalTime);
             }
         }
@@ -81,7 +81,7 @@ public class Switch : MonoBehaviour
         {
             foreach (Tunnel item in turnOffArray)
             {
-                item.swicthOn(false);
+                item.SwitchOn(false);
                 yield return new WaitForSeconds(intervalTime);
             }
         }
@@ -93,7 +93,7 @@ public class Switch : MonoBehaviour
         {
             foreach (Tunnel item in turnOnArray)
             {
-                item.swicthOn(false);
+                item.SwitchOn(false);
                 yield return new WaitForSeconds(intervalTime);
             }
         }
@@ -101,7 +101,7 @@ public class Switch : MonoBehaviour
         {
             foreach (Tunnel item in turnOffArray)
             {
-                item.swicthOn(true);
+                item.SwitchOn(true);
                 yield return new WaitForSeconds(intervalTime);
             }
         }

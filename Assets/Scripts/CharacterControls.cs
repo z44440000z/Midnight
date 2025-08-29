@@ -31,7 +31,7 @@ public class CharacterControls : MonoBehaviour
             targetVelocity *= speed;
 
             // Apply a force that attempts to reach our target velocity
-            Vector3 velocity = _rigidbody.velocity;
+            Vector3 velocity = _rigidbody.linearVelocity;
             Vector3 velocityChange = (targetVelocity - velocity);
             velocityChange.x = Mathf.Clamp(velocityChange.x, -VelocityLimit, VelocityLimit);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -VelocityLimit, VelocityLimit);
@@ -40,7 +40,7 @@ public class CharacterControls : MonoBehaviour
 
             if (Input.GetButton("Jump"))
             {
-                _rigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+                _rigidbody.linearVelocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
             }
 
 
