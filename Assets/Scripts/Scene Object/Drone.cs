@@ -40,7 +40,7 @@ public class Drone : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            mrigidBody.velocity = Vector3.zero;
+            mrigidBody.linearVelocity = Vector3.zero;
         }
     }
     // Start is called before the first frame update

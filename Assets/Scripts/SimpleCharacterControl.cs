@@ -255,7 +255,7 @@ public class SimpleCharacterControl : MonoBehaviour
             int jc = m_animator.GetInteger("JumpCount") + 1;
             m_animator.SetInteger("JumpCount", jc);
         }
-        if (m_rigidBody.velocity.y == 1 && m_animator.GetBool("Grounded"))
+        if (m_rigidBody.linearVelocity.y == 1 && m_animator.GetBool("Grounded"))
         { ResetVelocity(); }
     }
     private void Flying()
@@ -273,13 +273,10 @@ public class SimpleCharacterControl : MonoBehaviour
 
         if (m_State.IsName("Base Layer.Fly"))
         {
-            if (m_rigidBody.velocity.y > -4)
-            { m_rigidBody.AddForce(-(m_rigidBody.velocity + Physics.gravity) * 0.7f); }
+            if (m_rigidBody.linearVelocity.y > -4)
+            { m_rigidBody.AddForce(-(m_rigidBody.linearVelocity + Physics.gravity) * 0.7f); }
             else
-            { m_rigidBody.velocity = new Vector3(0.0f, -4.0f, 0.0f); }
-
-
-            Debug.Log(m_rigidBody.velocity);
+            { m_rigidBody.linearVelocity = new Vector3(0.0f, -4.0f, 0.0f); }
         }
     }
     private void Climbing()
@@ -341,7 +338,7 @@ public class SimpleCharacterControl : MonoBehaviour
                 bullet.transform.LookAt(look, Vector3.up);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 Physics.IgnoreCollision(rb.GetComponent<Collider>(), this.GetComponent<Collider>());
-                rb.velocity = bullet.transform.forward * throwerPower;
+                rb.linearVelocity = bullet.transform.forward * throwerPower;
                 m_audio.PlayOneShot(clip_shoot);
                 // m_animator.SetLookAtWeight(1);
                 // m_animator.SetLookAtPosition(RayAim());
@@ -385,7 +382,7 @@ public class SimpleCharacterControl : MonoBehaviour
         transform.eulerAngles = new Vector3(0, Mathf.SmoothDampAngle(transform.eulerAngles.y, a, ref y, rotateSpeed), 0);
     }
     public void ResetVelocity()//重設加速度
-    { m_rigidBody.velocity = Vector3.zero; }
+    { m_rigidBody.linearVelocity = Vector3.zero; }
     public void UseGravity(bool isuseGravity)
     { m_rigidBody.useGravity = isuseGravity; }
     public void OutClimbState()
